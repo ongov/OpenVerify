@@ -1,0 +1,1 @@
+{"keys":[{"kty":"EC","kid":"ThisIsNotTheThumbprintOfTheKey","use":"sig","alg":"ES256","crv":"P-256","x":"kOzbAF6ArH1BLM7MhOIEH4NiEqsrySkkrql56G_iyAA","y":"9f7pZkbEQu0mlpdL3B8JujJBVtjFW4eizxoevh8akbI"}]}

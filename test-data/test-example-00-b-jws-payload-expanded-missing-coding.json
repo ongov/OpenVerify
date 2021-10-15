@@ -1,0 +1,91 @@
+{
+  "iss": "https://spec.smarthealth.cards/examples/issuer",
+  "nbf": 1624919431.65,
+  "vc": {
+    "type": [
+      "https://smarthealth.cards#health-card",
+      "https://smarthealth.cards#immunization",
+      "https://smarthealth.cards#covid19"
+    ],
+    "credentialSubject": {
+      "fhirVersion": "4.0.1",
+      "fhirBundle": {
+        "resourceType": "Bundle",
+        "type": "collection",
+        "entry": [
+          {
+            "fullUrl": "resource:0",
+            "resource": {
+              "resourceType": "Patient",
+              "name": [
+                {
+                  "family": "Anyperson",
+                  "given": [
+                    "John",
+                    "B."
+                  ]
+                }
+              ],
+              "birthDate": "1951-01-20"
+            }
+          },
+          {
+            "fullUrl": "resource:1",
+            "resource": {
+              "resourceType": "Immunization",
+              "status": "completed",
+              "vaccineCode": {
+              },
+              "patient": {
+                "reference": "resource:0"
+              },
+              "occurrenceDateTime": "2021-01-01",
+              "performer": [
+                {
+                  "actor": {
+                    "display": "ABC General Hospital"
+                  }
+                }
+              ],
+              "lotNumber": "0000001"
+            }
+          },
+          {
+            "fullUrl": "resource:1",
+            "resource": {
+              "resourceType": "Observation",
+              "meta": {
+                "security": [
+                  {
+                    "system": "https://smarthealth.cards/ial",
+                    "code": "IAL2"
+                  }
+                ]
+              },
+              "status": "final",
+              "code": {
+              },
+              "subject": {
+                "reference": "resource:0"
+              },
+              "effectiveDateTime": "2021-02-17",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "260373001"
+                  }
+                ]
+              },
+              "performer": [
+                {
+                  "display": "ABC General Hospital"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

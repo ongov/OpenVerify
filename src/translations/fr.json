@@ -1,0 +1,150 @@
+{
+  "Continue": "Continuer",
+  "Back": "Retour",
+  "TryAgain": "Réessayer",
+  "Home": {
+    "HomeScreen": {
+      "VerifyVaccinationStatus": "VérifOuverte",
+      "CheckVaccinationStatus": "Numérisez un certificat de vaccination",
+      "SettingsScreen": "Paramètres et informations supplémentaires"
+    },
+    "AppUpdate": {
+      "ViewUpdate": "Voir la mise à jour dans la boutique d’applications"
+    },
+    "ConnectToInternet": {
+      "Title": "Connexion à l’Internet",
+      "Subtitle": {
+        "Part1": "Votre appareil doit ",
+        "Part2": "être connecté à l’Internet",
+        "Part3": " pour mettre à jour les exigences concernant les conditions d’entrée."
+      },
+      "CheckingForUpdate": "Vérification des mises à jour…",
+      "UpdateSuccessTitle": "Réglages du vérificateur mis à jour",
+      "UpdateSuccessSubtitle": "Les réglages du vérificateur ont été mis à jour avec succès.",
+      "UpdateFailedTitle": "Erreur: la connexion n’a pas pu être établie",
+      "UpdateFailedSubtitle": "Veuillez vérifier votre connexion Internet.",
+      "ConnectForUpdates": "Connexion pour les mises à jour",
+      "ContinueWithoutConnecting": "Continuer sans se connecter"
+    },
+    "CameraPermission": {
+      "AllowCameraAccessTitle": "Vous devez autoriser l’accès à la caméra de votre appareil pour utiliser cette application",
+      "AllowCameraAccessMessage": "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination et vérifier l’admissibilité d’un visiteur à entrer un site.",
+      "GoToSetting": "Aller aux paramètres",
+      "GoBackToHome": "Retour à la page d’accueil"
+    },
+    "Scanner": {
+      "Flashlight": "Lampe",
+      "Title": "Numériser un code QR ",
+      "AccessibleTitle": "Numériser un code QR maintenant"
+    }
+  },
+  "Onboarding": {
+    "CameraPermissions": {
+      "Camera": "Permettre l’accès à la caméra",
+      "CameraDetail": "Cette application utilise la caméra de votre téléphone pour numériser les codes QR."
+    },
+    "ReadyToScan": {
+      "ReadyToScan": "Prête à numériser",
+      "ReadyToScanDetails": "VérifOuverte est prêt à commencer à numériser les codes QR."
+    },
+    "Terms": {
+      "TermsAccept": "J’ai lu et j’accepte les conditions d’utilisation.",
+      "Title": "Conditions d’utilisation",
+      "TermsOfUse": "conditions d’utilisation",
+      "Privacy": "déclaration de confidentialité",
+      "ReadPrivacy": "Lisez la déclaration de confidentialité",
+      "ReadTerms": "Lisez des conditions d’utilisation"
+    },
+    "Understand": "Je comprends",
+    "Step": "Étape {{current}} sur {{total}}"
+  },
+  "Results": {
+    "ScanAnotherQRCode": "Numériser un autre code QR",
+    "Warning": {
+      "Title": "Un problème est survenu"
+    },
+    "Error": {
+      "Title": "Certificat invalide"
+    },
+    "Success": {
+      "Title": "Vérifié",
+      "Subtitle": "Confirmez le nom et la date de naissance de cette personne avec une pièce d’identité.",
+      "Name": "Nom :",
+      "DateOfBirth": "Date de naissance :"
+    },
+    "WarningThirdParty": {
+      "Title": "Il ne s’agit pas d’un certificat délivré par le gouvernement"
+    }
+  },
+  "Settings": {
+    "SettingsScreen": {
+      "Title": "Paramètres et informations supplémentaires",
+      "Updating": {
+        "Title": "Dernière vérification pour la mise à jour des exigences d’entrée :",
+        "ConnectForUpdates": "Connectez-vous pour les mises à jour",
+        "Never": "Jamais"
+      },
+      "AppVersion": {
+        "Title": "Version de l’application :",
+        "Build": "{{version}} (Build {{build}})"
+      },
+      "AppSettings": {
+        "Title": "Paramètres de l’application",
+        "SameAsSystem": "Identique au système"
+      },
+      "Help": {
+        "Title": "Aide"
+      },
+      "MoreInformation": {
+        "Title": "En savoir plus",
+        "TermsOfUse": "Conditions d’utilisation",
+        "TermsOfUseURL": "https://www.ontario.ca/verif-conditions-utilisation",
+        "Accessibility": "Accessibilité",
+        "AccessibilityURL": "https://www.ontario.ca/verif-accessibilite",
+        "Privacy": "Déclaration de confidentialité",
+        "PrivacyURL": "https://www.ontario.ca/verif-confidentialite",
+        "ContactUs": "Contactez-nous",
+        "ContactUsURL": "https://www.ontario.ca/verif-contact",
+        "Copyright": "© Imprimeur de la Reine pour l’Ontario, {{year}}",
+        "CopyrightURL": "https://www.ontario.ca/verif-droits-dauteur",
+        "VulnDisclosurePolicy": "Politique de divulgation des vulnérabilités",
+        "VulnDisclosurePolicyURL": "https://www.ontario.ca/verif-divulgation-vulnerabilite"
+      },
+      "ReviewAppSetup": "Retour à la page de présentation de l’application"
+    },
+    "Language": {
+      "Title": "Langue",
+      "English": "English",
+      "French": "Français"
+    },
+    "UpdatesHelp": {
+      "Title": "Mises à jour"
+    },
+    "VisualAppearance": {
+      "Title": "Aspect visuel",
+      "UseSystemSetting": "Utiliser les paramètres du système",
+      "Light": "Clair",
+      "Dark": "Foncé"
+    },
+    "HowItWorks": {
+      "Title": "Comment fonctionne VérifOuverte?",
+      "LearnMoreButton": "Visitez le site Ontario.ca/verif",
+      "LearnMoreURL": "https://www.ontario.ca/verif"
+    },
+    "WhatResultsMean": {
+      "Title": "Ce que les résultats signifient",
+      "LearnMoreButton": "Visitez le site Ontario.ca/verif-resultats",
+      "LearnMoreURL": "https://www.ontario.ca/verif-resultats"
+    },
+    "HelpUsImprove": {
+      "Title": "Aidez-nous à améliorer cette application",
+      "Body": "Faites-nous part de votre expérience d’utilisation de VérifOuverte.",
+      "GiveFeedback": "Donner de la rétroaction",
+      "GiveFeedbackURL": "https://www.ontario.ca/verif-commentaires"
+    }
+  },
+  "Next": "Suivant",
+  "BackToApp": "Retour à l’app",
+  "OpenVerifyLogoAlt": "Ontario",
+  "ListItem": "élément de liste:"
+}

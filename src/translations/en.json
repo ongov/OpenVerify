@@ -1,0 +1,150 @@
+{
+  "Continue": "Continue",
+  "BackToApp": "Back to app",
+  "Back": "Back",
+  "TryAgain": "Try again",
+  "Home": {
+    "HomeScreen": {
+      "VerifyVaccinationStatus": "Open Verify",
+      "CheckVaccinationStatus": "Scan a vaccine certificate",
+      "SettingsScreen": "Settings and information"
+    },
+    "AppUpdate": {
+      "ViewUpdate": "View update in the app store"
+    },
+    "ConnectToInternet": {
+      "Title": "Could not connect",
+      "Subtitle": {
+        "Part1": "Your device needs to ",
+        "Part2": "connect to the internet",
+        "Part3": " to update entry requirements."
+      },
+      "CheckingForUpdate": "Checking for updates...",
+      "UpdateSuccessTitle": "Verifier rules updated",
+      "UpdateSuccessSubtitle": "The verifier rules have been successfully updated.",
+      "UpdateFailedTitle": "Error: Connection required",
+      "UpdateFailedSubtitle": "Please check your internet connection.",
+      "ConnectForUpdates": "Connect for updates",
+      "ContinueWithoutConnecting": "Continue without connecting"
+    },
+    "CameraPermission": {
+      "AllowCameraAccessTitle": "You must allow access to the camera to use this app",
+      "AllowCameraAccessMessage": "This app must access the camera to scan vaccine certificate QR codes and verify a visitor’s eligibility to enter.",
+      "GoToSetting": "Go to Settings",
+      "GoBackToHome": "Back to home page"
+    },
+    "Scanner": {
+      "Flashlight": "Flashlight",
+      "Title": "Scan QR Code",
+      "AccessibleTitle": "Scan QR code now"
+    }
+  },
+  "Onboarding": {
+    "CameraPermissions": {
+      "Camera": "Allow access to camera",
+      "CameraDetail": "This app uses a camera to scan QR codes."
+    },
+    "ReadyToScan": {
+      "ReadyToScan": "Ready to scan",
+      "ReadyToScanDetails": "Open Verify is now ready to start scanning QR codes."
+    },
+    "Terms": {
+      "TermsAccept": "I have read and accept the Terms of Use.",
+      "Title": "Terms of Use",
+      "TermsOfUse": "Terms of Use",
+      "Privacy": "Privacy Statement",
+      "ReadPrivacy": "Read the Privacy Statement",
+      "ReadTerms": "Read the full Terms of Use"
+    },
+    "Understand": "I understand",
+    "Step": "Step {{current}} of {{total}}"
+  },
+  "Results": {
+    "ScanAnotherQRCode": "Scan next QR code",
+    "Warning": {
+      "Title": "There is a problem"
+    },
+    "Error": {
+      "Title": "Invalid certificate"
+    },
+    "Success": {
+      "Title": "Verified",
+      "Subtitle": "Confirm this person’s name and date of birth with a piece of identification.",
+      "Name": "Name:",
+      "DateOfBirth": "Date of birth:"
+    },
+    "WarningThirdParty": {
+      "Title": "Not a government-issued certificate"
+    }
+  },
+  "Settings": {
+    "SettingsScreen": {
+      "Title": "Settings and information",
+      "Updating": {
+        "Title": "Last checked for update to entry requirements:",
+        "ConnectForUpdates": "Connect for updates",
+        "Never": "Never"
+      },
+      "AppVersion": {
+        "Title": "App version:",
+        "Build": "{{version}} (Build {{build}})"
+      },
+      "AppSettings": {
+        "Title": "App settings",
+        "SameAsSystem": "Same as system"
+      },
+      "Help": {
+        "Title": "Help"
+      },
+      "MoreInformation": {
+        "Title": "More information",
+        "TermsOfUse": "Terms of Use",
+        "TermsOfUseURL": "https://www.ontario.ca/verify-terms-of-use",
+        "Accessibility": "Accessibility",
+        "AccessibilityURL": "https://www.ontario.ca/verify-accessibility",
+        "Privacy": "Privacy Statement",
+        "PrivacyURL": "https://www.ontario.ca/verify-privacy",
+        "ContactUs": "Contact us",
+        "ContactUsURL": "https://www.ontario.ca/verify-contact",
+        "Copyright": "© Queen’s Printer for Ontario, {{year}}",
+        "CopyrightURL": "https://www.ontario.ca/verify-copyright",
+        "VulnDisclosurePolicy": "Vulnerability Disclosure Policy",
+        "VulnDisclosurePolicyURL": "https://www.ontario.ca/verify-vulnerability-disclosure"
+      },
+      "ReviewAppSetup": "Review application setup"
+    },
+    "Language": {
+      "Title": "Language",
+      "English": "English",
+      "French": "Français"
+    },
+    "UpdatesHelp": {
+      "Title": "Updates"
+    },
+    "VisualAppearance": {
+      "Title": "Visual appearance",
+      "UseSystemSetting": "Use system setting",
+      "Light": "Light",
+      "Dark": "Dark"
+    },
+    "HowItWorks": {
+      "Title": "How Open Verify works",
+      "LearnMoreButton": "Visit Ontario.ca/verify",
+      "LearnMoreURL": "https://www.ontario.ca/verify"
+    },
+    "WhatResultsMean": {
+      "Title": "What the results mean",
+      "LearnMoreButton": "Visit Ontario.ca/verify-results",
+      "LearnMoreURL": "https://www.ontario.ca/verify-results"
+    },
+    "HelpUsImprove": {
+      "Title": "Help us improve this app",
+      "Body": "Tell us about your experience using Open Verify.",
+      "GiveFeedback": "Give feedback",
+      "GiveFeedbackURL": "https://www.ontario.ca/verify-feedback"
+    }
+  },
+  "Next": "Next",
+  "OpenVerifyLogoAlt": "Ontario",
+  "ListItem": "list item:"
+}

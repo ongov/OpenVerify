@@ -1,0 +1,76 @@
+{
+  "iss": "https://covax.dev.ontariohealth.ca:1443/vc/issuer/shc",
+  "nbf": 1630075781.72,
+  "vc": {
+    "type": [
+      "https://smarthealth.cards#health-card",
+      "https://smarthealth.cards#immunization",
+      "https://smarthealth.cards#covid19"
+    ],
+    "credentialSubject": {
+      "fhirVersion": "4.0.1",
+      "fhirBundle": {
+        "resourceType": "Bundle",
+        "type": "collection",
+        "language": "en",
+        "timestamp": "2021-06-01T19:35:32.725Z",
+        "entry": [
+          {
+            "fullUrl": "resource:0",
+            "resource": {
+              "resourceType": "Patient",
+              "name": [
+                {
+                  "family": "Lastacova",
+                  "given": [
+                    "Sue"
+                  ]
+                }
+              ],
+              "birthDate": "1940-02-01"
+            }
+          },
+          {
+            "fullUrl": "resource:1",
+            "resource": {
+              "resourceType": "Immunization",
+              "status": "completed",
+              "vaccineCode": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/sid/cvx",
+                    "code": "212"
+                  },
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "1119349007"
+                  },
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "28581000087106"
+                  }
+                ]
+              },
+              "occurrenceDateTime": "2021-03-02",
+              "lotNumber": "Lot-JZ-0001",
+              "doseQuantity": {
+                "value": 0.3,
+                "unit": "ml"
+              },
+              "patient": {
+                "reference": "resource:0"
+              },
+              "performer": [
+                {
+                  "actor": {
+                    "display": "5700 yonge street - MOH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

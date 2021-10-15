@@ -1,0 +1,8 @@
+{
+  "participating_issuers": [
+    {
+      "iss": "https://spec.smarthealth.cards/examples/issuer",
+      "name": "SMART Health Card specification example issuer"
+    }
+  ]
+}
