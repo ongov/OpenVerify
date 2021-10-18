@@ -5,7 +5,7 @@
   "TryAgain": "Twy again?? .w.",
   "Home": {
     "HomeScreen": {
-      "VerifyVaccinationStatus": "Open Vewify",
+      "VerifyVaccinationStatus": "OwOpen Vewify",
       "CheckVaccinationStatus": "Scan youw cewtificat",
       "SettingsScreen": "Settings and infomashun"
     },
@@ -71,7 +71,7 @@
       "Title": "purrrfect <3",
       "Subtitle": "Daddy? >w<",
       "Name": "Name:",
-      "DateOfBirth": "Birthday:"
+      "DateOfBirth": "Birfday:"
     },
     "WarningThirdParty": {
       "Title": "a third pawty cewtificate??"
@@ -116,7 +116,7 @@
     "Language": {
       "Title": "Language",
       "English": "Engwish",
-      "Furry": "Furry",
+      "Furry": "Fuwwy",
       "French": "Francase"
     },
     "UpdatesHelp": {
