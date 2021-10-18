@@ -121,7 +121,7 @@ export default class QRCodeValidator {
       }
       return {
         valid: false,
-        thirdParty: input.includes('vaccine-ontario.ca'),
+        thirdParty: !input.includes('vaccine-ontario.ca'),
         multi:
           this.#totalChunks !== undefined
             ? {
