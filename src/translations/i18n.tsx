@@ -17,13 +17,14 @@ import * as RNLocalize from 'react-native-localize';
 import i18n from 'i18n-js';
 import React, {FC, useContext} from 'react';
 import en from './en.json';
+import fur from './fur.json';
 import fr from './fr.json';
 import {getLanguage} from 'redux/selectors';
 import {useSelector} from 'react-redux';
 
 i18n.fallbacks = true;
 i18n.defaultLocale = 'en';
-i18n.translations = {en, fr};
+i18n.translations = {en, fur, fr};
 i18n.locale =
   RNLocalize.findBestAvailableLanguage(['en', 'fr'])?.languageTag ?? 'en';
 
