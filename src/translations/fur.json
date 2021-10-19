@@ -2,7 +2,7 @@
   "Continue": "Rawr!",
   "BackToApp": "Back to app :3",
   "Back": "Back pwease!",
-  "TryAgain": "Twy again?? .w.",
+  "TryAgain": "no u",
   "Home": {
     "HomeScreen": {
       "VerifyVaccinationStatus": "OwOpen Vewify",
@@ -70,7 +70,7 @@
     "Success": {
       "Title": "purrrfect <3",
       "Subtitle": "Daddy? >w<",
-      "Name": "Name:",
+      "Name": "Cutie patootie~:",
       "DateOfBirth": "Birfday:"
     },
     "WarningThirdParty": {
@@ -90,17 +90,17 @@
         "Build": "{{version}} (Build {{build}})"
       },
       "AppSettings": {
-        "Title": "App settings",
+        "Title": "Nyaapp settings",
         "SameAsSystem": "Same as system"
       },
       "Help": {
-        "Title": "Help"
+        "Title": "Halp"
       },
       "MoreInformation": {
         "Title": "More infowmashun",
         "TermsOfUse": "Terms of Use",
         "TermsOfUseURL": "https://www.ontario.ca/verify-terms-of-use",
-        "Accessibility": "Accessibiwity",
+        "Accessibility": "Accessibiwidy",
         "AccessibilityURL": "https://www.ontario.ca/verify-accessibility",
         "Privacy": "Pwivacy Statement",
         "PrivacyURL": "https://www.ontario.ca/verify-privacy",
@@ -124,28 +124,28 @@
     },
     "VisualAppearance": {
       "Title": "Visuwal appeawance",
-      "UseSystemSetting": "Use system setting",
+      "UseSystemSetting": "Matchy matchy!",
       "Light": "light",
       "Dark": "spooky!!"
     },
     "HowItWorks": {
-      "Title": "How Open Vewify wowks",
+      "Title": "How OwOpen Vewify wowks",
       "LearnMoreButton": "Visit Ontawio.ca/verify",
       "LearnMoreURL": "https://www.ontario.ca/verify"
     },
     "WhatResultsMean": {
-      "Title": "What the results mean",
-      "LearnMoreButton": "Visit Ontario.ca/verify-results",
+      "Title": "What teh wesults mean",
+      "LearnMoreButton": "Visit Ontawio.ca/verify-results",
       "LearnMoreURL": "https://www.ontario.ca/verify-results"
     },
     "HelpUsImprove": {
       "Title": "Hewp me!!!",
-      "Body": "Teww us about youw expewience using Open Vewify.",
-      "GiveFeedback": "Give feedback 'w'",
+      "Body": "am i a good kitty~~?",
+      "GiveFeedback": "YASS~~!",
       "GiveFeedbackURL": "https://www.ontario.ca/verify-feedback"
     }
   },
-  "Next": "Next",
+  "Next": "Nyext",
   "OpenVerifyLogoAlt": "Ontawio",
-  "ListItem": "list item:"
+  "ListItem": "wist item:"
 }
