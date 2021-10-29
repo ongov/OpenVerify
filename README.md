@@ -51,11 +51,11 @@ API_URL env variable points to the URL hosting the rules and public keys. Adjust
 ##### iOS
 
 ```bash
-yarn run-ios
+yarn run ios
 ```
 
 ##### Android
 
 ```bash
-yarn run-android
+yarn run android
 ```
