@@ -16,3 +16,4 @@
 export {default as InvalidResultScreen} from './InvalidResult';
 export {default as UnverifiedResultScreen} from './UnverifiedResult';
 export {default as VerifiedResultScreen} from './VerifiedResult';
+export {default as ScannerTimedOut} from './ScannerTimedOut';

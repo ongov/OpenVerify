@@ -14,7 +14,7 @@
    limitations under the License.
 */
 import React, {useState, FC} from 'react';
-import {AccessibilityInfo, Platform} from 'react-native';
+import {AccessibilityInfo} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigatorParamList} from '../../../navigation/OnboardingNavigation';
 import * as routes from '../../routes';
@@ -27,6 +27,7 @@ import {
   Spacing,
   CheckBoxTouchableOpacity,
   OpenVerifyCheckBox,
+  OpenVerifyCheckBoxChecked,
   BottomContainer,
   TitleText,
 } from '../styles';
@@ -56,6 +57,7 @@ const OnboardingTerms: FC<Props> = ({navigation}) => {
       setScreenReaderEnabled(s),
     );
   });
+
   return (
     <MainContainer>
       <Scroll>
@@ -87,15 +89,7 @@ const OnboardingTerms: FC<Props> = ({navigation}) => {
           accessibilityState={{checked: isChecked}}
           onPress={() => setToggleCheckBox(!isChecked)}
           accessibilityLabel={I18n.t('Onboarding.Terms.TermsAccept')}>
-          <OpenVerifyCheckBox
-            style={
-              Platform.OS === 'android'
-                ? {transform: [{scaleX: 1.8}, {scaleY: 1.8}]}
-                : {}
-            }
-            value={isChecked}
-            onValueChange={newValue => setToggleCheckBox(newValue)}
-          />
+          {isChecked ? <OpenVerifyCheckBoxChecked /> : <OpenVerifyCheckBox />}
           <TermText>{I18n.t('Onboarding.Terms.TermsAccept')}</TermText>
         </CheckBoxTouchableOpacity>
         <Button

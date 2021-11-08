@@ -13,7 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React, {FC, useState, useRef, useCallback} from 'react';
+import React, {FC, useState, useRef, useCallback, useEffect} from 'react';
+import {Platform} from 'react-native';
 import {
   AppState,
   EventSubscription,
@@ -21,7 +22,7 @@ import {
   Vibration,
 } from 'react-native';
 import {useSelector} from 'react-redux';
-import {RNCamera, BarCodeReadEvent} from 'react-native-camera';
+import {RNCamera, BarCodeReadEvent, hasTorch} from 'react-native-camera';
 import {useFocusEffect} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigatorParamList} from 'navigation/HomeNavigation';
@@ -48,13 +49,16 @@ import {
   CameraContainer,
   OpenVerifyQRCodeScanner,
   TorchImage,
+  TorchImageSelected,
   TopCameraOverlay,
   CentreCameraView,
   LeftRightCameraOverlay,
   BottomCameraOverlay,
   Logo,
-  FlashlightButton,
+  CameraScreenButton,
   QRScannerFocus,
+  FlipCameraAndroid,
+  FlipCameraIos,
 } from './styles';
 
 import {trackLogEvent} from 'utils/analytics';
@@ -86,7 +90,9 @@ const Scanner: FC<Props> = ({navigation}) => {
   useFocusEffect(() => {
     setTimeout(setFocus, 100);
   });
+  const [deviceSupportTorch, setDeviceSupportTorch] = useState(false);
   const [flash, setFlash] = useState(false);
+  const [cameraType, setCameraType] = useState(RNCamera.Constants.Type.back);
   const lastUpdated = useSelector(getLastUpdated);
   const appUpdateSetting = useSelector(getAppUpdateSetting);
   const qrValidator = new QRCodeValidator();
@@ -104,6 +110,14 @@ const Scanner: FC<Props> = ({navigation}) => {
     setCameraHeight(height);
     setCameraWidth(width);
   };
+
+  useEffect(() => {
+    async function checkForTorch() {
+      const result = await hasTorch();
+      setDeviceSupportTorch(result);
+    }
+    checkForTorch();
+  }, []);
 
   useFocusEffect(() => {
     if (isExpired(lastUpdated)) {
@@ -196,17 +210,10 @@ const Scanner: FC<Props> = ({navigation}) => {
     }
     timerRef.current = setTimeout(() => {
       if (navigation.isFocused()) {
-        let response: InvalidQRCode = {
-          valid: false,
-          multi: null,
-          thirdParty: false,
-        };
         trackLogEvent(verifyEvent.SCANNER_TIMEOUT, {
           scan_result: 'error',
         });
-        navigation.navigate(routes.Results.InvalidResult, {
-          response,
-        });
+        navigation.navigate(routes.Results.ScannerTimedOut);
       }
     }, 30_000); //30 seconds
     return () => {
@@ -244,6 +251,7 @@ const Scanner: FC<Props> = ({navigation}) => {
             barCodeTypes: [RNCamera.Constants.BarCodeType.qr],
           }}
           onRead={onReadQRCode}
+          cameraType={cameraType}
         />
       )}
 
@@ -254,24 +262,53 @@ const Scanner: FC<Props> = ({navigation}) => {
         <QRScannerFocus
           ref={focusRef}
           accessible
-          accessibilityLabel={I18n.t('Home.Scanner.AccessibleTitle')}
+          accessibilityLabel={
+            cameraType === RNCamera.Constants.Type.back
+              ? I18n.t('Home.Scanner.AccessibleTitleBack')
+              : I18n.t('Home.Scanner.AccessibleTitleFront')
+          }
         />
         <LeftRightCameraOverlay cameraWidth={cameraWidth} />
       </CentreCameraView>
       <BottomCameraOverlay cameraHeight={cameraHeight}>
-        <FlashlightButton
-          buttonType="flashlight"
-          accessibilityState={{selected: flash}}
-          accessibilityLabel={I18n.t('Home.Scanner.Flashlight')}
-          icon={<TorchImage />}
+        <CameraScreenButton
+          accessibilityLabel={
+            cameraType === RNCamera.Constants.Type.back
+              ? I18n.t('Home.Scanner.SwitchToFrontCamera')
+              : I18n.t('Home.Scanner.SwitchToBackCamera')
+          }
+          icon={
+            Platform.OS === 'ios' ? <FlipCameraIos /> : <FlipCameraAndroid />
+          }
           onPress={() => {
-            trackLogEvent(verifyEvent.FLASHLIGHT_CLICK, {
-              flashlight_status: flash ? 'on' : 'off',
+            trackLogEvent(verifyEvent.SWITCH_CAMERA, {
+              camera_status:
+                cameraType === RNCamera.Constants.Type.back ? 'front' : 'back',
             });
-            setFlash(!flash);
+            setCameraType(
+              cameraType === RNCamera.Constants.Type.back
+                ? RNCamera.Constants.Type.front
+                : RNCamera.Constants.Type.back,
+            );
+            setTimeout(setFocus, 100);
           }}>
-          {I18n.t('Home.Scanner.Flashlight')}
-        </FlashlightButton>
+          {I18n.t('Home.Scanner.SwitchCamera')}
+        </CameraScreenButton>
+        {deviceSupportTorch ? (
+          <CameraScreenButton
+            accessibilityState={{selected: flash}}
+            accessibilityLabel={I18n.t('Home.Scanner.Flashlight')}
+            icon={flash ? <TorchImageSelected /> : <TorchImage />}
+            selected={flash}
+            onPress={() => {
+              trackLogEvent(verifyEvent.FLASHLIGHT_CLICK, {
+                flashlight_status: flash ? 'on' : 'off',
+              });
+              setFlash(!flash);
+            }}>
+            {I18n.t('Home.Scanner.Flashlight')}
+          </CameraScreenButton>
+        ) : null}
       </BottomCameraOverlay>
     </CameraContainer>
   );

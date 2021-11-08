@@ -13,6 +13,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1E038722092149F1B8E7B057 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CF5C060D8A44F31B26A38B5 /* OpenSans-Bold.ttf */; };
 		571662FF45DE41B9A23F5A83 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECD1FDD8B8749CF8752DE8C /* OpenSans.ttf */; };
+		5B159A7C272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
+		5B159A7D272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
 		5B1D6C9426FE4335004549C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B1D6C9726FE4335004549C9 /* InfoPlist.strings */; };
 		5B4FFE9A26FAC1C800F7AACC /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		5BC4CAAE26FC5A0B009BA2B6 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
@@ -20,7 +22,6 @@
 		63231E8B6D424AAA79AD0273 /* libPods-OpenVerify-OpenVerifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2604DE7BEE28B18CCEE2862A /* libPods-OpenVerify-OpenVerifyTests.a */; };
 		7371F9CD270490FE0074DAC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7371F9CC270490FE0074DAC6 /* GoogleService-Info.plist */; };
 		739F1C1026FD04D400D55B3F /* beep.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 739F1C0E26FD04D400D55B3F /* beep.m4a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C50B22126E5B0680064F651 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C50B22026E5B0680064F651 /* BootSplash.storyboard */; };
 		927396DFA35E1A1519784606 /* libPods-OpenVerify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 391412D14B90C7B50B7BE0AB /* libPods-OpenVerify.a */; };
 		9AD2972B86644A279400DFBC /* raleway-modified-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4816275AD2594DE0BB78928C /* raleway-modified-semibold.ttf */; };
@@ -59,12 +60,13 @@
 		4C5F39F1483945BAEED80CA1 /* Pods-main-OpenVerify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-main-OpenVerify.release.xcconfig"; path = "Target Support Files/Pods-main-OpenVerify/Pods-main-OpenVerify.release.xcconfig"; sourceTree = "<group>"; };
 		4CF5C060D8A44F31B26A38B5 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		55AD9B101D2345CE5045FAD8 /* Pods-main-OpenVerify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-main-OpenVerify.debug.xcconfig"; path = "Target Support Files/Pods-main-OpenVerify/Pods-main-OpenVerify.debug.xcconfig"; sourceTree = "<group>"; };
+		5B159A7A272A6D4D00BEBB28 /* RCTNightModeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTNightModeModule.h; path = OpenVerify/RCTNightModeModule.h; sourceTree = "<group>"; };
+		5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTNightModeModule.m; path = OpenVerify/RCTNightModeModule.m; sourceTree = "<group>"; };
 		5B1D6C9626FE4335004549C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B1D6C9926FE4567004549C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-OpenVerify-OpenVerifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenVerify-OpenVerifyTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenVerify-OpenVerifyTests/Pods-OpenVerify-OpenVerifyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7371F9CC270490FE0074DAC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		739F1C0E26FD04D400D55B3F /* beep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = beep.m4a; path = ../src/assets/audio/beep.m4a; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OpenVerify/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C50B22026E5B0680064F651 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = OpenVerify/BootSplash.storyboard; sourceTree = "<group>"; };
 		9E5D869C6B0D466AB4D17429 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../src/assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB90A38890C5E9C09F8D2CD1 /* Pods-main-OpenVerifyDevelopment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-main-OpenVerifyDevelopment.debug.xcconfig"; path = "Target Support Files/Pods-main-OpenVerifyDevelopment/Pods-main-OpenVerifyDevelopment.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,13 +120,14 @@
 		13B07FAE1A68108700A75B9A /* OpenVerify */ = {
 			isa = PBXGroup;
 			children = (
+				5B159A7A272A6D4D00BEBB28 /* RCTNightModeModule.h */,
+				5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */,
 				5B1D6C9726FE4335004549C9 /* InfoPlist.strings */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				8C50B22026E5B0680064F651 /* BootSplash.storyboard */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = OpenVerify;
@@ -302,7 +305,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				739F1C1026FD04D400D55B3F /* beep.m4a in Resources */,
 				7371F9CD270490FE0074DAC6 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
@@ -489,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* OpenVerifyTests.m in Sources */,
+				5B159A7D272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B159A7C272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -590,6 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -599,6 +604,7 @@
 				PRODUCT_NAME = OpenVerify;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -616,6 +622,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -624,6 +631,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = openverify.replace.me;
 				PRODUCT_NAME = OpenVerify;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

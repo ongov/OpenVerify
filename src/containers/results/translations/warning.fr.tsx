@@ -47,12 +47,8 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
       <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
       <UL>
         <LI>
-          essayez de le numériser à nouveau{'\u00a0'}– il est possible que la
-          numérisation ait été arrêtée
-        </LI>
-        <LI>
-          examinez le certificat de vaccination papier ou numérique du visiteur
-          ainsi qu’une pièce d'identité
+          examinez le certificat de vaccination papier ou numérique délivrés par
+          le gouvernement ainsi qu’une pièce d'identité du visiteur
         </LI>
         <LI>
           réacheminez le visiteur vers{' '}
@@ -61,10 +57,10 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/aide-preuve-vaccination',
                 true,
-                'Ontario.ca/aide-preuve-vaccination',
+                'ontario.ca/aide-preuve-vaccination',
               );
             }}>
-            Ontario.ca/aide-preuve-vaccination
+            ontario.ca/aide-preuve-vaccination
           </LinkText>{' '}
           pour obtenir des détails sur les résultats et lui dire qu’il peut
           appeler pour obtenir une aide supplémentaire au{' '}
@@ -92,10 +88,10 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/aide-preuve-vaccination',
               true,
-              'Visitez le site Ontario.ca/aide-preuve-vaccination',
+              'Visitez le site ontario.ca/aide-preuve-vaccination',
             )
           }>
-          Visitez le site Ontario.ca/aide-preuve-vaccination
+          Visitez le site ontario.ca/aide-preuve-vaccination
         </Button>
       )}
       {telLink && screenReaderEnabled && (

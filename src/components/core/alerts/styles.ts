@@ -24,7 +24,7 @@ export const TitleText = styled.Text.attrs(() => ({
   accessibilityRole: 'header',
 }))`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.header4}px;
   line-height: ${({theme}) => theme.typography.lineHeights.h4}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.lg}px;
@@ -34,7 +34,7 @@ export const TitleText = styled.Text.attrs(() => ({
 
 export const SubtitleText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
   flex-shrink: 1;
@@ -46,7 +46,11 @@ export const Padding = styled.View`
 `;
 
 export const LinkText = styled.Text`
-  color: ${({theme}) => theme.colors.linkBlue};
+  color: ${({theme}) => theme.colors.linkColor};
+  text-decoration: underline;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: ${({theme}) => theme.colors.linkColor};
 `;
 
 export const StripeView = styled.View`
@@ -58,8 +62,10 @@ export const StripeView = styled.View`
 
 export const SubContainer = styled.View`
   padding-horizontal: ${({theme}) => theme.variables.spacing.xmd}px;
-  margin-horizontal: ${({theme}) => theme.variables.spacing.xmd}px;
-  margin-bottom: ${({theme}) => theme.variables.spacing.lg}px;
+`;
+
+export const ChildMargin = styled.View`
+  margin-horizontal: ${({theme}) => theme.variables.spacing.xsm}px;
 `;
 
 export const HeadingContainer = styled.View`
@@ -73,7 +79,7 @@ export const HeadingText = styled.Text.attrs(() => ({
   accessibilityRole: 'header',
 }))`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
   margin-right: ${({theme}) => theme.variables.spacing.md}px;

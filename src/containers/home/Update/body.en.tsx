@@ -19,8 +19,8 @@ import {
   ErrorImage,
   WarningImage,
   TitleText,
-  SubtitleText,
-  SubtitleTextBold,
+  P,
+  B,
 } from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
@@ -46,33 +46,28 @@ const BodyEn = React.forwardRef<any, Props>(
 
         <TitleText ref={focusRef}>Connect to internet</TitleText>
         {(redWarning || yellowWarning) && (
-          <SubtitleText>
-            Your device needs to{' '}
-            <SubtitleTextBold>connect to the internet</SubtitleTextBold> to
-            update entry requirements.
-          </SubtitleText>
+          <P>
+            Your device needs to <B>connect to the internet</B> to update entry
+            requirements.
+          </P>
         )}
 
         {expired ? (
-          <SubtitleText>
-            This app <SubtitleTextBold>will not scan</SubtitleTextBold> vaccine
-            certificates until it has connected for updates.
-          </SubtitleText>
+          <P>
+            This app <B>will not scan</B> vaccine certificates until it has
+            connected for updates.
+          </P>
         ) : (
           <>
-            <SubtitleText>
+            <P>
               If the app is not updated in the next{' '}
-              {daysLeft === 1 ? (
-                <SubtitleTextBold>24 hours</SubtitleTextBold>
-              ) : (
-                <SubtitleTextBold>{daysLeft} days</SubtitleTextBold>
-              )}
-              , it will <SubtitleTextBold>stop scanning</SubtitleTextBold>.
-            </SubtitleText>
-            <SubtitleText>
+              {daysLeft === 1 ? <B>day</B> : <B>{daysLeft} days</B>}, it will{' '}
+              <B>stop scanning</B>.
+            </P>
+            <P>
               You can check for updates any time on the settings and information
               page.
-            </SubtitleText>
+            </P>
           </>
         )}
       </>

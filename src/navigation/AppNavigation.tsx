@@ -29,6 +29,7 @@ import {setManualUpdate} from 'redux/actions/creators';
 import {fetchRulesAndAppVersion} from 'redux/actions/api';
 import {RootState} from 'redux/store';
 import * as routes from 'containers/routes';
+import SecureFlag from 'modules/SecureFlag';
 
 export interface NavigatorParamList extends ParamListBase {}
 
@@ -57,6 +58,30 @@ const AppNavigation = () => {
     <>
       <OverlayModal />
       <Stack.Navigator
+        screenListeners={{
+          state: (evt: any | undefined) => {
+            try {
+              let currentScreen;
+              const state = evt.data?.state;
+              if (state) {
+                const nav = state.routes[state.index];
+                if (nav.state) {
+                  currentScreen = nav.state.routes[nav.state.index].name;
+                }
+              }
+              console.debug({currentScreen});
+              if (
+                currentScreen === routes.Home.Scanner ||
+                currentScreen === routes.Results.VerifiedResult
+              ) {
+                console.debug('Enable secure flag...');
+                SecureFlag.enable();
+              }
+            } catch (err) {
+              console.debug(err);
+            }
+          },
+        }}
         screenOptions={{
           headerShown: false,
           ...TransitionPresets.SlideFromRightIOS,

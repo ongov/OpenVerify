@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 
 export const BulletContainer = styled.View`
@@ -23,8 +24,11 @@ export const BulletContainer = styled.View`
 
 export const BulletTextBullet = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
-  font-size: ${({theme}) => theme.typography.fontSizes.body}px;
+  color: ${({theme}) => theme.colors.text};
+  font-size: ${({theme}) =>
+    Platform.OS === 'android'
+      ? theme.typography.fontSizes.androidBullet
+      : theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
   margin-left: ${({theme}) => theme.variables.spacing.sm}px;
   margin-right: ${({theme}) => theme.variables.spacing.sm}px;
@@ -32,7 +36,7 @@ export const BulletTextBullet = styled.Text`
 
 export const BulletText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
   flex: 1;

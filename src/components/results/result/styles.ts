@@ -33,6 +33,10 @@ export const WarningContainer = styled(MainContainer)`
   background-color: ${({theme}) => theme.colors.warningYellow};
 `;
 
+export const TimeoutContainer = styled(MainContainer)`
+  background-color: ${({theme}) => theme.colors.timeoutBackground};
+`;
+
 export const SuccessIcon = styled.Image.attrs(() => ({
   source: require('assets/images/verified.svg'),
 }))`
@@ -51,6 +55,14 @@ export const WarningIcon = styled.Image.attrs(() => ({
   margin-bottom: 14px;
 `;
 
+export const TimeoutIcon = styled.Image.attrs(({theme}) => ({
+  source: theme.dark
+    ? require('assets/images/timeout_dark.svg')
+    : require('assets/images/timeout.svg'),
+}))`
+  margin-bottom: 14px;
+`;
+
 export const AlertText = styled.Text.attrs({
   accessibilityRole: 'header',
 })`
@@ -62,5 +74,9 @@ export const AlertText = styled.Text.attrs({
 `;
 
 export const WarningText = styled(AlertText)`
-  color: ${({theme}) => theme.colors.text};
+  color: ${({theme}) => theme.colors.black};
+`;
+
+export const TimeoutText = styled(AlertText)`
+  color: ${({theme}) => theme.colors.timeoutText};
 `;

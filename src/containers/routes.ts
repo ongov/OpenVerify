@@ -31,6 +31,7 @@ export enum Results {
   InvalidResult = 'Results/InvalidResult',
   VerifiedResult = 'Results/VerifiedResult',
   UnverifiedResult = 'Results/UnverifiedResult',
+  ScannerTimedOut = 'Results/ScannerTimedOut',
 }
 
 export enum Onboarding {
@@ -40,6 +41,7 @@ export enum Onboarding {
   CameraPermissions = 'Onboarding/CameraPermissions',
   AutomaticUpdates = 'Onboarding/AutomaticUpdates',
   ReadyToScan = 'Onboarding/ReadyToScan',
+  AppForBusinesses = 'Onboarding/AppForBusinesses',
 }
 
 export enum Settings {

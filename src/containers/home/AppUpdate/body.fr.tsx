@@ -14,12 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {
-  CloseImage,
-  TitleText,
-  SubtitleText,
-  SubtitleTextBold,
-} from 'containers/home/styles';
+import {CloseImage, TitleText, P, B} from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
@@ -31,18 +26,18 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>
         Connectez-vous à la boutique pour une mise à jour
       </TitleText>
-      <SubtitleText>
+      <P>
         Une nouvelle version de VérifOuverte est disponible dans la boutique
         d’applications.
-      </SubtitleText>
-      <SubtitleText>
+      </P>
+      <P>
         Votre appareil doit se connecter à la boutique d’applications pour en
         faire la mise à jour.
-      </SubtitleText>
-      <SubtitleText>
-        Cette application <SubtitleTextBold>n’analysera plus</SubtitleTextBold>{' '}
-        les certificats de vaccination jusqu’à qu’elle ait été mise à jour.
-      </SubtitleText>
+      </P>
+      <P>
+        Cette application <B>n’analysera plus</B> les certificats de vaccination
+        jusqu’à qu’elle ait été mise à jour.
+      </P>
     </>
   );
 });

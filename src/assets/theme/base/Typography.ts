@@ -25,6 +25,7 @@ export const Typography = {
   },
   fontSizes: {
     title: 32,
+    androidBullet: 7,
     tiny: 10,
     caption: 12,
     body: 16,

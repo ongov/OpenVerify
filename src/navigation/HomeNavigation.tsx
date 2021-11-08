@@ -79,6 +79,10 @@ const HomeNavigation: FC = () => {
         component={ResultsScreens.VerifiedResultScreen}
       />
       <Stack.Screen
+        name={routes.Results.ScannerTimedOut}
+        component={ResultsScreens.ScannerTimedOut}
+      />
+      <Stack.Screen
         options={{
           header: () => <Logo />,
         }}

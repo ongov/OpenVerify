@@ -29,30 +29,39 @@ export const ButtonContainer = styled.TouchableOpacity`
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
   border-color: ${props =>
-    props.disabled ? props.theme.colors.disabled : props.theme.colors.primary};
+    props.disabled
+      ? props.theme.colors.disabled
+      : props.theme.colors.primaryButtonColor};
   background-color: ${props =>
-    props.disabled ? props.theme.colors.disabled : props.theme.colors.primary};
+    props.disabled
+      ? props.theme.colors.disabled
+      : props.theme.colors.primaryButtonColor};
 `;
 
 export const SecondaryButtonContainer = styled(ButtonContainer)`
-  border-color: ${({theme}) => theme.colors.primary};
+  border-color: ${({theme}) => theme.colors.primaryButtonColor};
   border-width: ${({theme}) => theme.variables.borders.md}px;
   padding: ${({theme}) => theme.variables.spacing.md - 2}px;
-  background-color: ${({theme}) => theme.colors.backgroundColor};
+  background-color: ${({theme}) => theme.colors.background};
 `;
 
 export const TertiaryButtonContainer = styled(ButtonContainer)`
   background-color: transparent;
 `;
 
-export const FlashlightButtonContainer = styled.TouchableOpacity`
+interface SelectedProps {
+  readonly $selected?: boolean;
+}
+
+export const FlashlightButtonContainer = styled.TouchableOpacity<SelectedProps>`
   flex-direction: row;
-  background-color: transparent;
+  background-color: ${({$selected, theme}) =>
+    $selected ? theme.colors.white : 'transparent'};
   border-color: ${({theme}) => theme.colors.white};
   border-width: ${({theme}) => theme.variables.borders.md}px;
-  padding-right: ${({theme}) => theme.variables.spacing.lg}px;
+  padding-right: ${({theme}) => theme.variables.spacing.xmd}px;
   border-radius: ${({theme}) => theme.variables.roundness.xxsm}px;
-  padding-left: ${({theme}) => theme.variables.spacing.xsm + 2}px;
+  padding-horizontal: ${({theme}) => theme.variables.spacing.xsm + 2}px;
 `;
 
 export const ButtonText = styled.Text`
@@ -67,16 +76,17 @@ export const PrimaryButtonText = styled(ButtonText)`
 `;
 
 export const SecondaryButtonText = styled(ButtonText)`
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.secondaryButtonTextColor};
 `;
 
 export const TertiaryButtonText = styled(ButtonText)`
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.tertiaryButtonTextColor};
   text-decoration-line: underline;
 `;
 
-export const FlashlightButtonText = styled(ButtonText)`
-  color: ${({theme}) => theme.colors.white};
+export const FlashlightButtonText = styled(ButtonText)<SelectedProps>`
+  color: ${({$selected, theme}) =>
+    $selected ? theme.colors.black : theme.colors.white};
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;

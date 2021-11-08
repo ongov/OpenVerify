@@ -17,7 +17,10 @@ import styled from 'styled-components/native';
 
 export const LinkText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   text-decoration: underline;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: ${({theme}) => theme.colors.linkColor};
 `;

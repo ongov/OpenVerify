@@ -15,28 +15,15 @@
 */
 import VersionInfo from 'react-native-version-info';
 import {DateTime} from 'luxon';
-import Config from 'react-native-config';
 import {LocalConfig} from '../config/index';
 import {AppUpdateSetting} from './types';
 
-const UPDATE_INTERVAL_CHECK = parseFloat(
-  Config.UPDATE_INTERVAL_CHECK ?? LocalConfig.UPDATE_INTERVAL_CHECK,
-);
-const ALERT_INTERVAL_MIN = parseFloat(
-  Config.ALERT_INTERVAL_MIN ?? LocalConfig.ALERT_INTERVAL_MIN,
-);
-const ALERT_INTERVAL_MAX = parseFloat(
-  Config.ALERT_INTERVAL_MAX ?? LocalConfig.ALERT_INTERVAL_MAX,
-);
-const WARNING_INTERVAL_MIN = parseFloat(
-  Config.WARNING_INTERVAL_MIN ?? LocalConfig.WARNING_INTERVAL_MIN,
-);
-const WARNING_INTERVAL_MAX = parseFloat(
-  Config.WARNING_INTERVAL_MAX ?? LocalConfig.WARNING_INTERVAL_MAX,
-);
-const EXPIRED_INTERVAL = parseFloat(
-  Config.EXPIRED_INTERVAL ?? LocalConfig.EXPIRED_INTERVAL,
-);
+const UPDATE_INTERVAL_CHECK = parseFloat(LocalConfig.UPDATE_INTERVAL_CHECK);
+const ALERT_INTERVAL_MIN = parseFloat(LocalConfig.ALERT_INTERVAL_MIN);
+const ALERT_INTERVAL_MAX = parseFloat(LocalConfig.ALERT_INTERVAL_MAX);
+const WARNING_INTERVAL_MIN = parseFloat(LocalConfig.WARNING_INTERVAL_MIN);
+const WARNING_INTERVAL_MAX = parseFloat(LocalConfig.WARNING_INTERVAL_MAX);
+const EXPIRED_INTERVAL = parseFloat(LocalConfig.EXPIRED_INTERVAL);
 
 export function getRulesUpdatedAgo(ruleJsonTimestamp: string) {
   // If rules expired or empty then Update page

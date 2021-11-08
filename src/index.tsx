@@ -22,7 +22,7 @@ import 'intl/locale-data/jsonp/fr-CA';
 
 import React, {useEffect} from 'react';
 import {ColorSchemeName, StatusBar, useColorScheme} from 'react-native';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import {
   NavigationContainer,
   useNavigationContainerRef,
@@ -39,9 +39,28 @@ import {TranslationProvider} from 'translations/i18n';
 const {store, persistor} = configureStore();
 
 import {firebase} from '@react-native-firebase/analytics';
+import {getVisualAppearance} from 'redux/selectors';
+import NightMode from 'modules/NightMode';
 
-const App = () => {
-  const scheme: ColorSchemeName = useColorScheme();
+import OrientationController from 'controllers/OrientationControler';
+
+const AppWithReduxState = () => {
+  const schemePreference: 'light' | 'dark' | 'system' =
+    useSelector(getVisualAppearance);
+  switch (schemePreference) {
+    case 'light':
+      NightMode.setLight();
+      break;
+    case 'dark':
+      NightMode.setDark();
+      break;
+    case 'system':
+      NightMode.setSystem();
+      break;
+  }
+  const systemScheme: ColorSchemeName = useColorScheme();
+  const scheme =
+    schemePreference === 'system' ? systemScheme : schemePreference;
   const theme = getTheme(scheme);
   const barStyle = scheme === 'light' ? 'dark-content' : 'light-content';
 
@@ -51,7 +70,39 @@ const App = () => {
   const onReadyNavigation = () => {
     routeNameRef.current = navigationRef?.current?.getCurrentRoute()?.name;
   };
+  return (
+    <TranslationProvider>
+      <StatusBar
+        barStyle={barStyle}
+        backgroundColor={theme.colors.background}
+      />
+      <ThemeProvider theme={theme}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={onReadyNavigation}
+          theme={theme}
+          onStateChange={async () => {
+            const previousRouteName = routeNameRef.current;
+            const currentRouteName =
+              navigationRef?.current?.getCurrentRoute()?.name;
 
+            if (previousRouteName !== currentRouteName) {
+              await firebase.analytics().logScreenView({
+                screen_name: currentRouteName,
+                screen_class: currentRouteName,
+              });
+            }
+            routeNameRef.current = currentRouteName;
+          }}>
+          <AppNavigation />
+          <OrientationController />
+        </NavigationContainer>
+      </ThemeProvider>
+    </TranslationProvider>
+  );
+};
+
+const App = () => {
   useEffect(() => {
     async function enableAnalytics() {
       if (!__DEV__) {
@@ -64,32 +115,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <TranslationProvider>
-          <StatusBar
-            barStyle={barStyle}
-            backgroundColor={theme.colors.transparent}
-          />
-          <ThemeProvider theme={theme}>
-            <NavigationContainer
-              ref={navigationRef}
-              onReady={onReadyNavigation}
-              onStateChange={async () => {
-                const previousRouteName = routeNameRef.current;
-                const currentRouteName =
-                  navigationRef?.current?.getCurrentRoute()?.name;
-
-                if (previousRouteName !== currentRouteName) {
-                  await firebase.analytics().logScreenView({
-                    screen_name: currentRouteName,
-                    screen_class: currentRouteName,
-                  });
-                }
-                routeNameRef.current = currentRouteName;
-              }}>
-              <AppNavigation />
-            </NavigationContainer>
-          </ThemeProvider>
-        </TranslationProvider>
+        <AppWithReduxState />
       </PersistGate>
     </Provider>
   );

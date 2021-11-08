@@ -21,7 +21,7 @@ export const RadioTouchableOpacity = styled.TouchableOpacity`
 `;
 export const RadioText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   padding-left: ${({theme}) => theme.variables.spacing.lg - 8}px;
   padding-vertical: ${({theme}) => theme.variables.spacing.xsm + 2}px;

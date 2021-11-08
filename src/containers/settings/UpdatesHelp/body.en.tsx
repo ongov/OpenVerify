@@ -28,15 +28,11 @@ const BodyEn: FC = () => (
       <LI>notify you if there is an updated version of the app available</LI>
     </UL>
     <P>
-      You will get requests to connect to the internet if the app has not been
-      updated in:
+      You will get requests to connect to the internet daily if the app has not
+      been updated after 4 days.
     </P>
-    <UL>
-      <LI>7 days</LI>
-      <LI>12 days</LI>
-    </UL>
     <P>
-      If the app does not update for 14 days, it will <B>stop working</B> until
+      If the app does not update for 7 days, it will <B>stop working</B> until
       you connect to update.
     </P>
     <P>

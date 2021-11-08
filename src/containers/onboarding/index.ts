@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+export {default as AppForBusinesses} from './AppForBusinesses';
 export {default as WhatAppDoes} from './WhatAppDoes';
 export {default as WhatAppDoesNot} from './WhatAppDoesNot';
 export {default as Terms} from './Terms';

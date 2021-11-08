@@ -35,8 +35,11 @@
     },
     "Scanner": {
       "Flashlight": "Flashlight",
-      "Title": "Scan QR Code",
-      "AccessibleTitle": "Scan QR code now"
+      "AccessibleTitleFront": "Scan QR code now using front camera",
+      "AccessibleTitleBack": "Scan QR code now using back camera",
+      "SwitchCamera": "Switch Camera",
+      "SwitchToBackCamera": "Switch to back camera",
+      "SwitchToFrontCamera": "Switch to front camera"
     }
   },
   "Onboarding": {
@@ -61,6 +64,9 @@
   },
   "Results": {
     "ScanAnotherQRCode": "Scan next QR code",
+    "Timeout": {
+      "Title": "Scanner timeout"
+    },
     "Warning": {
       "Title": "There is a problem"
     },
@@ -129,12 +135,12 @@
     },
     "HowItWorks": {
       "Title": "How Open Verify works",
-      "LearnMoreButton": "Visit Ontario.ca/verify",
+      "LearnMoreButton": "Visit ontario.ca/verify",
       "LearnMoreURL": "https://www.ontario.ca/verify"
     },
     "WhatResultsMean": {
       "Title": "What the results mean",
-      "LearnMoreButton": "Visit Ontario.ca/verify-results",
+      "LearnMoreButton": "Visit ontario.ca/verify-results",
       "LearnMoreURL": "https://www.ontario.ca/verify-results"
     },
     "HelpUsImprove": {

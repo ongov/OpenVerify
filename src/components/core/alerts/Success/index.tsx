@@ -15,7 +15,13 @@
 */
 import React, {FC} from 'react';
 import {Image, StyleProp, ViewProps} from 'react-native';
-import {TitleView, TitleText, SubContainer, StripeView} from '../styles';
+import {
+  TitleView,
+  TitleText,
+  SubContainer,
+  StripeView,
+  ChildMargin,
+} from '../styles';
 import styled from 'styled-components/native';
 
 export const VerifiedSubContainer = styled(SubContainer)`
@@ -41,7 +47,7 @@ const SuccessPageAlert: FC<Props> = ({children, title, style}) => (
       <Image source={require('assets/images/success_icon.svg')} />
       <TitleText>{title}</TitleText>
     </TitleView>
-    {children}
+    <ChildMargin>{children}</ChildMargin>
   </VerifiedSubContainer>
 );
 export default SuccessPageAlert;

@@ -40,8 +40,17 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
           pour entrer
         </LI>
         <LI>
-          demandez-lui s’il a une nouvelle version du certificat de vaccination
-          délivré par l'Ontario à numériser
+          le code QR peut indiquer que{' '}
+          <B>le visiteur n’a reçu qu’une seule dose du vaccin</B>
+        </LI>
+        <LI>
+          il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
+          visiteur a reçu sa seconde dose
+        </LI>
+        <LI>
+          informez le visiteur que s’il a reçu sa seconde dose et qu’il s’est
+          écoulé 14 jours, <B>il doit télécharger sa preuve la plus récente</B>{' '}
+          sous forme de code QR
         </LI>
         <LI>
           réacheminez le visiteur vers{' '}
@@ -50,10 +59,10 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/verif-resultats',
                 true,
-                'Ontario.ca/verif-resultats',
+                'ontario.ca/verif-resultats',
               );
             }}>
-            Ontario.ca/verif-resultats
+            ontario.ca/verif-resultats
           </LinkText>{' '}
           pour obtenir des détails sur les résultats et lui dire qu’il peut
           appeler pour obtenir de l’aide supplémentaire au{' '}
@@ -81,10 +90,10 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/verif-resultats',
               true,
-              'Visitez le site Ontario.ca/verif-resultats',
+              'Visitez le site ontario.ca/verif-resultats',
             )
           }>
-          Visitez le site Ontario.ca/verif-resultats
+          Visitez le site ontario.ca/verif-resultats
         </Button>
       )}
       {telLink && screenReaderEnabled && (

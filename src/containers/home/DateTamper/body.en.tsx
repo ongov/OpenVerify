@@ -14,7 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {CloseImage, TitleText, SubtitleText} from 'containers/home/styles';
+import {CloseImage, TitleText, P} from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
@@ -24,14 +24,14 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <CloseImage />
 
       <TitleText ref={focusRef}>Update device date/time settings</TitleText>
-      <SubtitleText>
+      <P>
         This app uses the device’s date and time settings to work offline and
         keep entry requirements up-to-date.
-      </SubtitleText>
-      <SubtitleText>
+      </P>
+      <P>
         Changing the date and time settings on this device may stop the app from
         working.
-      </SubtitleText>
+      </P>
     </>
   );
 });

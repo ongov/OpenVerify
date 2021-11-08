@@ -44,10 +44,10 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/obtenirpreuve',
                 true,
-                'Ontario.ca/obtenirpreuve',
+                'ontario.ca/obtenirpreuve',
               );
             }}>
-            Ontario.ca/obtenirpreuve
+            ontario.ca/obtenirpreuve
           </LinkText>
         </LI>
       </UL>
@@ -58,10 +58,10 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/obtenirpreuve',
               true,
-              'Visitez le site Ontario.ca/obtenirpreuve',
+              'Visitez le site ontario.ca/obtenirpreuve',
             );
           }}>
-          Visitez le site Ontario.ca/obtenirpreuve
+          Visitez le site ontario.ca/obtenirpreuve
         </Button>
       )}
     </>

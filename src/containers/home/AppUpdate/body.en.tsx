@@ -14,12 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {
-  CloseImage,
-  TitleText,
-  SubtitleText,
-  SubtitleTextBold,
-} from 'containers/home/styles';
+import {CloseImage, TitleText, P, B} from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
@@ -29,18 +24,15 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <CloseImage />
 
       <TitleText ref={focusRef}>Connect to app store for update</TitleText>
-      <SubtitleText>
-        There is a new version of Open Verify available in the app store.
-      </SubtitleText>
-      <SubtitleText>
-        Your device needs to{' '}
-        <SubtitleTextBold>connect to the app store</SubtitleTextBold> to update
-        the application.
-      </SubtitleText>
-      <SubtitleText>
-        This app will <SubtitleTextBold>no longer scan</SubtitleTextBold>{' '}
-        vaccine certificates until it has been updated.
-      </SubtitleText>
+      <P>There is a new version of Open Verify available in the app store.</P>
+      <P>
+        Your device needs to <B>connect to the app store</B> to update the
+        application.
+      </P>
+      <P>
+        This app will <B>no longer scan</B> vaccine certificates until it has
+        been updated.
+      </P>
     </>
   );
 });

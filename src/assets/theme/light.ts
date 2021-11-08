@@ -19,15 +19,8 @@ import {Colors} from './base/Colors';
 import {ITheme} from './';
 
 export const Theme: ITheme = {
-  colorScheme: 'light',
+  dark: false,
   typography: Typography,
   variables: Variables,
-  colors: {
-    ...Colors,
-    textColor: '#000000',
-    backgroundColor: '#FFFFFF',
-    spacingBackgroundColor: '#E5E5E5',
-    checkBoxFillColor: '#1A1A1A',
-    checkBoxCheckColor: '#FFFFFF',
-  },
+  colors: Colors,
 };

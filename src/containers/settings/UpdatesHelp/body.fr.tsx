@@ -34,15 +34,11 @@ const BodyFr: FC = () => (
       </LI>
     </UL>
     <P>
-      Vous recevrez des avertissements de connexion à l’Internet si
-      l’application n’a pas été mise à jour depuis{'\u00a0'}:
+      Vous recevrez des demandes de connexion à Internet si l’application n’a
+      pas été mise à jour depuis quatre jours.
     </P>
-    <UL>
-      <LI>7 jours</LI>
-      <LI>12 jours</LI>
-    </UL>
     <P>
-      Si l’application n’est pas mise à jour pendant 14 jours, elle{' '}
+      Si l’application n’est pas mise à jour pendant sept jours, elle{' '}
       <B>cessera de fonctionner</B> jusqu’à ce que vous vous connectiez pour la
       mettre à jour.
     </P>

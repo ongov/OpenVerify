@@ -28,6 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # node.js
 #
@@ -61,3 +62,4 @@ buck-out/
 # Env file
 .env
 /src/assets/images/.png-cache
+

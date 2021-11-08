@@ -19,10 +19,27 @@ import {Colors} from './base/Colors';
 import {ITheme} from './';
 
 export const Theme: ITheme = {
-  colorScheme: 'dark',
+  dark: true,
   typography: Typography,
   variables: Variables,
   colors: {
     ...Colors,
+    primary: '#FFFFFF', // react-navigation
+    text: '#FFFFFF',
+    background: '#000000',
+    card: '#000000',
+    checkBoxFillColor: '#000000',
+    checkBoxCheckColor: '#FFFFFF',
+    secondaryButtonTextColor: '#FFFFFF',
+    linkColor: '#C2E0FF',
+    checkBoxTintColor: '#FFFFFF',
+    border: '#4D4D4D',
+    timeoutText: '#FFFFFF',
+    timeoutBackground: '#4D4D4D',
+    textSecondary: '#FFFFFF',
+    tertiaryButtonTextColor: '#FFFFFF',
+    modalColor: '#1A1A1A',
+    alertLightRed: '#502225',
+    warningLightYellow: '#443D24',
   },
 };

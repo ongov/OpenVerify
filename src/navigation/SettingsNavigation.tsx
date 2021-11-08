@@ -16,7 +16,6 @@
 import React, {FC} from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {ParamListBase} from '@react-navigation/native';
-
 import * as SettingsScreens from 'containers/settings';
 import * as CommonScreens from 'containers/common';
 import * as routes from 'containers/routes';

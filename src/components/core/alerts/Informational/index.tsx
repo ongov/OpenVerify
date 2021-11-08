@@ -15,7 +15,13 @@
 */
 import React, {FC} from 'react';
 import {Image} from 'react-native';
-import {TitleView, TitleText, SubContainer, StripeView} from '../styles';
+import {
+  TitleView,
+  TitleText,
+  SubContainer,
+  StripeView,
+  ChildMargin,
+} from '../styles';
 import styled from 'styled-components/native';
 
 export const InformationSubContainer = styled(SubContainer)`
@@ -38,7 +44,7 @@ const InformationPageAlert: FC<Props> = ({children, title}) => (
       <Image source={require('assets/images/information_icon.svg')} />
       <TitleText>{title}</TitleText>
     </TitleView>
-    {children}
+    <ChildMargin>{children}</ChildMargin>
   </InformationSubContainer>
 );
 export default InformationPageAlert;

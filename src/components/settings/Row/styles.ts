@@ -17,7 +17,7 @@ import styled from 'styled-components/native';
 
 export const RowButton = styled.TouchableHighlight.attrs(({theme}) => ({
   activeOpactiy: 0.6,
-  underlayColor: theme.colors.spacingBackgroundColor,
+  underlayColor: theme.colors.border,
 }))`
   padding-horizontal: ${({theme}) => theme.variables.spacing.lg}px;
 `;
@@ -31,12 +31,12 @@ export const RowContents = styled.View`
 
 export const RowBorder = styled.View`
   height: ${({theme}) => theme.variables.borders.xsm}px;
-  background-color: ${({theme}) => theme.colors.rowBorder};
+  background-color: ${({theme}) => theme.colors.border};
 `;
 
 export const Name = styled.Text.attrs(() => ({numberOfLines: 1}))`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   display: flex;
   text-align: left;

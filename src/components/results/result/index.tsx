@@ -23,6 +23,9 @@ import {
   SuccessIcon,
   WarningIcon,
   WarningText,
+  TimeoutContainer,
+  TimeoutIcon,
+  TimeoutText,
 } from './styles';
 import {useTranslation} from 'translations/i18n';
 import useForwardedRef from 'utils/useForwardedRef';
@@ -41,6 +44,21 @@ export const WarningResult = React.forwardRef<any, Props>(
           {text ?? I18n.t('Results.Warning.Title')}
         </WarningText>
       </WarningContainer>
+    );
+  },
+);
+
+export const TimeoutResult = React.forwardRef<any, Props>(
+  ({text}, forwardedRef) => {
+    const I18n = useTranslation();
+    const focusRef = useForwardedRef(forwardedRef);
+    return (
+      <TimeoutContainer>
+        <TimeoutIcon />
+        <TimeoutText ref={focusRef}>
+          {text ?? I18n.t('Results.Timeout.Title')}
+        </TimeoutText>
+      </TimeoutContainer>
     );
   },
 );

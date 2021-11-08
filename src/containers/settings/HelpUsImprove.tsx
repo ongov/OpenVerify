@@ -24,7 +24,7 @@ import {
   MainContainer,
   SubContainer,
   TitleText,
-  SubtitleText,
+  SubtitleTextOpenSans,
   Spacing,
 } from './styles';
 
@@ -53,7 +53,9 @@ const HelpUsImprove: FC<Props> = () => {
             {I18n.t('Settings.HelpUsImprove.Title')}
           </TitleText>
           <Spacing />
-          <SubtitleText>{I18n.t('Settings.HelpUsImprove.Body')}</SubtitleText>
+          <SubtitleTextOpenSans>
+            {I18n.t('Settings.HelpUsImprove.Body')}
+          </SubtitleTextOpenSans>
           <Button
             buttonType="secondary"
             onPress={() => {

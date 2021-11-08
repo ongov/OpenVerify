@@ -28,8 +28,8 @@ import FailurePageAlert from 'components/core/alerts/Error';
 import {
   MainContainer,
   SubContainer,
-  SubtitleText,
-  SubtitleTextBold,
+  P,
+  B,
   ConnectButton,
   TitleText,
   NoBottomMarginP,
@@ -41,10 +41,7 @@ import * as routes from '../routes';
 import {NavigatorParamList} from 'navigation/HomeNavigation';
 import {useTranslation} from 'translations/i18n';
 
-import {
-  // getVisualAppearance,
-  getLastUpdated,
-} from 'redux/selectors';
+import {getVisualAppearance, getLastUpdated} from 'redux/selectors';
 import {fetchRulesAndAppVersion} from 'redux/actions/api';
 import {setManualUpdate, onboardUser} from 'redux/actions/creators';
 import {showRedWarning, showYellowWarning} from 'utils/rulesHelper';
@@ -62,7 +59,7 @@ const SettingsScreen: FC<Props> = () => {
   useFocusEffect(() => {
     setTimeout(setFocus, 100);
   });
-  // const appearance = useSelector(getVisualAppearance);
+  const appearance = useSelector(getVisualAppearance);
   const lastUpdated = useSelector(getLastUpdated);
   const dispatch = useDispatch();
 
@@ -99,23 +96,19 @@ const SettingsScreen: FC<Props> = () => {
             </NoBottomMarginP>
             {redWarning ? (
               <FailurePageAlert title={I18n.t('Home.ConnectToInternet.Title')}>
-                <SubtitleText>
+                <P>
                   {I18n.t('Home.ConnectToInternet.Subtitle.Part1')}
-                  <SubtitleTextBold>
-                    {I18n.t('Home.ConnectToInternet.Subtitle.Part2')}
-                  </SubtitleTextBold>
+                  <B>{I18n.t('Home.ConnectToInternet.Subtitle.Part2')}</B>
                   {I18n.t('Home.ConnectToInternet.Subtitle.Part3')}
-                </SubtitleText>
+                </P>
               </FailurePageAlert>
             ) : yellowWarning ? (
               <WarningPageAlert title={I18n.t('Home.ConnectToInternet.Title')}>
-                <SubtitleText>
+                <P>
                   {I18n.t('Home.ConnectToInternet.Subtitle.Part1')}
-                  <SubtitleTextBold>
-                    {I18n.t('Home.ConnectToInternet.Subtitle.Part2')}
-                  </SubtitleTextBold>
+                  <B>{I18n.t('Home.ConnectToInternet.Subtitle.Part2')}</B>
                   {I18n.t('Home.ConnectToInternet.Subtitle.Part3')}
-                </SubtitleText>
+                </P>
               </WarningPageAlert>
             ) : undefined}
             <ConnectButton
@@ -138,7 +131,7 @@ const SettingsScreen: FC<Props> = () => {
             }
             screen={routes.Settings.Language}
           />
-          {/* <Row
+          <Row
             name={I18n.t('Settings.VisualAppearance.Title')}
             value={
               appearance === 'light'
@@ -148,7 +141,7 @@ const SettingsScreen: FC<Props> = () => {
                 : I18n.t('Settings.SettingsScreen.AppSettings.SameAsSystem')
             }
             screen={routes.Settings.VisualAppearance}
-          /> */}
+          />
         </Group>
         <Group title={I18n.t('Settings.SettingsScreen.Help.Title')}>
           <Row

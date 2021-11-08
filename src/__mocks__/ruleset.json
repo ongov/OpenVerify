@@ -81,7 +81,7 @@
   },
   "ruleset": [{
       "version": "1.0",
-      "expiry": "2021-10-23",
+      "expiry": "",
       "ruleDescription": {
         "en": [
           "Mock rules"

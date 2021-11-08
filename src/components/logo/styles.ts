@@ -16,7 +16,7 @@
 import styled from 'styled-components/native';
 
 export const MainContainer = styled.SafeAreaView`
-  background-color: ${({theme}) => theme.colors.backgroundColor};
+  background-color: ${({theme}) => theme.colors.background};
   shadow-radius: 0;
   shadow-offset: 0 0;
   elevation: 0;
@@ -39,6 +39,6 @@ export const OpenVerifyLogoDark = styled.Image.attrs(() => ({
 `;
 
 export const LogoSpacing = styled.View`
-  height: ${({theme}) => theme.variables.borders.sm}px;
-  background-color: ${({theme}) => theme.colors.spacingBackgroundColor};
+  height: ${({theme}) => theme.variables.borders.xsm}px;
+  background-color: ${({theme}) => theme.colors.border};
 `;

@@ -24,7 +24,7 @@ export const Container = styled.View`
 export const Name = styled.Text.attrs(() => ({numberOfLines: 1}))`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
   letter-spacing: ${({theme}) => theme.typography.letterSpacing.title}px;
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.regular}px;
   display: flex;
   text-align: left;
@@ -32,7 +32,7 @@ export const Name = styled.Text.attrs(() => ({numberOfLines: 1}))`
 
 export const Value = styled.Text.attrs(() => ({numberOfLines: 1}))`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   flex: 1;
   text-align: right;

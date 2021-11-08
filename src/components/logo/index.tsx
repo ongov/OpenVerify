@@ -15,6 +15,7 @@
 */
 import React, {FC, useMemo} from 'react';
 import {Image, StyleSheet, SafeAreaView, View, Text} from 'react-native';
+import {useTheme} from '@react-navigation/native';
 import {useTranslation} from 'translations/i18n';
 
 interface LogoProps {
@@ -23,12 +24,21 @@ interface LogoProps {
 
 const Logo: FC<LogoProps> = ({rightText}) => {
   const I18n = useTranslation();
+  const theme = useTheme();
   return useMemo(
     () => (
-      <SafeAreaView style={styles.MainContainer}>
+      <SafeAreaView
+        style={[
+          styles.MainContainer,
+          theme.dark ? styles.MainContainerDark : undefined,
+        ]}>
         <View style={styles.SubContainer}>
           <Image
-            source={require('assets/images/openverify_base_logo.svg')}
+            source={
+              theme.dark
+                ? require('assets/images/openverify_base_logo_dark.svg')
+                : require('assets/images/openverify_base_logo.svg')
+            }
             style={styles.OpenVerifyLogo}
             width={188}
             height={75}
@@ -37,14 +47,21 @@ const Logo: FC<LogoProps> = ({rightText}) => {
             accessibilityLabel={I18n.t('OpenVerifyLogoAlt')}
             accessibilityHint=""
           />
-          <Text accessible={!!rightText} style={styles.RightButtonText}>
+          <Text
+            accessible={!!rightText}
+            style={[
+              styles.RightButtonText,
+              theme.dark ? styles.RightButtonTextDark : undefined,
+            ]}>
             {rightText ?? ''}
           </Text>
         </View>
-        <View style={styles.LogoSpacing} />
+        <View
+          style={theme.dark ? styles.LogoSpacingDark : styles.LogoSpacing}
+        />
       </SafeAreaView>
     ),
-    [rightText, I18n],
+    [rightText, I18n, theme],
   );
 };
 export default Logo;
@@ -61,6 +78,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     minHeight: 116,
   },
+  MainContainerDark: {
+    backgroundColor: '#000000',
+  },
   SubContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -74,6 +94,10 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     marginBottom: 24,
     marginRight: 24,
+    color: '#1A1A1A',
+  },
+  RightButtonTextDark: {
+    color: '#FFFFFF',
   },
   OpenVerifyLogo: {
     marginTop: 21,
@@ -81,6 +105,10 @@ const styles = StyleSheet.create({
   },
   LogoSpacing: {
     height: 1,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#C4C4C4',
+  },
+  LogoSpacingDark: {
+    height: 1,
+    backgroundColor: '#4D4D4D',
   },
 });

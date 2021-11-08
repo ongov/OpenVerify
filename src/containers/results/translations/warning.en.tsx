@@ -46,10 +46,9 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </UL>
       <P>What to do next:</P>
       <UL>
-        <LI>try scanning again{'\u00a0'}— the scan may have timed out</LI>
         <LI>
-          review the visitor’s paper or digital vaccine certificate and a piece
-          of identification
+          review the visitor’s government-issued paper or digital vaccine
+          certificate and a piece of identification
         </LI>
         <LI>
           redirect the visitor to{' '}
@@ -58,10 +57,10 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/vaccine-proof-help',
                 true,
-                'Ontario.ca/vaccine-proof-help',
+                'ontario.ca/vaccine-proof-help',
               );
             }}>
-            Ontario.ca/vaccine-proof-help
+            ontario.ca/vaccine-proof-help
           </LinkText>{' '}
           for result details and tell them they can call for extra help{' '}
           {telLink ? (
@@ -88,10 +87,10 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/vaccine-proof-help',
               true,
-              'Visit Ontario.ca/vaccine-proof-help',
+              'Visit ontario.ca/vaccine-proof-help',
             )
           }>
-          Visit Ontario.ca/vaccine-proof-help
+          Visit ontario.ca/vaccine-proof-help
         </Button>
       )}
       {telLink && screenReaderEnabled && (

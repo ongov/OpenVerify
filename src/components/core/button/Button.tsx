@@ -37,6 +37,7 @@ export interface Props {
   style?: StyleProp<ViewStyle>;
   accessibilityState?: AccessibilityState;
   accessibilityLabel?: string;
+  selected?: boolean;
 }
 
 export const Button = ({
@@ -48,6 +49,7 @@ export const Button = ({
   style,
   accessibilityState,
   accessibilityLabel,
+  selected,
 }: Props) => {
   switch (buttonType) {
     case 'primary':
@@ -97,9 +99,12 @@ export const Button = ({
           accessibilityRole="button"
           accessibilityState={{disabled, ...accessibilityState}}
           accessibilityLabel={accessibilityLabel}
-          style={style}>
+          style={style}
+          $selected={selected}>
           {icon && icon}
-          <FlashlightButtonText>{title}</FlashlightButtonText>
+          <FlashlightButtonText $selected={selected}>
+            {title}
+          </FlashlightButtonText>
         </FlashlightButtonContainer>
       );
   }

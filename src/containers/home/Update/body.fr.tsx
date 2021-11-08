@@ -19,8 +19,8 @@ import {
   ErrorImage,
   WarningImage,
   TitleText,
-  SubtitleText,
-  SubtitleTextBold,
+  P,
+  B,
 } from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
@@ -31,7 +31,7 @@ interface Props {
   daysLeft: number;
 }
 
-const FRENCH_TO_ENGLISH: any = {
+const NUMBERS_TO_WORDS: any = {
   2: 'deux',
   3: 'trois',
   4: 'quatre',
@@ -55,37 +55,33 @@ const BodyFr = React.forwardRef<any, Props>(
 
         <TitleText ref={focusRef}>Connexion à l’Internet</TitleText>
         {(redWarning || yellowWarning) && (
-          <SubtitleText>
-            Votre appareil doit être{' '}
-            <SubtitleTextBold>connecté à l’Internet</SubtitleTextBold> pour
-            mettre à jour les exigences concernant les conditions d’entrée.
-          </SubtitleText>
+          <P>
+            Votre appareil doit être <B>connecté à l’Internet</B> pour mettre à
+            jour les exigences concernant les conditions d’entrée.
+          </P>
         )}
 
         {expired ? (
-          <SubtitleText>
+          <P>
             Cette application ne numérisera pas les certificats de vaccination
             tant qu’elle ne se sera pas connectée pour télécharger des mises à
             jour.
-          </SubtitleText>
+          </P>
         ) : (
           <>
-            <SubtitleText>
-              Si l’application n’est pas mise à jour dans les{' '}
+            <P>
+              Si l’application n’est pas mise à jour{' '}
               {daysLeft === 1 ? (
-                <SubtitleTextBold>prochaines 24 heures</SubtitleTextBold>
+                <B>le lendemain</B>
               ) : (
-                <SubtitleTextBold>
-                  {FRENCH_TO_ENGLISH[daysLeft]} prochains jours
-                </SubtitleTextBold>
+                <B>{NUMBERS_TO_WORDS[daysLeft]} prochains jours</B>
               )}
-              , elle <SubtitleTextBold>cessera de fonctionner</SubtitleTextBold>
-              .
-            </SubtitleText>
-            <SubtitleText>
+              , elle <B>cessera de fonctionner</B>.
+            </P>
+            <P>
               Vous pouvez vérifier les mises à jour à tout moment dans la page
               des paramètres et informations supplémentaires.
-            </SubtitleText>
+            </P>
           </>
         )}
       </>

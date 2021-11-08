@@ -20,7 +20,7 @@ export const MainContainer = styled.SafeAreaView`
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  background-color: ${({theme}) => theme.colors.backgroundColor};
+  background-color: ${({theme}) => theme.colors.background};
 `;
 
 export const SubContainer = styled.View`
@@ -35,7 +35,7 @@ export const TitleText = styled.Text.attrs(() => ({
 }))`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
   letter-spacing: ${({theme}) => theme.typography.letterSpacing.title}px;
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.header4}px;
   line-height: ${({theme}) => theme.typography.fontSizes.header4 * 1.4}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.lg}px;
@@ -43,7 +43,7 @@ export const TitleText = styled.Text.attrs(() => ({
 
 export const SubtitleText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
 `;
@@ -52,13 +52,17 @@ export const LinkText = styled.Text.attrs({
   accessible: true,
   accessibilityRole: 'link',
 })`
-  color: ${({theme}) => theme.colors.linkBlue};
+  color: ${({theme}) => theme.colors.linkColor};
+  text-decoration: underline;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: ${({theme}) => theme.colors.linkColor};
 `;
 
 export const Spacing = styled.View`
-  height: ${({theme}) => theme.variables.borders.sm}px;
+  height: ${({theme}) => theme.variables.borders.xsm}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.lg}px;
-  background-color: ${({theme}) => theme.colors.spacingBackgroundColor};
+  background-color: ${({theme}) => theme.colors.border};
 `;
 
 export const Padding = styled.View`
@@ -70,6 +74,12 @@ export const P = styled.Text`
   font-size: ${({theme}) => theme.typography.fontSizes.regular}px;
   margin-bottom: ${({theme}) => theme.typography.fontSizes.regular}px;
   line-height: ${({theme}) => theme.typography.fontSizes.regular * 1.5}px;
+  color: ${({theme}) => theme.colors.text};
+`;
+export const VerifiedP = styled(P)`
+  font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
+  font-size: ${({theme}) => theme.typography.fontSizes.header4}px;
+  line-height: ${({theme}) => theme.typography.fontSizes.header4 * 1.28}px;
 `;
 export const UL = styled.View`
   font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
@@ -90,4 +100,9 @@ export const BottomContainer = styled.View`
 `;
 export const B = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansBold};
+`;
+export const VerifiedB = styled.Text`
+  font-family: ${({theme}) => theme.typography.fonts.openSansSemiBold};
+  font-size: ${({theme}) => theme.typography.fontSizes.header4 + 1}px;
+  line-height: ${({theme}) => theme.typography.fontSizes.header4 * 1.28}px;
 `;

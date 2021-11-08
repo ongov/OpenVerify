@@ -122,6 +122,11 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get('enableHermes', false)
 
+/**
+ * Architectures to build native code for in debug.
+ */
+def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitectures")
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -132,7 +137,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName '1.0.1'
+        versionName '1.1'
         missingDimensionStrategy 'react-native-camera', 'general'
         resValue "string", "build_config_package", "openverify.replace.me"
     }
@@ -162,6 +167,11 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            if (nativeArchitectures) {
+                ndk {
+                    abiFilters nativeArchitectures.split(',')
+                }
+            }
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -196,6 +206,11 @@ dependencies {
     implementation 'com.facebook.react:react-native:+'  // From node_modules
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    String appcompatVersion = '1.3.1'
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    // For loading and tinting drawables on older versions of the platform
+    implementation "androidx.appcompat:appcompat-resources:$appcompatVersion"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

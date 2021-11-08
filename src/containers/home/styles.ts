@@ -29,7 +29,7 @@ export const MainContainer = styled.SafeAreaView`
   justify-content: flex-end;
   height: 100%;
   width: 100%;
-  background-color: ${({theme}) => theme.colors.backgroundColor};
+  background-color: ${({theme}) => theme.colors.background};
 `;
 
 export const CameraContainer = styled.View`
@@ -55,7 +55,7 @@ export const TitleText = styled.Text.attrs(() => ({
 }))`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
   letter-spacing: ${({theme}) => theme.typography.letterSpacing.title}px;
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.header2}px;
   line-height: ${({theme}) => theme.typography.lineHeights.xlg}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.xmd}px;
@@ -64,7 +64,7 @@ export const TitleText = styled.Text.attrs(() => ({
 
 export const SubtitleText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.ralewayRegular};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body}px;
   line-height: ${({theme}) => theme.typography.lineHeights.lg}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.lg}px;
@@ -72,6 +72,18 @@ export const SubtitleText = styled.Text`
 
 export const SubtitleTextBold = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
+`;
+
+export const P = styled.Text`
+  font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
+  font-size: ${({theme}) => theme.typography.fontSizes.body}px;
+  margin-bottom: ${({theme}) => theme.typography.fontSizes.body}px;
+  line-height: ${({theme}) => theme.typography.fontSizes.body * 1.5}px;
+  color: ${({theme}) => theme.colors.text};
+`;
+
+export const B = styled.Text`
+  font-family: ${({theme}) => theme.typography.fonts.openSansBold};
 `;
 
 export const HomeButton = styled(Button)`
@@ -106,16 +118,40 @@ export const TorchImage = styled.Image.attrs(() => ({
   source: require('assets/images/torch.svg'),
 }))`
   margin: ${({theme}) => theme.variables.spacing.md}px;
+  margin-left: ${({theme}) => theme.variables.spacing.sm}px;
+  margin-right: ${({theme}) => theme.variables.spacing.xsm}px;
+`;
+
+export const TorchImageSelected = styled.Image.attrs(() => ({
+  source: require('assets/images/torch_selected.svg'),
+}))`
+  margin: ${({theme}) => theme.variables.spacing.md}px;
+  margin-left: ${({theme}) => theme.variables.spacing.sm}px;
+  margin-right: ${({theme}) => theme.variables.spacing.xsm}px;
+`;
+
+export const FlipCameraAndroid = styled.Image.attrs(() => ({
+  source: require('assets/images/flip_camera_android.svg'),
+}))`
+  margin: ${({theme}) => theme.variables.spacing.md}px;
+  margin-right: ${({theme}) => theme.variables.spacing.sm}px;
+`;
+
+export const FlipCameraIos = styled.Image.attrs(() => ({
+  source: require('assets/images/flip_camera_ios.svg'),
+}))`
+  margin: ${({theme}) => theme.variables.spacing.md}px;
+  margin-right: ${({theme}) => theme.variables.spacing.sm}px;
 `;
 
 export const Spacing = styled.View`
-  height: ${({theme}) => theme.variables.spacing.sm}px;
+  height: ${({theme}) => theme.variables.spacing.xsm}px;
 `;
 
 export const BorderSpacing = styled.View`
-  height: ${({theme}) => theme.variables.borders.sm}px;
+  height: ${({theme}) => theme.variables.borders.xsm}px;
   margin-bottom: ${({theme}) => theme.variables.spacing.xmd}px;
-  background-color: ${({theme}) => theme.colors.spacingBackgroundColor};
+  background-color: ${({theme}) => theme.colors.border};
 `;
 
 export const CloseImage = styled.Image.attrs(() => ({
@@ -185,6 +221,7 @@ export const BottomCameraOverlay = styled.View<CameraOverlayProps>`
   background-color: ${({theme}) => theme.colors.opaqueGrey};
   position: absolute;
   bottom: 0;
+  justify-content: center;
 `;
 
 export const Logo = styled.Image.attrs(() => ({
@@ -211,82 +248,22 @@ export const ModalProgressSubcontainer = styled.View`
   margin-horizontal: ${({theme}) => theme.variables.spacing.lg}px;
 `;
 
-export const ModalSubcontainer = styled.View`
-  width: 75%;
-  padding-top: ${({theme}) => theme.variables.spacing.xmd - 1}px;
-  justify-content: center;
-  align-items: center;
-  border-radius: ${({theme}) => theme.variables.roundness.md - 2}px;
-  background-color: ${({theme}) => theme.colors.modalColor};
-`;
-
-export const ModalBorderSpacing = styled.View`
-  width: 300px;
-  height: ${({theme}) => theme.variables.borders.xsm}px;
-  margin-top: ${({theme}) => theme.variables.spacing.md}px;
-  background-color: ${({theme}) => theme.colors.modalBorder};
-`;
-
-export const ModalVerticalBorderSpacing = styled.View`
-  height: 100%;
-  width: ${({theme}) => theme.variables.borders.xsm}px;
-  background-color: ${({theme}) => theme.colors.modalBorder};
-`;
-
 export const ModalTitleText = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.openSansSemiBold};
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.body + 1}px;
   line-height: ${({theme}) => theme.typography.lineHeights.xmd}px;
   letter-spacing: ${({theme}) => theme.typography.letterSpacing.xs}px;
   text-align: center;
 `;
 
-export const ModalSubtitleText = styled.Text`
-  font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-  color: ${({theme}) => theme.colors.textColor};
-  font-size: ${({theme}) => theme.typography.fontSizes.caption + 1}px;
-  line-height: ${({theme}) => theme.typography.lineHeights.md}px;
-  letter-spacing: ${({theme}) => theme.typography.letterSpacing.xxs}px;
-  padding-top: ${({theme}) => theme.variables.spacing.sm}px;
-  padding-horizontal: ${({theme}) => theme.variables.spacing.xlg}px;
-  text-align: center;
-`;
-
-export const ModalSingleButton = styled.TouchableOpacity`
-  width: 100%;
-  padding-vertical: ${({theme}) => theme.variables.spacing.md}px;
-`;
-
-export const ModalButtonContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-export const ModalButton = styled.TouchableOpacity`
-  width: 50%;
-  padding-vertical: ${({theme}) => theme.variables.spacing.md}px;
-`;
-
-export const ModalButtonText = styled.Text`
-  font-family: ${({theme}) => theme.typography.fonts.openSansSemiBold};
-  color: ${({theme}) => theme.colors.primary};
-  font-size: ${({theme}) => theme.typography.fontSizes.body + 1}px;
-  line-height: ${({theme}) => theme.typography.lineHeights.xmd}px;
-  letter-spacing: ${({theme}) => theme.typography.letterSpacing.xs}px;
-  text-align: center;
-`;
-
-export const ModalButtonRegularText = styled.Text`
-  font-family: ${({theme}) => theme.typography.fonts.openSansRegular};
-`;
-
-export const FlashlightButton = styled(Button)`
-  position: absolute;
-  bottom: 20%;
+export const CameraScreenButton = styled(Button).attrs(() => ({
+  buttonType: 'flashlight',
+}))`
   align-self: center;
   align-items: center;
+  justify-content: center;
+  margin-vertical: 3%;
 `;
 
 export const QRScannerFocus = styled.Image.attrs(() => ({

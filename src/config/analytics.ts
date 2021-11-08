@@ -21,5 +21,7 @@ export const verifyEvent = {
   VERSION_UPDATE_CLICK: 'version_update_click',
   SCANNER_TIMEOUT: 'scanner_timeout',
   VERIFIED_TIMEOUT: 'verified_timeout',
+  VERIFIED_BACKGROUNDED: 'verified_backgrounded',
   LINK_CLICK: 'click',
+  SWITCH_CAMERA: 'switch_camera',
 };

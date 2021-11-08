@@ -96,10 +96,10 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/vaccine-proof-help',
                 true,
-                'Ontario.ca/vaccine-proof-help',
+                'ontario.ca/vaccine-proof-help',
               );
             }}>
-            Ontario.ca/vaccine-proof-help
+            ontario.ca/vaccine-proof-help
           </LinkText>
         </P>
         {screenReaderEnabled && (
@@ -109,10 +109,10 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/vaccine-proof-help',
                 true,
-                'Visit Ontario.ca/vaccine-proof-help',
+                'Visit ontario.ca/vaccine-proof-help',
               )
             }>
-            Visit Ontario.ca/vaccine-proof-help
+            Visit ontario.ca/vaccine-proof-help
           </Button>
         )}
       </ResultDescription>
@@ -139,10 +139,10 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
                 openURL(
                   'https://www.ontario.ca/verify-results',
                   true,
-                  'Ontario.ca/verify-results',
+                  'ontario.ca/verify-results',
                 );
               }}>
-              Ontario.ca/verify-results
+              ontario.ca/verify-results
             </LinkText>{' '}
             or{' '}
             {telLink ? (

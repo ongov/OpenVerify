@@ -15,7 +15,13 @@
 */
 import React, {FC} from 'react';
 import {Image, StyleProp, ViewProps} from 'react-native';
-import {TitleView, TitleText, SubContainer, StripeView} from '../styles';
+import {
+  TitleView,
+  TitleText,
+  SubContainer,
+  StripeView,
+  ChildMargin,
+} from '../styles';
 import styled from 'styled-components/native';
 
 export const WarningSubContainer = styled(SubContainer)`
@@ -40,7 +46,7 @@ const WarningPageAlert: FC<Props> = ({title, children, style}) => (
       <Image source={require('assets/images/warning_icon.svg')} />
       <TitleText>{title}</TitleText>
     </TitleView>
-    {children}
+    <ChildMargin>{children}</ChildMargin>
   </WarningSubContainer>
 );
 

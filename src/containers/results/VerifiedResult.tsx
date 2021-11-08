@@ -29,8 +29,8 @@ import {
   Scroll,
   TitleText,
   Spacing,
-  P,
-  B,
+  VerifiedP,
+  VerifiedB,
   BottomContainer,
 } from './styles';
 import useAccessibilityFocusRef from 'utils/useAccessibilityFocusRef';
@@ -79,15 +79,20 @@ const VerifiedResult: FC<Props> = ({navigation, route}) => {
       const subscription = AppState.addEventListener('change', nextAppState => {
         if (nextAppState === 'background' || nextAppState === 'inactive') {
           clearTimeout(timerRef.current);
-        } else {
-          setTimer();
+        }
+        if (navigation.isFocused()) {
+          trackLogEvent(verifyEvent.VERIFIED_BACKGROUNDED);
+          navigation.reset({
+            index: 0,
+            routes: [{name: r.Home.HomeScreen}],
+          });
         }
       }) as unknown as EventSubscription;
 
       return () => {
         subscription.remove();
       };
-    }, [setTimer]),
+    }, [navigation]),
   );
 
   return (
@@ -96,12 +101,14 @@ const VerifiedResult: FC<Props> = ({navigation, route}) => {
         <SuccessResult ref={focusRef} />
         <SubContainer>
           <TitleText>{I18n.t('Results.Success.Subtitle')}</TitleText>
-          <P>
-            <B>{I18n.t('Results.Success.Name')}</B> {response.name}
-          </P>
-          <P>
-            <B>{I18n.t('Results.Success.DateOfBirth')}</B> {response.birthDate}
-          </P>
+          <VerifiedP>
+            {I18n.t('Results.Success.Name')}
+            <VerifiedB> {response.name}</VerifiedB>
+          </VerifiedP>
+          <VerifiedP>
+            {I18n.t('Results.Success.DateOfBirth')}
+            <VerifiedB> {response.birthDate}</VerifiedB>
+          </VerifiedP>
         </SubContainer>
       </Scroll>
       <Spacing />

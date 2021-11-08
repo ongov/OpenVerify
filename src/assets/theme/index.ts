@@ -13,7 +13,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import {ColorSchemeName} from 'react-native';
 import {Typography} from './base/Typography';
 import {Variables} from './base/Variables';
 import {Colors} from './base/Colors';
@@ -23,7 +22,7 @@ export type IVariables = typeof Variables;
 export type ITypography = typeof Typography;
 
 export type ITheme = {
-  colorScheme: ColorSchemeName;
+  dark: boolean;
   colors: IColors;
   variables: IVariables;
   typography: ITypography;

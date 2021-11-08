@@ -48,12 +48,26 @@ const OnboardingNavigation = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={route.Onboarding.WhatAppDoes}
+      initialRouteName={route.Onboarding.AppForBusinesses}
       screenOptions={{
         header: () => <Logo />,
         headerMode: 'float',
         ...TransitionPresets.SlideFromRightIOS,
       }}>
+      <Stack.Screen
+        name={route.Onboarding.AppForBusinesses}
+        component={OnboardingScreens.AppForBusinesses}
+        options={{
+          header: () => (
+            <Logo
+              rightText={I18n.t('Onboarding.Step', {
+                current: 1,
+                total: showCameraPermissions ? 6 : 5,
+              })}
+            />
+          ),
+        }}
+      />
       <Stack.Screen
         name={route.Onboarding.WhatAppDoes}
         component={OnboardingScreens.WhatAppDoes}
@@ -61,8 +75,8 @@ const OnboardingNavigation = () => {
           header: () => (
             <Logo
               rightText={I18n.t('Onboarding.Step', {
-                current: 1,
-                total: showCameraPermissions ? 5 : 4,
+                current: 2,
+                total: showCameraPermissions ? 6 : 5,
               })}
             />
           ),
@@ -75,8 +89,8 @@ const OnboardingNavigation = () => {
           header: () => (
             <Logo
               rightText={I18n.t('Onboarding.Step', {
-                current: 2,
-                total: showCameraPermissions ? 5 : 4,
+                current: 3,
+                total: showCameraPermissions ? 6 : 5,
               })}
             />
           ),
@@ -89,8 +103,8 @@ const OnboardingNavigation = () => {
           header: () => (
             <Logo
               rightText={I18n.t('Onboarding.Step', {
-                current: 3,
-                total: showCameraPermissions ? 5 : 4,
+                current: 4,
+                total: showCameraPermissions ? 6 : 5,
               })}
             />
           ),
@@ -102,7 +116,7 @@ const OnboardingNavigation = () => {
         options={{
           header: () => (
             <Logo
-              rightText={I18n.t('Onboarding.Step', {current: 4, total: 5})}
+              rightText={I18n.t('Onboarding.Step', {current: 5, total: 6})}
             />
           ),
         }}
@@ -114,8 +128,8 @@ const OnboardingNavigation = () => {
           header: () => (
             <Logo
               rightText={I18n.t('Onboarding.Step', {
-                current: showCameraPermissions ? 5 : 4,
-                total: showCameraPermissions ? 5 : 4,
+                current: showCameraPermissions ? 6 : 5,
+                total: showCameraPermissions ? 6 : 5,
               })}
             />
           ),

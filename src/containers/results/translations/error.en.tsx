@@ -38,8 +38,16 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
           entry
         </LI>
         <LI>
-          ask if the visitor has a newer version of their government-issued
-          vaccine certificate to scan
+          the QR code may indicate <B>the visitor has only one vaccination</B>
+        </LI>
+        <LI>
+          <B>14 days</B> may have <B>not passed</B> since the visitor got their
+          second dose
+        </LI>
+        <LI>
+          let the visitor know that if they have had a second dose and 14 days
+          have passed, they should <B>download their most recent</B> enhanced
+          vaccine certificate with official QR code
         </LI>
         <LI>
           redirect a visitor to{' '}
@@ -48,10 +56,10 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/verify-results',
                 true,
-                'Ontario.ca/verify-results',
+                'ontario.ca/verify-results',
               );
             }}>
-            Ontario.ca/verify-results
+            ontario.ca/verify-results
           </LinkText>{' '}
           for result details and tell them they can call for extra help{' '}
           {telLink ? (
@@ -78,10 +86,10 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/verify-results',
               true,
-              'Visit Ontario.ca/verify-results',
+              'Visit ontario.ca/verify-results',
             )
           }>
-          Visit Ontario.ca/verify-results
+          Visit ontario.ca/verify-results
         </Button>
       )}
       {telLink && screenReaderEnabled && (

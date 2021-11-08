@@ -14,7 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {CloseImage, TitleText, SubtitleText} from 'containers/home/styles';
+import {CloseImage, TitleText, P} from 'containers/home/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
@@ -26,15 +26,15 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>
         Mettre à jour les paramètres de date et d’heure de l’appareil
       </TitleText>
-      <SubtitleText>
+      <P>
         Cette application utilise les paramètres de date et d’heure de
         l’appareil pour fonctionner hors ligne et maintenir à jour les
         conditions d’entrée.
-      </SubtitleText>
-      <SubtitleText>
+      </P>
+      <P>
         La modification des paramètres de date et d’heure de cet appareil peut
         empêcher le bon fonctionnement de l’application.
-      </SubtitleText>
+      </P>
     </>
   );
 });

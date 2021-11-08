@@ -40,10 +40,10 @@ const WarningThirdPartyEn: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/getproof',
                 true,
-                'Ontario.ca/getproof',
+                'ontario.ca/getproof',
               );
             }}>
-            Ontario.ca/getproof
+            ontario.ca/getproof
           </LinkText>
         </LI>
       </UL>
@@ -54,10 +54,10 @@ const WarningThirdPartyEn: FC<Props> = ({screenReaderEnabled}) => {
             openURL(
               'https://www.ontario.ca/getproof',
               true,
-              'Visit Ontario.ca/getproof',
+              'Visit ontario.ca/getproof',
             )
           }>
-          Visit Ontario.ca/getproof
+          Visit ontario.ca/getproof
         </Button>
       )}
     </>

@@ -13,8 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React, {FC} from 'react';
-import {Modal} from 'react-native';
+import React, {FC, useEffect} from 'react';
+import {Modal, Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
@@ -31,17 +31,8 @@ import {useTranslation} from 'translations/i18n';
 
 import {
   ModalContainer,
-  ModalSubcontainer,
   ModalProgressSubcontainer,
-  ModalButtonContainer,
-  ModalBorderSpacing,
-  ModalVerticalBorderSpacing,
-  ModalButtonRegularText,
   ModalTitleText,
-  ModalSubtitleText,
-  ModalButtonText,
-  ModalButton,
-  ModalSingleButton,
 } from './styles';
 
 import * as routes from '../routes';
@@ -56,12 +47,65 @@ const OverlayModal: FC = ({}) => {
   const fetchingRulesetError = useSelector(isFetchingRulesetError);
   const fetchingRulesetSuccess = useSelector(isFetchingRulesetSuccess);
 
-  const showModal =
-    manualUpdate &&
-    (fetchingRuleset || fetchingRulesetSuccess || fetchingRulesetError);
+  const showModal = manualUpdate && fetchingRuleset;
+
+  useEffect(() => {
+    if (manualUpdate) {
+      if (fetchingRulesetSuccess) {
+        Alert.alert(
+          I18n.t('Home.ConnectToInternet.UpdateSuccessTitle'),
+          I18n.t('Home.ConnectToInternet.UpdateSuccessSubtitle'),
+          [
+            {
+              text: I18n.t('Continue'),
+              onPress: () => {
+                dispatch(setManualUpdate(false));
+
+                if (
+                  navigation?.getCurrentRoute()?.name === routes.Home.Update
+                ) {
+                  navigation?.reset({
+                    index: 0,
+                    routes: [{name: routes.Home.HomeScreen}],
+                  });
+                }
+              },
+            },
+          ],
+        );
+      }
+      if (fetchingRulesetError) {
+        Alert.alert(
+          I18n.t('Home.ConnectToInternet.UpdateFailedTitle'),
+          I18n.t('Home.ConnectToInternet.UpdateFailedSubtitle'),
+          [
+            {
+              text: I18n.t('BackToApp'),
+              onPress: () => dispatch(setManualUpdate(false)),
+              style: 'cancel',
+            },
+            {
+              text: I18n.t('TryAgain'),
+              onPress: () => {
+                dispatch(setManualUpdate(true));
+                dispatch(fetchRulesAndAppVersion);
+              },
+            },
+          ],
+        );
+      }
+    }
+  }, [
+    I18n,
+    dispatch,
+    fetchingRulesetSuccess,
+    fetchingRulesetError,
+    manualUpdate,
+    navigation,
+  ]);
 
   return (
-    <Modal animationType="slide" transparent={true} visible={showModal}>
+    <Modal animationType="none" transparent={true} visible={showModal}>
       <>
         {fetchingRuleset && (
           <ModalContainer>
@@ -70,66 +114,6 @@ const OverlayModal: FC = ({}) => {
                 {I18n.t('Home.ConnectToInternet.CheckingForUpdate')}
               </ModalTitleText>
             </ModalProgressSubcontainer>
-          </ModalContainer>
-        )}
-
-        {fetchingRulesetSuccess && (
-          <ModalContainer>
-            <ModalSubcontainer>
-              <ModalTitleText>
-                {I18n.t('Home.ConnectToInternet.UpdateSuccessTitle')}
-              </ModalTitleText>
-              <ModalSubtitleText>
-                {I18n.t('Home.ConnectToInternet.UpdateSuccessSubtitle')}
-              </ModalSubtitleText>
-              <ModalBorderSpacing />
-              <ModalSingleButton
-                onPress={() => {
-                  dispatch(setManualUpdate(false));
-
-                  if (
-                    navigation?.getCurrentRoute()?.name === routes.Home.Update
-                  ) {
-                    navigation?.reset({
-                      index: 0,
-                      routes: [{name: routes.Home.HomeScreen}],
-                    });
-                  }
-                }}>
-                <ModalButtonText>{I18n.t('Continue')}</ModalButtonText>
-              </ModalSingleButton>
-            </ModalSubcontainer>
-          </ModalContainer>
-        )}
-
-        {fetchingRulesetError && (
-          <ModalContainer>
-            <ModalSubcontainer>
-              <ModalTitleText>
-                {I18n.t('Home.ConnectToInternet.UpdateFailedTitle')}
-              </ModalTitleText>
-              <ModalSubtitleText>
-                {I18n.t('Home.ConnectToInternet.UpdateFailedSubtitle')}
-              </ModalSubtitleText>
-              <ModalBorderSpacing />
-              <ModalButtonContainer>
-                <ModalButton onPress={() => dispatch(setManualUpdate(false))}>
-                  <ModalButtonText>
-                    <ModalButtonRegularText>
-                      {I18n.t('BackToApp')}
-                    </ModalButtonRegularText>
-                  </ModalButtonText>
-                </ModalButton>
-                <ModalVerticalBorderSpacing />
-                <ModalButton
-                  onPress={() => {
-                    dispatch(setManualUpdate(true));
-                    dispatch(fetchRulesAndAppVersion);
-                  }}>
-                  <ModalButtonText>{I18n.t('TryAgain')}</ModalButtonText>
-                </ModalButton>
-              </ModalButtonContainer>
-            </ModalSubcontainer>
           </ModalContainer>
         )}
       </>

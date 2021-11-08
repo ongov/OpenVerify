@@ -34,8 +34,11 @@
     },
     "Scanner": {
       "Flashlight": "Lampe",
-      "Title": "Numériser un code QR ",
-      "AccessibleTitle": "Numériser un code QR maintenant"
+      "AccessibleTitleFront": "Numériser le code QR maintenant en utilisant la caméra avant",
+      "AccessibleTitleBack": "Numériser le code QR maintenant en utilisant la caméra arrière",
+      "SwitchCamera": "Changer de caméra",
+      "SwitchToBackCamera": "Basculer vers la caméra arrière",
+      "SwitchToFrontCamera": "Basculer vers la caméra avant"
     }
   },
   "Onboarding": {
@@ -60,6 +63,9 @@
   },
   "Results": {
     "ScanAnotherQRCode": "Numériser un autre code QR",
+    "Timeout": {
+      "Title": "Le numériseur cesse de fonctionner"
+    },
     "Warning": {
       "Title": "Un problème est survenu"
     },
@@ -128,12 +134,12 @@
     },
     "HowItWorks": {
       "Title": "Comment fonctionne VérifOuverte?",
-      "LearnMoreButton": "Visitez le site Ontario.ca/verif",
+      "LearnMoreButton": "Visitez le site ontario.ca/verif",
       "LearnMoreURL": "https://www.ontario.ca/verif"
     },
     "WhatResultsMean": {
       "Title": "Ce que les résultats signifient",
-      "LearnMoreButton": "Visitez le site Ontario.ca/verif-resultats",
+      "LearnMoreButton": "Visitez le site ontario.ca/verif-resultats",
       "LearnMoreURL": "https://www.ontario.ca/verif-resultats"
     },
     "HelpUsImprove": {

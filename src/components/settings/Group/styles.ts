@@ -18,7 +18,7 @@ import styled from 'styled-components/native';
 export const Title = styled.Text`
   font-family: ${({theme}) => theme.typography.fonts.ralewayBold};
   letter-spacing: ${({theme}) => theme.typography.letterSpacing.title}px;
-  color: ${({theme}) => theme.colors.textColor};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${({theme}) => theme.typography.fontSizes.regular}px;
   padding-top: ${({theme}) => theme.variables.spacing.xlg - 2}px;
   padding-horizontal: ${({theme}) => theme.variables.spacing.lg}px;

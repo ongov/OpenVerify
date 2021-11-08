@@ -13,9 +13,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+import {PixelRatio} from 'react-native';
+
 export const Variables = {
   borders: {
-    xsm: 0.5,
+    xsm: 1 / PixelRatio.get(),
     sm: 1,
     md: 2,
   },
