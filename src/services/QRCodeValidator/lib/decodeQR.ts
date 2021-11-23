@@ -17,10 +17,11 @@ import pako from 'pako';
 import {SHCJWTPayload} from '../types';
 import {ec as EC} from 'elliptic';
 import sha256 from 'crypto-js/sha256';
-import {Base64URLtoString, Base64URLtoBuffer, toHex} from './utils/utils';
+import {Base64URLtoString, Base64URLtoBuffer, toHex} from 'utils/base64-utils';
 import {TrustedIssuersJWKS} from './models/TrustedIssuersJWKS';
 import {Key} from './models/Jwks';
 import {VC, FhirBundle} from './models/VC';
+import {DateTime} from 'luxon';
 
 const ec = new EC('p256');
 const evenLengthDigitsRegex = /\d{2}/g;
@@ -124,9 +125,11 @@ function validateJWTSignature(
 
 function unzipDecodeJWTPayload(p: string): SHCJWTPayload {
   return JSON.parse(
-    pako.inflateRaw(Base64URLtoBuffer(p), {
-      to: 'string',
-    }),
+    pako
+      .inflateRaw(Base64URLtoBuffer(p), {
+        to: 'string',
+      })
+      .trim(), // Avoids UTF-8 BOM at start of string error in React Native Hermes' JSON.parse
   );
 }
 
@@ -212,6 +215,12 @@ export function validateFHIRBundle(
   if (typeof patient.resource?.birthDate !== 'string') {
     throw 'expected birthDate to be a string';
   }
+  const birthDate = DateTime.fromISO(patient.resource?.birthDate);
+  const today = DateTime.now().startOf('day');
+  const age = today.diff(birthDate, 'years').years;
+  if (age <= 12) {
+    throw 'under 12 - not yet supported, show yellow to hide PII';
+  }
   if (
     !Array.isArray(patient.resource.name) ||
     !patient.resource.name.every(
@@ -230,7 +239,8 @@ export function validateFHIRBundle(
     !immunizations.every(
       i =>
         i.resource?.patient?.reference !== undefined &&
-        i.resource?.patient?.reference === patient.fullUrl,
+        (i.resource?.patient?.reference === patient.fullUrl ||
+          i.resource?.patient?.reference === `Patient/${patient.fullUrl}`),
     )
   ) {
     if (issuer !== 'https://covid19.quebec.ca/PreuveVaccinaleApi/issuer') {

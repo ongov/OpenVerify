@@ -27,6 +27,8 @@ export const isFetchingRuleset = (state: RootState) =>
   state.app.fetchingRuleset;
 export const isFetchingRulesetError = (state: RootState) =>
   state.app.fetchingRulesetError;
+export const getFetchingRulesetErrorReason = (state: RootState) =>
+  state.app.fetchingRulesetErrorReason;
 export const isFetchingRulesetSuccess = (state: RootState) =>
   state.app.fetchingRulesetSuccess;
 export const isManualUpdate = (state: RootState) => state.app.manualUpdate;
@@ -37,4 +39,13 @@ export const getAppUpdateSetting = (state: RootState) =>
   state.app.appUpdateSetting;
 export const getTermsOfUse = (state: RootState) => {
   return state.app.ruleJson?.termsOfUse;
+};
+export const acceptedTermsAtLeastVersion = (
+  state: RootState,
+  version: number,
+): boolean => {
+  return (
+    !!state.app.termsAcceptedVersion &&
+    state.app.termsAcceptedVersion >= version
+  );
 };

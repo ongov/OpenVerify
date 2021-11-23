@@ -12,7 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1E038722092149F1B8E7B057 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CF5C060D8A44F31B26A38B5 /* OpenSans-Bold.ttf */; };
-		571662FF45DE41B9A23F5A83 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECD1FDD8B8749CF8752DE8C /* OpenSans.ttf */; };
+		571662FF45DE41B9A23F5A83 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECD1FDD8B8749CF8752DE8C /* OpenSans-Regular.ttf */; };
 		5B159A7C272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
 		5B159A7D272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
 		5B1D6C9426FE4335004549C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B1D6C9726FE4335004549C9 /* InfoPlist.strings */; };
@@ -77,7 +77,7 @@
 		D00AAFFCFCFDA5787532823F /* Pods-OpenVerify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenVerify.release.xcconfig"; path = "Target Support Files/Pods-OpenVerify/Pods-OpenVerify.release.xcconfig"; sourceTree = "<group>"; };
 		D5407DC75FE09DDCC93DD6F0 /* Pods-main-OpenVerifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-main-OpenVerifyTests.debug.xcconfig"; path = "Target Support Files/Pods-main-OpenVerifyTests/Pods-main-OpenVerifyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EECD1FDD8B8749CF8752DE8C /* OpenSans.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OpenSans.ttf; path = ../src/assets/fonts/OpenSans.ttf; sourceTree = "<group>"; };
+		EECD1FDD8B8749CF8752DE8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 				4CF5C060D8A44F31B26A38B5 /* OpenSans-Bold.ttf */,
 				9E5D869C6B0D466AB4D17429 /* OpenSans-Italic.ttf */,
 				3368CEFAD07548AFA0D005DD /* OpenSans-Semibold.ttf */,
-				EECD1FDD8B8749CF8752DE8C /* OpenSans.ttf */,
+				EECD1FDD8B8749CF8752DE8C /* OpenSans-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 				5B4FFE9A26FAC1C800F7AACC /* BuildFile in Resources */,
 				CABF07303C23452D8FF48FAB /* OpenSans-Italic.ttf in Resources */,
 				5CA9337DB6FF410BB1DBFD62 /* OpenSans-Semibold.ttf in Resources */,
-				571662FF45DE41B9A23F5A83 /* OpenSans.ttf in Resources */,
+				571662FF45DE41B9A23F5A83 /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -622,7 +622,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

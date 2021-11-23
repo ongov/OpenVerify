@@ -77,7 +77,7 @@ function flattenQRCode(qrCode: SHCJWTPayload) {
 
 export function applyRules(ruleJson: Ruleset, qrCode: SHCJWTPayload) {
   const qrCodeFlatten: any = flattenQRCode(qrCode);
-  const rules: [Rule] = ruleJson?.ruleset ?? [];
+  const rules: Rule[] = ruleJson?.ruleset ?? [];
   let verified = false;
 
   // Go through all available ruleset in the json

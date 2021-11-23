@@ -24,6 +24,8 @@
       "UpdateSuccessSubtitle": "The verifier rules have been successfully updated.",
       "UpdateFailedTitle": "Error: Connection required",
       "UpdateFailedSubtitle": "Please check your internet connection.",
+      "UpdateFailedSignatureTitle": "Error: Update Failed",
+      "UpdateFailedSignatureSubtitle": "Please check your internet connection.",
       "ConnectForUpdates": "Connect for updates",
       "ContinueWithoutConnecting": "Continue without connecting"
     },
@@ -40,6 +42,9 @@
       "SwitchCamera": "Switch Camera",
       "SwitchToBackCamera": "Switch to back camera",
       "SwitchToFrontCamera": "Switch to front camera"
+    },
+    "TermsUpdate": {
+      "Title": "Changes to Terms of Use and Privacy Statement"
     }
   },
   "Onboarding": {

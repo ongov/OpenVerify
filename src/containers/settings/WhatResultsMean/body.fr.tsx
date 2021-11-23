@@ -30,6 +30,7 @@ import {
   SuccessResult,
   WarningResult,
   ErrorResult,
+  TimeoutResult,
 } from 'components/results/result';
 import useTelLink from 'utils/useTelLink';
 import openURL from 'utils/openURL';
@@ -54,8 +55,8 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           </LI>
         </UL>
         <P>
-          Lorsque l’application numérise un code QR, il y a trois résultats
-          possibles{'\u00a0'}:
+          Lorsque l’application numérise un code QR, il y a <B>trois</B>{' '}
+          résultats possibles ou le numériseur cesse de fonctionner{'\u00a0'}:
         </P>
         <UL>
           <LI>Vérifié</LI>
@@ -75,6 +76,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <ResultDescription>
         <P>Par exemple, le code QR peut être{'\u00a0'}:</P>
         <UL>
+          <LI>délivrée à un enfant de moins de 12 ans</LI>
           <LI>
             délivré par une province, un territoire ou un pays qui utilise un
             autre type de code QR
@@ -85,21 +87,9 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           </LI>
         </UL>
         <P>
-          Le personnel peut nettoyer l'objectif de son appareil photo et essayer
-          de numériser à nouveau.
-        </P>
-        <P>Proposez aux visiteurs de{'\u00a0'}:</P>
-        <UL>
-          <LI>augmenter la luminosité de l’écran</LI>
-          <LI>
-            rapprocher l’image pour que le code QR occupe la totalité de l’écran
-          </LI>
-          <LI>éviter de saisir leur code QR dans un angle</LI>
-          <LI>tenir leur code QR de manière stable et à une courte distance</LI>
-        </UL>
-        <P>
-          Le personnel peut également examiner le certificat papier et une pièce
-          d'identité de la personne.
+          Le personnel peut examiner le certificat papier et une pièce
+          d'identité de la personne. Les enfants de moins de 12 ans peuvent
+          entrer, ils n’ont pas à fournir de preuve de vaccination.
         </P>
         <P>
           Pour plus d’aide, visitez le site{' '}
@@ -121,15 +111,15 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
               openURL(
                 'https://www.ontario.ca/aide-preuve-vaccination',
                 true,
-                'Composer le ontario.ca/aide-preuve-vaccination',
+                'Visitez le site ontario.ca/aide-preuve-vaccination',
               )
             }>
-            Composer le ontario.ca/aide-preuve-vaccination
+            Visitez le site ontario.ca/aide-preuve-vaccination
           </Button>
         )}
       </ResultDescription>
       <ErrorResult />
-      <ResultDescriptionLast>
+      <ResultDescription>
         <P>
           Le certificat ou le code{' '}
           <B>ne répond pas aux exigences actuelles de l’Ontario</B>.
@@ -137,13 +127,22 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
         <P>Le personnel peut{'\u00a0'}:</P>
         <UL>
           <LI>
-            avertir la personne que ce certificat <B>ne peut pas</B> être
-            utilisé pour entrer au site
+            informez le visiteur que ce certificat <B>ne peut pas</B> être
+            accepté pour entrer
           </LI>
           <LI>
-            demander à la personne si elle a une version plus récente de son
-            certificat de vaccination émis par le gouvernement pour essayer de
-            le numériser
+            le code QR peut indiquer que{' '}
+            <B>le visiteur n’a reçu qu’une seule dose du vaccin</B>
+          </LI>
+          <LI>
+            il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
+            visiteur a reçu sa seconde dose
+          </LI>
+          <LI>
+            informez le visiteur que s’il a reçu sa seconde dose et qu’il s’est
+            écoulé 14 jours,{' '}
+            <B>il doit télécharger sa preuve la plus récente</B> sous forme de
+            code QR
           </LI>
           <LI>
             réacheminer la personne vers{' '}
@@ -175,6 +174,19 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             )}{' '}
           </LI>
         </UL>
+        {screenReaderEnabled && (
+          <Button
+            buttonType="secondary"
+            onPress={() =>
+              openURL(
+                'https://www.ontario.ca/verif-resultats',
+                true,
+                'Visitez le site ontario.ca/verif-resultats',
+              )
+            }>
+            Visitez le site ontario.ca/verif-resultats
+          </Button>
+        )}
         {telLink && screenReaderEnabled && (
           <Button
             buttonType="secondary"
@@ -189,6 +201,31 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             Composer le 1-833-943-3900
           </Button>
         )}
+      </ResultDescription>
+      <TimeoutResult />
+      <ResultDescriptionLast>
+        <P>
+          <B>La caméra n’a pas pu trouver le code QR.</B>
+        </P>
+        <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+        <UL>
+          <LI>essuyez l’objectif de la caméra</LI>
+          <LI>allumez ou éteignez la lampe de poche</LI>
+          <LI>
+            si le code QR est imprimé sur papier, essayez d’aplatir le papier
+          </LI>
+          <LI>
+            si le code QR est affiché sur un appareil, augmentez la luminosité
+            de l'écran de l'appareil
+          </LI>
+          <LI>assurez-vous que la lumière ne se reflète pas sur le code QR</LI>
+          <LI>essayez de le numériser à nouveau</LI>
+        </UL>
+        <P>
+          Si le numériseur s’arrête encore, vérifiez le certificat de
+          vaccination papier ou numérique délivré par le gouvernement ainsi
+          qu’une pièce d’identité du visiteur.
+        </P>
       </ResultDescriptionLast>
     </>
   );

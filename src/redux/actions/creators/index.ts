@@ -18,13 +18,13 @@ import {Ruleset, AppUpdateSetting} from 'utils/types';
 import {
   ONBOARD_USER,
   SELECT_LANGUAGE,
-  SYSTEM_LANGUAGE,
   SET_VISUAL_APPEARANCE,
   SET_MANUAL_UPDATE,
   SET_APP_UPDATE_SETTING,
   FETCH_RULESET_REQUEST,
   FETCH_RULESET_SUCCESS,
   FETCH_RULESET_FAILURE,
+  ACCEPT_TERMS,
 } from '../types';
 
 export function onboardUser(onboard: boolean) {
@@ -45,12 +45,6 @@ export function setVisualAppearance(appearance: string) {
   return {
     type: SET_VISUAL_APPEARANCE,
     payload: appearance,
-  };
-}
-
-export function systemLanguage() {
-  return {
-    type: SYSTEM_LANGUAGE,
   };
 }
 
@@ -87,8 +81,16 @@ export function fetchRulesetSuccess(
   };
 }
 
-export function fetchRulesetFailure() {
+export function fetchRulesetFailure(reason: 'signature' | 'network') {
   return {
     type: FETCH_RULESET_FAILURE,
+    payload: reason,
+  };
+}
+
+export function acceptTerms(version: number) {
+  return {
+    type: ACCEPT_TERMS,
+    payload: version,
   };
 }

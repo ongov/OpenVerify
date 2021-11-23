@@ -51,7 +51,7 @@
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-Italic.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
-		<string>OpenSans.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>BootSplash</string>

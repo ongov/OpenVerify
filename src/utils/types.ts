@@ -17,14 +17,15 @@ import jsonLogic from 'json-logic-js';
 import {TrustedIssuersJWKS} from '../services/QRCodeValidator/lib/models/TrustedIssuersJWKS';
 
 export interface Ruleset {
-  name: string;
-  date: string;
-  termsOfUse: {
+  name?: string;
+  date?: string;
+  termsOfUse?: {
     en: [string];
     fr: [string];
   };
-  ruleset: [Rule];
-  publicKeys: TrustedIssuersJWKS;
+  minimumVersion?: AppUpdateSetting;
+  ruleset?: [Rule];
+  publicKeys?: TrustedIssuersJWKS;
 }
 
 export interface Rule {
@@ -37,6 +38,6 @@ export interface Rule {
 }
 
 export interface AppUpdateSetting {
-  minimumMandatoryVersion: string;
-  effectiveDate: string;
+  minimumMandatoryVersion?: string;
+  effectiveDate?: string;
 }

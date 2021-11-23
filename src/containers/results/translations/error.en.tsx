@@ -50,7 +50,7 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
           vaccine certificate with official QR code
         </LI>
         <LI>
-          redirect a visitor to{' '}
+          redirect the visitor to{' '}
           <LinkText
             onPress={() => {
               openURL(

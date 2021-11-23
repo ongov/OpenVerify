@@ -24,6 +24,7 @@ import {
   getLastUpdated,
   getLastCheckedForUpdate,
   getAppUpdateSetting,
+  acceptedTermsAtLeastVersion,
 } from 'redux/selectors';
 
 import {userHasEnabledCameraPermission} from 'utils/camera';
@@ -49,6 +50,8 @@ import {
   ErrorSmallImage,
   WarningSmallImage,
 } from './styles';
+import {RootState} from 'redux/store';
+import {TERMS_VERSION} from 'config/constants';
 
 type Props = NativeStackScreenProps<NavigatorParamList, routes.Home.HomeScreen>;
 
@@ -58,12 +61,17 @@ const HomeScreen: FC<Props> = ({navigation}) => {
   const lastUpdated = useSelector(getLastUpdated);
   const appUpdateSetting = useSelector(getAppUpdateSetting);
   const lastCheckedForUpdate = useSelector(getLastCheckedForUpdate);
-
-  const yellowWarning = showYellowWarning(lastUpdated);
-  const redWarning = showRedWarning(lastUpdated);
+  const showTermsUpdate = useSelector(
+    (state: RootState) => !acceptedTermsAtLeastVersion(state, TERMS_VERSION),
+  );
+  const yellowWarning = lastUpdated ? showYellowWarning(lastUpdated) : false;
+  const redWarning = lastUpdated ? showRedWarning(lastUpdated) : false;
 
   useFocusEffect(() => {
-    if (allowRulesUpdate(lastCheckedForUpdate)) {
+    if (
+      lastCheckedForUpdate === undefined ||
+      allowRulesUpdate(lastCheckedForUpdate)
+    ) {
       dispatch(setManualUpdate(false));
       dispatch(fetchRulesAndAppVersion);
     }
@@ -80,14 +88,21 @@ const HomeScreen: FC<Props> = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    if (isExpired(lastUpdated)) {
+    if (showTermsUpdate) {
+      setTimeout(() => {
+        navigation.reset({
+          index: 0,
+          routes: [{name: routes.Home.TermsUpdate}],
+        });
+      }, 100);
+    } else if (lastUpdated && isExpired(lastUpdated)) {
       setTimeout(() => {
         navigation.reset({
           index: 0,
           routes: [{name: routes.Home.Update}],
         });
       }, 100);
-    } else if (isDateTampered(lastUpdated)) {
+    } else if (lastUpdated && isDateTampered(lastUpdated)) {
       setTimeout(() => {
         navigation.reset({
           index: 0,
@@ -102,7 +117,7 @@ const HomeScreen: FC<Props> = ({navigation}) => {
         });
       }, 100);
     }
-  }, [appUpdateSetting, lastUpdated, navigation]);
+  }, [showTermsUpdate, appUpdateSetting, lastUpdated, navigation]);
 
   const onPressCheckVaccinationStatus = async () => {
     const userEnabledCamera: Boolean = await userHasEnabledCameraPermission(

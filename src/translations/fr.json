@@ -21,8 +21,10 @@
       "CheckingForUpdate": "Vérification des mises à jour…",
       "UpdateSuccessTitle": "Réglages du vérificateur mis à jour",
       "UpdateSuccessSubtitle": "Les réglages du vérificateur ont été mis à jour avec succès.",
-      "UpdateFailedTitle": "Erreur: la connexion n’a pas pu être établie",
+      "UpdateFailedTitle": "Erreur\u00a0: la connexion n’a pas pu être établie",
       "UpdateFailedSubtitle": "Veuillez vérifier votre connexion Internet.",
+      "UpdateFailedSignatureTitle": "Erreur\u00a0: échec de la mise à jour",
+      "UpdateFailedSignatureSubtitle": "Veuillez vérifier votre connexion Internet.",
       "ConnectForUpdates": "Connexion pour les mises à jour",
       "ContinueWithoutConnecting": "Continuer sans se connecter"
     },
@@ -39,6 +41,9 @@
       "SwitchCamera": "Changer de caméra",
       "SwitchToBackCamera": "Basculer vers la caméra arrière",
       "SwitchToFrontCamera": "Basculer vers la caméra avant"
+    },
+    "TermsUpdate": {
+      "Title": "Modifications aux conditions d’utilisation et à la déclaration de confidentialité"
     }
   },
   "Onboarding": {

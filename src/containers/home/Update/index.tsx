@@ -64,10 +64,13 @@ const Update: FC<Props> = ({navigation}) => {
     setTimeout(setFocus, 100);
   });
 
-  const expired = isExpired(lastUpdated);
-  const redWarning = showRedWarning(lastUpdated);
-  const yellowWarning = showYellowWarning(lastUpdated);
-  const updatedAgo = getRulesUpdatedAgo(lastUpdated);
+  const expired = lastUpdated !== undefined ? isExpired(lastUpdated) : false;
+  const redWarning =
+    lastUpdated !== undefined ? showRedWarning(lastUpdated) : false;
+  const yellowWarning =
+    lastUpdated !== undefined ? showYellowWarning(lastUpdated) : false;
+  const updatedAgo =
+    lastUpdated !== undefined ? getRulesUpdatedAgo(lastUpdated) : 0;
   const daysLeft = EXPIRED_INTERVAL - updatedAgo;
 
   useEffect(() => {

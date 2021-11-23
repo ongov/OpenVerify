@@ -103,6 +103,13 @@ const HomeNavigation: FC = () => {
         name={routes.Home.DateTamper}
         component={HomeScreens.DateTamper}
       />
+      <Stack.Screen
+        options={{
+          header: () => <Logo />,
+        }}
+        name={routes.Home.TermsUpdate}
+        component={HomeScreens.TermsUpdate}
+      />
     </Stack.Navigator>
   );
 };

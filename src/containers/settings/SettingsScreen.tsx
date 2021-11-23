@@ -63,8 +63,10 @@ const SettingsScreen: FC<Props> = () => {
   const lastUpdated = useSelector(getLastUpdated);
   const dispatch = useDispatch();
 
-  const yellowWarning = showYellowWarning(lastUpdated);
-  const redWarning = showRedWarning(lastUpdated);
+  const yellowWarning =
+    lastUpdated !== undefined ? showYellowWarning(lastUpdated) : false;
+  const redWarning =
+    lastUpdated !== undefined ? showRedWarning(lastUpdated) : false;
 
   return (
     <MainContainer>
