@@ -21,6 +21,7 @@ export enum Home {
   DateTamper = 'Home/DateTamper',
   Scanner = 'Home/Scanner',
   CameraPermission = 'Home/CameraPermission',
+  TermsUpdate = 'Home/TermsUpdate',
 }
 
 export enum Common {

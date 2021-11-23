@@ -14,42 +14,26 @@
    limitations under the License.
 */
 import React, {FC} from 'react';
-import {useSelector} from 'react-redux';
 import {LinkText, P, UL, LI} from 'containers/settings/styles';
 import openURL from 'utils/openURL';
 import {useTranslation} from 'translations/i18n';
-import {getTermsOfUse} from 'redux/selectors';
 
-const TERMS_OF_USE = [
-  'The App is provided on an “as is” basis and you are solely responsible for determining the appropriateness of using this App.',
-  'The Ontario government does not warrant or guarantee the accuracy of results from the App and assumes no cost or liability associated with the use of this App.',
-  'You must not use the App to retain, record, copy, modify, use or disclose any information provided. This would include taking photos, videos, screen captures and screen recordings of any such information.',
-  'You must not use the App to impersonate any other person or entity.',
-  'You are responsible for the security of the device, browser, and network you use to access the App.',
-  'The Terms of Use may be updated at any time. If the Terms of Use are updated, you will need to confirm that you have read and understood the modified Terms of Use and agree to be bound by them.',
-];
-
-const BodyEn: FC = () => {
+const BodyFr: FC = () => {
   const I18n = useTranslation();
-  const termsOfUse = useSelector(getTermsOfUse);
-  const termsOfUseValue =
-    termsOfUse?.en && termsOfUse?.en.length > 0 ? termsOfUse?.en : TERMS_OF_USE;
 
   return (
     <>
       <P>
-        By using this App, you agree to the terms below and included in the
-        embedded links.
+        Les conditions d’utilisation et la déclaration de confidentialité ont
+        été mises à jour afin de clarifier{'\u00a0'}:
       </P>
-
       <UL>
-        {termsOfUseValue.map((text: string, idx: number) => {
-          return <LI key={idx}>{text}</LI>;
-        })}
+        <LI>le bon usage de l’application</LI>
+        <LI>le type de renseignements recueillis par l’application</LI>
       </UL>
 
       <P>
-        Please read the full{' '}
+        Veuillez lire l’intégralité des{' '}
         <LinkText
           onPress={() => {
             openURL(
@@ -60,7 +44,7 @@ const BodyEn: FC = () => {
           }}>
           {I18n.t('Onboarding.Terms.TermsOfUse')}
         </LinkText>{' '}
-        and{' '}
+        et la{' '}
         <LinkText
           onPress={() => {
             openURL(
@@ -71,9 +55,9 @@ const BodyEn: FC = () => {
           }}>
           {I18n.t('Onboarding.Terms.Privacy')}
         </LinkText>{' '}
-        before you use the App.
+        avant d’utiliser l’application.
       </P>
     </>
   );
 };
-export default BodyEn;
+export default BodyFr;

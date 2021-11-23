@@ -30,6 +30,7 @@ import {
   SuccessResult,
   WarningResult,
   ErrorResult,
+  TimeoutResult,
 } from 'components/results/result';
 import useTelLink from 'utils/useTelLink';
 import openURL from 'utils/openURL';
@@ -50,7 +51,10 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
         <UL>
           <LI>a visitor’s QR code meets the Ontario requirements for entry</LI>
         </UL>
-        <P>When the app scans a QR code, there are 3 possible results:</P>
+        <P>
+          When the app scans a QR code, there are <B>3</B> possible results or
+          the scanner times out:
+        </P>
         <UL>
           <LI>Verified</LI>
           <LI>There is a problem (includes third-party certificates)</LI>
@@ -68,6 +72,7 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
       <ResultDescription>
         <P>For example, the QR code may be:</P>
         <UL>
+          <LI>issued to a child under age 12</LI>
           <LI>
             issued by a province, territory or country that uses a different
             type of QR code
@@ -77,17 +82,10 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             Ontario
           </LI>
         </UL>
-        <P>Staff can wipe their camera’s lens and try to scan again.</P>
-        <P>Ask visitors to:</P>
-        <UL>
-          <LI>increase their screen brightness</LI>
-          <LI>zoom in so the QR code takes up their whole screen</LI>
-          <LI>avoid holding their QR code on an angle</LI>
-          <LI>hold their QR code steady and at a short distance</LI>
-        </UL>
         <P>
-          Staff can also review the person’s paper certificate and a piece of
-          identification instead.
+          Staff can review the person’s paper certificate and a piece of
+          identification instead. Children under age 12 can be allowed entry,
+          they do not have to show proof of vaccination.
         </P>
         <P>
           For more help, visit{' '}
@@ -117,7 +115,7 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
         )}
       </ResultDescription>
       <ErrorResult />
-      <ResultDescriptionLast>
+      <ResultDescription>
         <P>
           This vaccine certificate <B>does not meet the Ontario requirements</B>{' '}
           for entry.
@@ -129,11 +127,19 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             entry
           </LI>
           <LI>
-            ask if the visitor has a newer version of their government-issued
-            vaccine certificate to try
+            the QR code may indicate <B>the visitor has only one vaccination</B>
           </LI>
           <LI>
-            redirect a visitor to{' '}
+            <B>14 days</B> may have <B>not passed</B> since the visitor got
+            their second dose
+          </LI>
+          <LI>
+            let the visitor know that if they have had a second dose and 14 days
+            have passed, they should <B>download their most recent</B> enhanced
+            vaccine certificate with official QR code
+          </LI>
+          <LI>
+            redirect the visitor to{' '}
             <LinkText
               onPress={() => {
                 openURL(
@@ -162,6 +168,19 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             )}
           </LI>
         </UL>
+        {screenReaderEnabled && (
+          <Button
+            buttonType="secondary"
+            onPress={() =>
+              openURL(
+                'https://www.ontario.ca/verify-results',
+                true,
+                'Visit ontario.ca/verify-results',
+              )
+            }>
+            Visit ontario.ca/verify-results
+          </Button>
+        )}
         {telLink && screenReaderEnabled && (
           <Button
             buttonType="secondary"
@@ -176,6 +195,29 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             Call 1-833-943-3900
           </Button>
         )}
+      </ResultDescription>
+      <TimeoutResult />
+      <ResultDescriptionLast>
+        <P>
+          <B>The device’s camera could not find a QR code.</B>
+        </P>
+        <P>What to do next:</P>
+        <UL>
+          <LI>wipe the camera lens</LI>
+          <LI>turn the flashlight on or off</LI>
+          <LI>if the QR code is printed on paper, try to flatten the paper</LI>
+          <LI>
+            if the QR code is on a device, turn up the brightness of the
+            device’s screen
+          </LI>
+          <LI>make sure light is not reflecting on the QR code</LI>
+          <LI>try to scan again</LI>
+        </UL>
+        <P>
+          If the scanner continues to time out, review the visitor’s
+          government-issued paper or digital vaccine certificate and a piece of
+          identification.
+        </P>
       </ResultDescriptionLast>
     </>
   );

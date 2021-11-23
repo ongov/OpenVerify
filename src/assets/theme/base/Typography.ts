@@ -18,7 +18,7 @@ export const Typography = {
     ralewayBold: 'raleway-modified-bold',
     ralewayRegular: 'raleway-modified-regular',
     ralewaySemiBold: 'raleway-modified-semibold',
-    openSansRegular: 'OpenSans',
+    openSansRegular: 'OpenSans-Regular',
     openSansSemiBold: 'OpenSans-Semibold',
     openSansItalic: 'OpenSans-Italic',
     openSansBold: 'OpenSans-Bold',

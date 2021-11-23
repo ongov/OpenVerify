@@ -21,6 +21,7 @@ import decodeQR, {
 import {TrustedIssuersJWKS} from './models/TrustedIssuersJWKS';
 import {readFile} from 'fs/promises';
 import {resolve} from 'path';
+import {Settings} from 'luxon';
 
 const trustedKeys: TrustedIssuersJWKS =
   require('../../../__mocks__/ruleset.json').publicKeys;
@@ -140,6 +141,12 @@ describe('validateJWSPayload', () => {
       'https://spec.smarthealth.cards/examples/issuer',
     ]);
   });
+  test('Cards: valid 00 JWS payload expanded with relative resource', async () => {
+    await shouldBeValidJWSPayload(
+      'test-example-00-b-jws-payload-expanded-relative-resource.json',
+      ['https://spec.smarthealth.cards/examples/issuer'],
+    );
+  });
   test('Cards: valid 01 JWS payload expanded', async () => {
     await shouldBeValidJWSPayload('example-01-b-jws-payload-expanded.json', [
       'https://spec.smarthealth.cards/examples/issuer',
@@ -232,6 +239,26 @@ describe('validFHIRBundleOrThrow', () => {
 
   test('Cards: valid 01 FHIR bundle', async () => {
     await shouldBeValidFHIRBundle('example-01-a-fhirBundle.json');
+  });
+
+  test('Cards: invalid - under 12', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(1963, 0, 19).valueOf(); // 12 years old tomorrow
+    await shouldBeInvalidFHIRBundle(
+      'example-00-a-fhirBundle.json',
+      'under 12 - not yet supported, show yellow to hide PII',
+    );
+    Settings.now = oldNow;
+  });
+
+  test('Cards: valid - just turned 12', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(1963, 0, 20).valueOf(); // 12 years old today
+    await shouldBeInvalidFHIRBundle(
+      'example-00-a-fhirBundle.json',
+      'under 12 - not yet supported, show yellow to hide PII',
+    );
+    Settings.now = oldNow;
   });
 
   test('Cards: invalid 02 FHIR bundle', async () => {

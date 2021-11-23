@@ -35,6 +35,7 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </TitleText>
       <P>For example, the QR code may be:</P>
       <UL>
+        <LI>issued to a child under age 12</LI>
         <LI>
           issued by a province, territory or country that uses a different type
           of QR code
@@ -46,6 +47,10 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </UL>
       <P>What to do next:</P>
       <UL>
+        <LI>
+          allow children under age 12 entry, they do not have to show proof of
+          vaccination
+        </LI>
         <LI>
           review the visitor’s government-issued paper or digital vaccine
           certificate and a piece of identification

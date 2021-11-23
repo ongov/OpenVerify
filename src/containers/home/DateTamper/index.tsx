@@ -49,7 +49,7 @@ const DateTamper: FC<Props> = ({navigation}) => {
   });
 
   useEffect(() => {
-    if (!isDateTampered(lastUpdated)) {
+    if (lastUpdated === undefined || !isDateTampered(lastUpdated)) {
       setTimeout(() => {
         navigation?.reset({
           index: 0,

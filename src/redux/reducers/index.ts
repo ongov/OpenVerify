@@ -19,45 +19,45 @@ import {AppUpdateSetting, Ruleset} from 'utils/types';
 import {
   ONBOARD_USER,
   SELECT_LANGUAGE,
-  SYSTEM_LANGUAGE,
   SET_VISUAL_APPEARANCE,
   SET_MANUAL_UPDATE,
   SET_APP_UPDATE_SETTING,
   FETCH_RULESET_REQUEST,
   FETCH_RULESET_SUCCESS,
   FETCH_RULESET_FAILURE,
+  ACCEPT_TERMS,
 } from '../actions/types';
 
-interface State {
+export interface State {
   onboard: boolean;
   language: 'en' | 'fr' | undefined;
   appearance: 'system' | 'light' | 'dark';
-  cameraPermission: boolean;
   manualUpdate: boolean;
   fetchingRuleset: boolean;
   fetchingRulesetSuccess: boolean;
   fetchingRulesetError: boolean;
-  ruleJson: Ruleset | object;
+  fetchingRulesetErrorReason: 'signature' | 'network' | undefined;
+  ruleJson: Ruleset;
   ruleJsonTimestamp: string | undefined;
-  appUpdateSetting: AppUpdateSetting | object;
+  appUpdateSetting: AppUpdateSetting;
   lastCheckedForUpdate: string | undefined;
-  termsAccepted: boolean;
+  termsAcceptedVersion: number | undefined;
 }
 
-const initialState: State = {
+export const initialState: State = {
   onboard: true,
   language: undefined,
   appearance: 'system',
-  cameraPermission: false,
   manualUpdate: false,
   fetchingRuleset: false,
   fetchingRulesetSuccess: false,
   fetchingRulesetError: false,
+  fetchingRulesetErrorReason: undefined,
   ruleJson: {},
   ruleJsonTimestamp: undefined,
   appUpdateSetting: {},
   lastCheckedForUpdate: undefined,
-  termsAccepted: false,
+  termsAcceptedVersion: undefined,
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -71,11 +71,6 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         language: action.payload,
-      };
-    case SYSTEM_LANGUAGE:
-      return {
-        ...state,
-        language: undefined,
       };
     case SET_VISUAL_APPEARANCE:
       return {
@@ -97,6 +92,7 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         fetchingRuleset: true,
         fetchingRulesetError: false,
+        fetchingRulesetErrorReason: undefined,
         fetchingRulesetSuccess: false,
         lastCheckedForUpdate: DateTime.now().toISO(),
       };
@@ -105,6 +101,7 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         fetchingRuleset: false,
         fetchingRulesetError: false,
+        fetchingRulesetErrorReason: undefined,
         fetchingRulesetSuccess: true,
         ...action.payload,
       };
@@ -113,7 +110,13 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         fetchingRuleset: false,
         fetchingRulesetError: true,
+        fetchingRulesetErrorReason: action.payload,
         fetchingRulesetSuccess: false,
+      };
+    case ACCEPT_TERMS:
+      return {
+        ...state,
+        termsAcceptedVersion: action.payload,
       };
     default:
       return state;

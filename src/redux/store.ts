@@ -18,14 +18,16 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import reducer from './reducers/index';
+import reducer, {State} from './reducers/index';
 
 const rootReducer = combineReducers({app: reducer});
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
 };
-export type RootState = ReturnType<typeof rootReducer>;
+export interface RootState {
+  app: State;
+}
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

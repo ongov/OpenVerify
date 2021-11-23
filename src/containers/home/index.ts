@@ -18,3 +18,4 @@ export {default as Scanner} from './Scanner';
 export {default as Update} from './Update';
 export {default as AppUpdate} from './AppUpdate';
 export {default as DateTamper} from './DateTamper';
+export {default as TermsUpdate} from './TermsUpdate';

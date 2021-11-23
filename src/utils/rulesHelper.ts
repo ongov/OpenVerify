@@ -76,6 +76,9 @@ export function allowRulesUpdate(lastCheckedForUpdate: string) {
 }
 
 export function checkAppUpdate(appUpdateSetting: AppUpdateSetting) {
+  if (appUpdateSetting?.effectiveDate === undefined) {
+    return false;
+  }
   const {days} = DateTime.fromISO(appUpdateSetting?.effectiveDate)
     .diffNow(['days'])
     .toObject();

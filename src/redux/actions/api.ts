@@ -16,8 +16,7 @@
 import Config from 'react-native-config';
 import {DateTime} from 'luxon';
 import {Dispatch} from 'redux';
-import {LocalConfig} from '../../config/index';
-import {AppUpdateSetting, Ruleset} from 'utils/types';
+import {LocalConfig} from 'config/index';
 
 import {
   setAppUpdateSetting,
@@ -25,48 +24,28 @@ import {
   fetchRulesetSuccess,
   fetchRulesetFailure,
 } from './creators/index';
+import RulesetSignatureValidator from 'services/RulesetSignatureValidator';
 
 const API_URL = Config.API_URL ?? LocalConfig.API_URL;
 const RULES_FILE_PATH = Config.RULES_FILE_PATH ?? LocalConfig.RULES_FILE_PATH;
-const APP_VERSION_FILE_PATH =
-  Config.APP_VERSION_FILE_PATH ?? LocalConfig.APP_VERSION_FILE_PATH;
 const RULES_API = API_URL + RULES_FILE_PATH;
-const APP_VERSION_API = API_URL + APP_VERSION_FILE_PATH;
 
 export async function fetchRulesAndAppVersion(dispatch: Dispatch) {
   dispatch(fetchRulesetRequest());
 
-  await fetchAppVersion(dispatch);
-
-  await fetchRules(dispatch);
-}
-
-async function fetchAppVersion(dispatch: Dispatch) {
   try {
-    const response = await fetch(APP_VERSION_API, {
-      method: 'GET',
-      mode: 'no-cors',
-      headers: {
-        pragma: 'no-cache',
-        'cache-control': 'no-cache',
-      },
-    });
+    // eslint-disable-next-line no-undef
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-    if (response.status === 200) {
-      const data: AppUpdateSetting = await response.json();
+    const abortTimeout = setTimeout(() => {
+      controller.abort();
+      dispatch(fetchRulesetFailure('network'));
+      console.debug('Aborted network request.');
+    }, 5000);
 
-      if (data) {
-        return dispatch(setAppUpdateSetting(data));
-      }
-    }
-  } catch (e) {
-    // log error
-  }
-}
-
-async function fetchRules(dispatch: Dispatch) {
-  try {
     const response = await fetch(RULES_API, {
+      signal,
       method: 'GET',
       mode: 'no-cors',
       headers: {
@@ -75,11 +54,22 @@ async function fetchRules(dispatch: Dispatch) {
       },
     });
 
+    clearTimeout(abortTimeout);
+
     if (response.status === 200) {
-      const data: Ruleset = await response.json();
+      const jws: string = await response.text();
       const rulesetTimestamp = await response.headers.get('date');
 
-      if (data && rulesetTimestamp) {
+      let data;
+      try {
+        data = RulesetSignatureValidator(jws);
+      } catch (e) {
+        console.debug(e);
+        return dispatch(fetchRulesetFailure('signature'));
+      }
+
+      if (data && rulesetTimestamp && data.minimumVersion) {
+        dispatch(setAppUpdateSetting(data.minimumVersion));
         // Ignoring any timestamp remanant since we only care about days
         return dispatch(
           fetchRulesetSuccess(
@@ -89,9 +79,9 @@ async function fetchRules(dispatch: Dispatch) {
         );
       }
     }
-  } catch (e) {
-    // log error
-  }
 
-  return dispatch(fetchRulesetFailure());
+    return dispatch(fetchRulesetFailure('network'));
+  } catch (e) {
+    console.debug(e);
+  }
 }

@@ -120,14 +120,14 @@ const Scanner: FC<Props> = ({navigation}) => {
   }, []);
 
   useFocusEffect(() => {
-    if (isExpired(lastUpdated)) {
+    if (lastUpdated && isExpired(lastUpdated)) {
       setTimeout(() => {
         navigation.reset({
           index: 0,
           routes: [{name: routes.Home.Update}],
         });
       }, 100);
-    } else if (isDateTampered(lastUpdated)) {
+    } else if (lastUpdated && isDateTampered(lastUpdated)) {
       setTimeout(() => {
         navigation.reset({
           index: 0,
@@ -164,9 +164,27 @@ const Scanner: FC<Props> = ({navigation}) => {
   };
 
   const onReadQRCode = (data: BarCodeReadEvent) => {
+    if (ruleJson?.publicKeys === undefined) {
+      trackLogEvent(verifyEvent.VACCINE_SCAN, {
+        scan_result: 'error',
+      });
+      navigation.navigate(routes.Results.InvalidResult, {
+        response: {
+          valid: false,
+          thirdParty: false,
+          multi: null,
+        },
+      });
+      return;
+    }
     let response = qrValidator.validateQR(ruleJson?.publicKeys, data.data);
     //Only check for rules if the ruleJson has not expired
-    if (response.valid && response.complete && !isExpired(lastUpdated)) {
+    if (
+      response.valid &&
+      response.complete &&
+      lastUpdated &&
+      !isExpired(lastUpdated)
+    ) {
       let verified = applyRules(ruleJson, response.credential);
       if (verified) {
         playSound();

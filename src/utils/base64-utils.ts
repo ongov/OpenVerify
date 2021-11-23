@@ -17,6 +17,10 @@ import {atob} from 'abab';
 import {decode} from './base64-binary';
 import {utils} from 'elliptic';
 
+export function strToArrayOfBytes(str: string) {
+  return utils.toArray(str);
+}
+
 export function toHex(arr: ArrayBuffer) {
   return utils.toHex(arr).toUpperCase();
 }

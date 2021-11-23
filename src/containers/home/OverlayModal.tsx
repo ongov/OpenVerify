@@ -24,6 +24,7 @@ import {
   isManualUpdate,
   isFetchingRuleset,
   isFetchingRulesetError,
+  getFetchingRulesetErrorReason,
   isFetchingRulesetSuccess,
 } from 'redux/selectors';
 
@@ -45,6 +46,7 @@ const OverlayModal: FC = ({}) => {
   const manualUpdate = useSelector(isManualUpdate);
   const fetchingRuleset = useSelector(isFetchingRuleset);
   const fetchingRulesetError = useSelector(isFetchingRulesetError);
+  const fetchingRulesetErrorReason = useSelector(getFetchingRulesetErrorReason);
   const fetchingRulesetSuccess = useSelector(isFetchingRulesetSuccess);
 
   const showModal = manualUpdate && fetchingRuleset;
@@ -75,24 +77,27 @@ const OverlayModal: FC = ({}) => {
         );
       }
       if (fetchingRulesetError) {
-        Alert.alert(
-          I18n.t('Home.ConnectToInternet.UpdateFailedTitle'),
-          I18n.t('Home.ConnectToInternet.UpdateFailedSubtitle'),
-          [
-            {
-              text: I18n.t('BackToApp'),
-              onPress: () => dispatch(setManualUpdate(false)),
-              style: 'cancel',
+        const signatureError = fetchingRulesetErrorReason === 'signature';
+        const title = signatureError
+          ? I18n.t('Home.ConnectToInternet.UpdateFailedSignatureTitle')
+          : I18n.t('Home.ConnectToInternet.UpdateFailedTitle');
+        const subtitle = signatureError
+          ? I18n.t('Home.ConnectToInternet.UpdateFailedSignatureSubtitle')
+          : I18n.t('Home.ConnectToInternet.UpdateFailedSubtitle');
+        Alert.alert(title, subtitle, [
+          {
+            text: I18n.t('BackToApp'),
+            onPress: () => dispatch(setManualUpdate(false)),
+            style: 'cancel',
+          },
+          {
+            text: I18n.t('TryAgain'),
+            onPress: () => {
+              dispatch(setManualUpdate(true));
+              dispatch(fetchRulesAndAppVersion);
             },
-            {
-              text: I18n.t('TryAgain'),
-              onPress: () => {
-                dispatch(setManualUpdate(true));
-                dispatch(fetchRulesAndAppVersion);
-              },
-            },
-          ],
-        );
+          },
+        ]);
       }
     }
   }, [
@@ -100,6 +105,7 @@ const OverlayModal: FC = ({}) => {
     dispatch,
     fetchingRulesetSuccess,
     fetchingRulesetError,
+    fetchingRulesetErrorReason,
     manualUpdate,
     navigation,
   ]);
