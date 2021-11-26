@@ -24,7 +24,7 @@ import {VC, FhirBundle} from './models/VC';
 import {DateTime} from 'luxon';
 
 const ec = new EC('p256');
-const evenLengthDigitsRegex = /\d{2}/g;
+const evenLengthDigitsRegex = /^(\d{2})+$/g;
 
 interface decodeQRResult {
   credential: SHCJWTPayload;
