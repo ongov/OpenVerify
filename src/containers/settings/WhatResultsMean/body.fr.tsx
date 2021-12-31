@@ -79,7 +79,6 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <ResultDescription>
         <P>Par exemple, le code QR a pu être{'\u00a0'}:</P>
         <UL>
-          <LI>délivrée à un enfant de moins de 12 ans</LI>
           <LI>
             délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans
           </LI>

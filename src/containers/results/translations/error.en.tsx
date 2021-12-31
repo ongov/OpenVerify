@@ -47,15 +47,6 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
           an active medical exemption
         </LI>
         <LI>
-          <B>14 days</B> may have <B>not passed</B> since the visitor got their
-          second dose
-        </LI>
-        <LI>
-          let the visitor know that if they have had a second dose and 14 days
-          have passed, they should <B>download their most recent</B> enhanced
-          vaccine certificate with official QR code
-        </LI>
-        <LI>
           redirect the visitor to{' '}
           <LinkText
             onPress={() => {

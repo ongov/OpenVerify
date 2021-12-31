@@ -38,7 +38,6 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </TitleText>
       <P>For example, the QR code may be:</P>
       <UL>
-        <LI>issued to a child under age 12</LI>
         <LI>
           issued to a child under age 12 or turned 12 within the last 12 weeks
           (84 days)
