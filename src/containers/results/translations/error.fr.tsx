@@ -40,17 +40,13 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
           pour entrer
         </LI>
         <LI>
-          le code QR peut indiquer que{' '}
-          <B>le visiteur n’a reçu qu’une seule dose du vaccin</B>
-        </LI>
-        <LI>
-          il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
-          visiteur a reçu sa seconde dose
-        </LI>
-        <LI>
-          informez le visiteur que s’il a reçu sa seconde dose et qu’il s’est
-          écoulé 14 jours, <B>il doit télécharger sa preuve la plus récente</B>{' '}
-          sous forme de code QR
+          informez le visiteur qu’il doit{' '}
+          <B>
+            télécharger son certificat de vaccination amélioré le plus récent
+            avec le code QR officiel
+          </B>{' '}
+          s’il a été entièrement vacciné et qu’il s’est écoulé 14 jours ou s’ils
+          ont une exemption médicale valide
         </LI>
         <LI>
           réacheminez le visiteur vers{' '}
@@ -110,6 +106,19 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
           Composer le 1-833-943-3900
         </Button>
       )}
+      <P>Le code QR peut indiquer que{'\u00a0'}:</P>
+      <UL>
+        <LI>
+          le visiteur n’a reçu <B>qu’une seule dose du vaccin</B>
+        </LI>
+        <LI>
+          il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
+          visiteur a été entièrement vacciné
+        </LI>
+        <LI>
+          <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>
+        </LI>
+      </UL>
     </>
   );
 };

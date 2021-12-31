@@ -26,7 +26,7 @@ import {Settings} from 'luxon';
 const trustedKeys: TrustedIssuersJWKS =
   require('../../../__mocks__/ruleset.json').publicKeys;
 
-describe('decodeQRtoValidJWTPayload', () => {
+describe('decodeQR function', () => {
   test('Cards: valid 00 QR numeric', async () => {
     const numeric = (
       await readTestData('example-00-f-qr-code-numeric-value-0.txt')
@@ -47,19 +47,49 @@ describe('decodeQRtoValidJWTPayload', () => {
         ),
       )
     )
-      .map(n => n.substring(5))
+      .map(n => n.substring(9))
       .join('');
     expect(() => {
       decodeQR(trustedKeys, numeric);
     }).toThrow('invalid vc type (health-card & immunization required)');
   });
+  test('fail when passed 1 digit', () => {
+    expect(() => {
+      decodeQR(trustedKeys, '1');
+    }).toThrow('decodeQR received non-digits or an odd length of digits');
+  });
+  test('fail when passed 3 digits', () => {
+    expect(() => {
+      decodeQR(trustedKeys, '123');
+    }).toThrow('decodeQR received non-digits or an odd length of digits');
+  });
+  test('fail when passed non-digits', () => {
+    expect(() => {
+      decodeQR(trustedKeys, 'xyz');
+    }).toThrow('decodeQR received non-digits or an odd length of digits');
+  });
+  test('fail when passed both digits and non-digits', () => {
+    expect(() => {
+      decodeQR(trustedKeys, '12xy');
+    }).toThrow('decodeQR received non-digits or an odd length of digits');
+  });
+  test('fail when passed an empty string', () => {
+    expect(() => {
+      decodeQR(trustedKeys, '');
+    }).toThrow('decodeQR received non-digits or an odd length of digits');
+  });
 });
-describe('validateJWT', () => {
+describe('validateJWT function', () => {
   test('Cards: valid 00 JWS', async () => {
     await shouldBeValidJWT('example-00-d-jws.txt');
   });
   test('Cards: valid 01 JWS', async () => {
     await shouldBeValidJWT('example-01-d-jws.txt');
+  });
+  test('fail when passed invalid JWT', () => {
+    expect(() => {
+      validateJWT(trustedKeys, '');
+    }).toThrow('invalid JWT');
   });
   test('Cards: invalid 02 JWS', async () => {
     await shouldBeInvalidJWT(
@@ -131,11 +161,11 @@ describe('validateJWT', () => {
     const payload = await readTestData('example-00-d-jws.txt');
     const trustedIssuersJWKS = {};
     expect(() => {
-      validateJWT(payload, trustedIssuersJWKS);
+      validateJWT(trustedIssuersJWKS, payload);
     }).toThrow('key not found');
   });
 });
-describe('validateJWSPayload', () => {
+describe('validateJWSPayload function', () => {
   test('Cards: valid 00 JWS payload expanded', async () => {
     await shouldBeValidJWSPayload('example-00-b-jws-payload-expanded.json', [
       'https://spec.smarthealth.cards/examples/issuer',
@@ -231,8 +261,7 @@ describe('validateJWSPayload', () => {
     );
   });
 });
-
-describe('validFHIRBundleOrThrow', () => {
+describe('validateFHIRBundle function', () => {
   test('Cards: valid 00 FHIR bundle', async () => {
     await shouldBeValidFHIRBundle('example-00-a-fhirBundle.json');
   });
@@ -243,22 +272,162 @@ describe('validFHIRBundleOrThrow', () => {
 
   test('Cards: invalid - under 12', async () => {
     const oldNow = Settings.now;
-    Settings.now = () => new Date(1963, 0, 19).valueOf(); // 12 years old tomorrow
-    await shouldBeInvalidFHIRBundle(
-      'example-00-a-fhirBundle.json',
-      'under 12 - not yet supported, show yellow to hide PII',
-    );
-    Settings.now = oldNow;
+    Settings.now = () => new Date(2022, 0, 19).valueOf(); // 12 years old tomorrow
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010-01-20';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).toThrow('under 12 - show yellow to hide PII');
+    } finally {
+      Settings.now = oldNow;
+    }
   });
 
-  test('Cards: valid - just turned 12', async () => {
+  test('Cards: valid - 12 or over - just turned 12', async () => {
     const oldNow = Settings.now;
-    Settings.now = () => new Date(1963, 0, 20).valueOf(); // 12 years old today
-    await shouldBeInvalidFHIRBundle(
-      'example-00-a-fhirBundle.json',
-      'under 12 - not yet supported, show yellow to hide PII',
-    );
-    Settings.now = oldNow;
+    Settings.now = () => new Date(2022, 0, 20).valueOf(); // 12 years old today
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010-01-20';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: invalid - under 12 - just turned 12 in 2020 so no grace period', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2021, 11, 30).valueOf(); // 12 years old today
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2009-12-30';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).toThrow('under 12 - show yellow to hide PII');
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - over 12 - just turned 12 in 2020 so no grace period', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2021, 11, 31).valueOf(); // 12 years old today
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2009-12-30';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - 12 or over - only month given and turned 12 last month', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 1, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010-01';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - 12 or over - only month given and turned 12 this month', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 0, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010-01';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - under 12 - only month given and turning 12 next month', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 0, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010-02';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).toThrow('under 12 - show yellow to hide PII');
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - 12 or over - only year given and turned 12 this year', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 0, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2010';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - under 12 - only year given and turning 12 next year', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 0, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '2011';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).toThrow('under 12 - show yellow to hide PII');
+    } finally {
+      Settings.now = oldNow;
+    }
+  });
+
+  test('Cards: valid - assumed 12 or over - unexpected birthdate format', async () => {
+    const oldNow = Settings.now;
+    Settings.now = () => new Date(2022, 0, 1).valueOf();
+    try {
+      const payload = JSON.parse(
+        await readTestData('example-00-a-fhirBundle.json'),
+      );
+      payload.entry[0].resource.birthDate = '01-2010';
+      expect(() => {
+        validateFHIRBundle('', payload);
+      }).not.toThrow();
+    } finally {
+      Settings.now = oldNow;
+    }
   });
 
   test('Cards: invalid 02 FHIR bundle', async () => {
@@ -321,21 +490,21 @@ async function shouldBeValidJWT(
     await readTestData(trustedIssuersFilename),
   );
   expect(() => {
-    validateJWT(payload, trustedIssuersJWKS);
+    validateJWT(trustedIssuersJWKS, payload);
   }).not.toThrow();
 }
 
 async function shouldBeValidJWSPayload(filename: string, issuers: string[]) {
   const payload = JSON.parse(await readTestData(filename));
   expect(() => {
-    validateJWSPayload(payload, issuers);
+    validateJWSPayload(issuers, payload);
   }).not.toThrow();
 }
 
 async function shouldBeValidFHIRBundle(filename: string) {
   const payload = await readTestData(filename);
   expect(() => {
-    validateFHIRBundle(JSON.parse(payload), '');
+    validateFHIRBundle('', JSON.parse(payload));
   }).not.toThrow();
 }
 
@@ -349,7 +518,7 @@ async function shouldBeInvalidJWT(
     await readTestData(trustedIssuersFilename),
   );
   expect(() => {
-    validateJWT(payload, trustedIssuersJWKS);
+    validateJWT(trustedIssuersJWKS, payload);
   }).toThrow(error);
 }
 
@@ -360,7 +529,7 @@ async function shouldBeInvalidJWSPayload(
 ) {
   const payload = JSON.parse(await readTestData(filename));
   expect(() => {
-    validateJWSPayload(payload, issuers);
+    validateJWSPayload(issuers, payload);
   }).toThrow(error);
 }
 
@@ -370,7 +539,7 @@ async function shouldBeInvalidFHIRBundle(
 ) {
   const payload = await readTestData(filename);
   expect(() => {
-    validateFHIRBundle(JSON.parse(payload), '');
+    validateFHIRBundle('', JSON.parse(payload));
   }).toThrow(error);
 }
 

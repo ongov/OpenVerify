@@ -24,7 +24,10 @@ import {
 import {useSelector} from 'react-redux';
 import {RNCamera, BarCodeReadEvent, hasTorch} from 'react-native-camera';
 import {useFocusEffect} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import {NavigatorParamList} from 'navigation/HomeNavigation';
 
 import QRCodeScanner from 'components/scanner/QRCodeScanner';
@@ -34,8 +37,10 @@ import BeepSound from 'components/results/BeepSound';
 
 import QRCodeValidator from 'services/QRCodeValidator/QRCodeValidator';
 import {
+  CompleteSHC,
   InvalidQRCode,
   InvalidThirdPartyQRCode,
+  QRCodeResponse,
 } from 'services/QRCodeValidator/types';
 import {RootState} from 'redux/store';
 import {applyRules} from 'utils/validate';
@@ -63,6 +68,7 @@ import {
 
 import {trackLogEvent} from 'utils/analytics';
 import {verifyEvent} from 'config/analytics';
+import withinUnder12GracePeriod from 'utils/withinUnder12GracePeriod';
 
 type Props = NativeStackScreenProps<NavigatorParamList, routes.Home.Scanner>;
 
@@ -82,6 +88,61 @@ function playSound() {
   } catch (e) {
     console.debug(e);
   }
+}
+
+function showYellowScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  invalidResponse?: InvalidQRCode | InvalidThirdPartyQRCode,
+) {
+  if (invalidResponse?.thirdParty) {
+    trackLogEvent(verifyEvent.VACCINE_SCAN, {
+      scan_result: 'error_third_party',
+    });
+  } else {
+    trackLogEvent(verifyEvent.VACCINE_SCAN, {
+      scan_result: 'error',
+    });
+  }
+  navigation.navigate(routes.Results.InvalidResult, {
+    response: invalidResponse ?? {
+      valid: false,
+      thirdParty: false,
+      multi: null,
+    },
+  });
+}
+
+function showRedScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  response: QRCodeResponse,
+) {
+  trackLogEvent(verifyEvent.VACCINE_SCAN, {
+    scan_result: 'fail',
+  });
+  navigation.navigate(routes.Results.UnverifiedResult, {
+    response,
+  });
+}
+
+function showGreenScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  response: CompleteSHC,
+) {
+  trackLogEvent(verifyEvent.VACCINE_SCAN, {
+    scan_result: 'pass',
+  });
+  navigation.navigate(routes.Results.VerifiedResult, {
+    response,
+  });
 }
 
 const Scanner: FC<Props> = ({navigation}) => {
@@ -165,16 +226,7 @@ const Scanner: FC<Props> = ({navigation}) => {
 
   const onReadQRCode = (data: BarCodeReadEvent) => {
     if (ruleJson?.publicKeys === undefined) {
-      trackLogEvent(verifyEvent.VACCINE_SCAN, {
-        scan_result: 'error',
-      });
-      navigation.navigate(routes.Results.InvalidResult, {
-        response: {
-          valid: false,
-          thirdParty: false,
-          multi: null,
-        },
-      });
+      showYellowScreen(navigation);
       return;
     }
     let response = qrValidator.validateQR(ruleJson?.publicKeys, data.data);
@@ -185,40 +237,24 @@ const Scanner: FC<Props> = ({navigation}) => {
       lastUpdated &&
       !isExpired(lastUpdated)
     ) {
-      let verified = applyRules(ruleJson, response.credential);
+      const verified = applyRules(ruleJson, response.credential);
       if (verified) {
         playSound();
         vibrate();
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'pass',
-        });
-        navigation.navigate(routes.Results.VerifiedResult, {
-          response,
-        });
+        showGreenScreen(navigation, response);
       } else {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'fail',
-        });
-        vibrate(3);
-        navigation.navigate(routes.Results.UnverifiedResult, {
-          response,
-        });
+        if (withinUnder12GracePeriod(response.parsedBirthDate)) {
+          vibrate(2);
+          showYellowScreen(navigation);
+        } else {
+          vibrate(3);
+          showRedScreen(navigation, response);
+        }
       }
     } else {
       vibrate(2);
-      let invalidResponse = response as InvalidQRCode | InvalidThirdPartyQRCode;
-      if (invalidResponse?.thirdParty) {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'error_third_party',
-        });
-      } else {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'error',
-        });
-      }
-      navigation.navigate(routes.Results.InvalidResult, {
-        response: invalidResponse,
-      });
+      const invalidResponse = response.valid ? undefined : response;
+      showYellowScreen(navigation, invalidResponse);
     }
   };
 

@@ -35,6 +35,7 @@ import {
 import useTelLink from 'utils/useTelLink';
 import openURL from 'utils/openURL';
 import {trackLogEvent} from 'utils/analytics';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 import {verifyEvent} from 'config/analytics';
 
 interface Props {
@@ -43,6 +44,7 @@ interface Props {
 
 const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
 
   return (
     <>
@@ -72,20 +74,26 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
       <ResultDescription>
         <P>For example, the QR code may be:</P>
         <UL>
-          <LI>issued to a child under age 12</LI>
+          <LI>issued to a child under age 12 or recently turned 12</LI>
           <LI>
             issued by a province, territory or country that uses a different
             type of QR code
           </LI>
           <LI>
-            made by a third-party service not associated with the government of
+            made by a third-party service not associated with the Government of
             Ontario
           </LI>
         </UL>
+        {isPaperProofAllowed && (
+          <P>
+            Staff can review the visitor’s government-issued paper or digital
+            vaccine certificate and a piece of identification.
+          </P>
+        )}
         <P>
-          Staff can review the person’s paper certificate and a piece of
-          identification instead. Children under age 12 can be allowed entry,
-          they do not have to show proof of vaccination.
+          Children under age 12 or who were born in 2010 and are within 12 weeks
+          (84 days) of their birthday can be allowed entry, they do not have to
+          show proof of vaccination.
         </P>
         <P>
           For more help, visit{' '}
@@ -120,23 +128,19 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
           This vaccine certificate <B>does not meet the Ontario requirements</B>{' '}
           for entry.
         </P>
-        <P>Staff should:</P>
+        <P>Staff should let the visitor know:</P>
         <UL>
           <LI>
-            let the visitor know this certificate <B>can not</B> be accepted for
-            entry
+            this certificate <B>cannot</B> be accepted for entry
           </LI>
           <LI>
-            the QR code may indicate <B>the visitor has only one vaccination</B>
-          </LI>
-          <LI>
-            <B>14 days</B> may have <B>not passed</B> since the visitor got
-            their second dose
-          </LI>
-          <LI>
-            let the visitor know that if they have had a second dose and 14 days
-            have passed, they should <B>download their most recent</B> enhanced
-            vaccine certificate with official QR code
+            they should{' '}
+            <B>
+              download their most recent enhanced vaccine certificate with
+              official QR code
+            </B>{' '}
+            if they are fully vaccinated and 14 days have passed or if they have
+            an active medical exemption{' '}
           </LI>
           <LI>
             redirect the visitor to{' '}
@@ -195,6 +199,19 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             Call 1-833-943-3900
           </Button>
         )}
+        <P>The QR code may indicate:</P>
+        <UL>
+          <LI>
+            the visitor <B>only</B> has <B>one vaccination</B>
+          </LI>
+          <LI>
+            <B>14 days</B> may have <B>not passed</B> since the visitor was
+            fully vaccinated
+          </LI>
+          <LI>
+            the visitor’s <B>medical exemption</B> may have <B>expired</B>
+          </LI>
+        </UL>
       </ResultDescription>
       <TimeoutResult />
       <ResultDescriptionLast>
@@ -213,11 +230,13 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
           <LI>make sure light is not reflecting on the QR code</LI>
           <LI>try to scan again</LI>
         </UL>
-        <P>
-          If the scanner continues to time out, review the visitor’s
-          government-issued paper or digital vaccine certificate and a piece of
-          identification.
-        </P>
+        {isPaperProofAllowed && (
+          <P>
+            If the scanner continues to time out, review the visitor’s
+            government-issued paper or digital vaccine certificate and a piece
+            of identification.
+          </P>
+        )}
       </ResultDescriptionLast>
     </>
   );

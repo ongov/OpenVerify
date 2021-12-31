@@ -21,6 +21,7 @@ import openURL from 'utils/openURL';
 import useTelLink from 'utils/useTelLink';
 import {trackLogEvent} from 'utils/analytics';
 import {verifyEvent} from 'config/analytics';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 
 interface Props {
   screenReaderEnabled: boolean;
@@ -28,6 +29,8 @@ interface Props {
 
 const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
+
   return (
     <>
       <TitleText>
@@ -35,26 +38,31 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </TitleText>
       <P>For example, the QR code may be:</P>
       <UL>
-        <LI>issued to a child under age 12</LI>
+        <LI>
+          issued to a child under age 12 or turned 12 within the last 12 weeks
+          (84 days)
+        </LI>
         <LI>
           issued by a province, territory or country that uses a different type
           of QR code
         </LI>
         <LI>
-          made by a third-party service not associated with the government of
+          made by a third-party service not associated with the Government of
           Ontario
         </LI>
       </UL>
       <P>What to do next:</P>
       <UL>
         <LI>
-          allow children under age 12 entry, they do not have to show proof of
-          vaccination
+          allow entry for children under age 12 or who turned 12 within the last
+          12 weeks (84 days). They do not have to show proof of vaccination
         </LI>
-        <LI>
-          review the visitor’s government-issued paper or digital vaccine
-          certificate and a piece of identification
-        </LI>
+        {isPaperProofAllowed && (
+          <LI>
+            review the visitor’s government-issued paper or digital vaccine
+            certificate and a piece of identification
+          </LI>
+        )}
         <LI>
           redirect the visitor to{' '}
           <LinkText

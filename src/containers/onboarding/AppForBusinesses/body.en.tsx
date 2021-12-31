@@ -39,7 +39,8 @@ const BodyEn = React.forwardRef<any, React.PropsWithChildren<Props>>(
         </TitleText>
         <SubtitleText>
           Open Verify provides a quick, easy and secure way to scan and confirm
-          that visitors are fully vaccinated.
+          that a visitor’s enhanced vaccine certificate with official QR code
+          meets the Ontario requirements for entry.
         </SubtitleText>
         <SubtitleText>
           <B>
