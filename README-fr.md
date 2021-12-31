@@ -17,7 +17,7 @@ L’application numérise le code QR affiché sur un certificat de vaccination d
 
 Après avoir numérisé un code QR, l’entreprise ou l’organisme verra : une coche verte indiquant qu’il répond aux exigences en matière de vaccination, un X rouge pour un certificat non valide, ou un avertissement jaune indiquant que le code QR ne peut être lu.
 
-VérifOuverte numérise également la plupart des codes QR des cartes santé SMART® délivrés par le gouvernement. [Consultez la liste des autorités compétentes et leurs clés publiques respectives](https://files.ontario.ca/apps/verify/verifyRulesetON.json). Des fonctionnalités à l’échelle nationale sont en cours de développement et seront intégrées au fur et à mesure que les provinces délivreront des certificats de vaccination munis des codes QR de la carte santé SMART®.
+VérifOuverte numérise également la plupart des codes QR des cartes santé SMART® délivrés par le gouvernement. Consultez la liste complète des provinces et territoires de compétence reconnus par l’application à [Ontario.ca/verif](https://ontario.ca/verif).
 
 ## Configuration locale
 

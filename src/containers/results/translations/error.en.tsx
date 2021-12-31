@@ -30,24 +30,21 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
   return (
     <>
-      <TitleText>This certificate can not be used to enter.</TitleText>
+      <TitleText>This certificate cannot be used to enter.</TitleText>
       <P>What to do next:</P>
       <UL>
         <LI>
-          let the visitor know this certificate <B>can not</B> be accepted for
+          let the visitor know this certificate <B>cannot</B> be accepted for
           entry
         </LI>
         <LI>
-          the QR code may indicate <B>the visitor has only one vaccination</B>
-        </LI>
-        <LI>
-          <B>14 days</B> may have <B>not passed</B> since the visitor got their
-          second dose
-        </LI>
-        <LI>
-          let the visitor know that if they have had a second dose and 14 days
-          have passed, they should <B>download their most recent</B> enhanced
-          vaccine certificate with official QR code
+          let the visitor know they should{' '}
+          <B>
+            download their most recent enhanced vaccine certificate with
+            official QR code
+          </B>{' '}
+          if they are fully vaccinated and 14 days have passed or if they have
+          an active medical exemption
         </LI>
         <LI>
           redirect the visitor to{' '}
@@ -106,6 +103,19 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
           Call 1-833-943-3900
         </Button>
       )}
+      <P>The QR code may indicate:</P>
+      <UL>
+        <LI>
+          the visitor <B>only</B> has <B>one vaccination</B>
+        </LI>
+        <LI>
+          <B>14 days</B> may have <B>not passed</B> since the visitor was fully
+          vaccinated
+        </LI>
+        <LI>
+          the visitor’s <B>medical exemption may have expired</B>
+        </LI>
+      </UL>
     </>
   );
 };

@@ -20,6 +20,7 @@ import {P, UL, LI, LinkText, TitleText} from 'containers/results/styles';
 import openURL from 'utils/openURL';
 import useTelLink from 'utils/useTelLink';
 import {trackLogEvent} from 'utils/analytics';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 import {verifyEvent} from 'config/analytics';
 
 interface Props {
@@ -28,15 +29,19 @@ interface Props {
 
 const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
+
   return (
     <>
       <TitleText>
-        Informez le visiteur qu’il peut y avoir un problème technique avec son
-        certificat.
+        Il peut y avoir un problème technique avec ce certificat.
       </TitleText>
       <P>Par exemple, le code QR a pu être{'\u00a0'}:</P>
       <UL>
-        <LI>délivrée à un enfant de moins de 12 ans</LI>
+        <LI>
+          délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans au
+          cours des 12 dernières semaines (84 jours)
+        </LI>
         <LI>
           délivré par une province, un territoire ou un pays qui utilise un
           autre type de code QR
@@ -48,13 +53,16 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
       <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
       <UL>
         <LI>
-          laissez entrer les enfants de moins de 12 ans, ils n’ont pas à fournir
-          de preuve de vaccination
+          laissez entrer les enfants de moins de 12 ans ou qui viennent d’avoir
+          12 ans au cours des 12 dernières semaines (84 jours). Ils n’ont pas à
+          fournir de preuve de vaccination
         </LI>
-        <LI>
-          examinez le certificat de vaccination papier ou numérique délivrés par
-          le gouvernement ainsi qu’une pièce d'identité du visiteur
-        </LI>
+        {isPaperProofAllowed && (
+          <LI>
+            examinez le certificat de vaccination papier ou numérique délivrés
+            par le gouvernement ainsi qu’une pièce d'identité du visiteur
+          </LI>
+        )}
         <LI>
           réacheminez le visiteur vers{' '}
           <LinkText

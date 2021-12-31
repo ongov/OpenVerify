@@ -15,8 +15,11 @@
 */
 import React, {FC} from 'react';
 import {P, UL, LI, TitleText} from 'containers/results/styles';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 
 const TimeoutEn: FC = () => {
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
+
   return (
     <>
       <TitleText>The device’s camera could not find a QR code.</TitleText>
@@ -32,11 +35,13 @@ const TimeoutEn: FC = () => {
         <LI>make sure light is not reflecting on the QR code</LI>
         <LI>try to scan again</LI>
       </UL>
-      <P>
-        If the scanner continues to time out, review the visitor’s
-        government-issued paper or digital vaccine certificate and a piece of
-        identification.
-      </P>
+      {isPaperProofAllowed && (
+        <P>
+          If the scanner continues to time out, review the visitor’s
+          government-issued paper or digital vaccine certificate and a piece of
+          identification.
+        </P>
+      )}
     </>
   );
 };

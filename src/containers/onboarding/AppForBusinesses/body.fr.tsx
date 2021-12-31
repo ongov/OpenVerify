@@ -39,8 +39,10 @@ const BodyFr = React.forwardRef<any, React.PropsWithChildren<Props>>(
           organismes
         </TitleText>
         <SubtitleText>
-          VérifOuverte offre un moyen rapide, facile et fiable sécurisé de
-          numériser et de confirmer que les visiteurs sont entièrement vaccinés.
+          VérifOuverte offre un moyen rapide, facile et sécurisé de numériser et
+          de confirmer que le certificat de vaccination amélioré muni d’un code
+          QR officiel d’un visiteur répond aux exigences de l’Ontario concernant
+          les conditions d’entrée.
         </SubtitleText>
         <SubtitleText>
           <B>

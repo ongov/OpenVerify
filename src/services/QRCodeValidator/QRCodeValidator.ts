@@ -42,7 +42,7 @@ export default class QRCodeValidator {
       if (match.groups.chunk === undefined) {
         // This is a single QR code so reset any previously scanned multi-code
         this.reset();
-        const {credential, name, birthDate} = decodeQR(
+        const {credential, name, birthDate, parsedBirthDate} = decodeQR(
           trustedIssuersJWKS,
           numbers,
         );
@@ -53,6 +53,7 @@ export default class QRCodeValidator {
           credential,
           name,
           birthDate,
+          parsedBirthDate,
           multi: null,
         };
         return response;
@@ -82,7 +83,7 @@ export default class QRCodeValidator {
           .sort((a, b) => a[0] - b[0])
           .map(([_, v]) => v)
           .join('');
-        const {credential, name, birthDate} = decodeQR(
+        const {credential, name, birthDate, parsedBirthDate} = decodeQR(
           trustedIssuersJWKS,
           orderedChunks,
         );
@@ -93,6 +94,7 @@ export default class QRCodeValidator {
           credential,
           name,
           birthDate,
+          parsedBirthDate,
           multi: {
             chunk: chunk,
             totalChunks: totalChunks,

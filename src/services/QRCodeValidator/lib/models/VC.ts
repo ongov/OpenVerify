@@ -45,6 +45,9 @@ export interface Resource {
   occurrenceDateTime?: string;
   performer?: Performer[];
   lotNumber?: string;
+  recordedDate?: string;
+  abatementDateTime?: string;
+  subject?: Subject;
 }
 
 export interface Name {
@@ -54,6 +57,10 @@ export interface Name {
 }
 
 export interface Patient {
+  reference?: string;
+}
+
+export interface Subject {
   reference?: string;
 }
 
