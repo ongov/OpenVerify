@@ -38,6 +38,7 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
       </TitleText>
       <P>Par exemple, le code QR a pu être{'\u00a0'}:</P>
       <UL>
+        <LI>délivrée à un enfant de moins de 12 ans</LI>
         <LI>
           délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans au
           cours des 12 dernières semaines (84 jours)
