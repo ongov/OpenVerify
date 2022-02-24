@@ -16,8 +16,8 @@
 		5B159A7C272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
 		5B159A7D272A6D4E00BEBB28 /* RCTNightModeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B159A7B272A6D4D00BEBB28 /* RCTNightModeModule.m */; };
 		5B1D6C9426FE4335004549C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B1D6C9726FE4335004549C9 /* InfoPlist.strings */; };
-		5B4FFE9A26FAC1C800F7AACC /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		5BC4CAAE26FC5A0B009BA2B6 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		5B4FFE9A26FAC1C800F7AACC /* (null) in Resources */ = {isa = PBXBuildFile; };
+		5BC4CAAE26FC5A0B009BA2B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		5CA9337DB6FF410BB1DBFD62 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3368CEFAD07548AFA0D005DD /* OpenSans-Semibold.ttf */; };
 		63231E8B6D424AAA79AD0273 /* libPods-OpenVerify-OpenVerifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2604DE7BEE28B18CCEE2862A /* libPods-OpenVerify-OpenVerifyTests.a */; };
 		7371F9CD270490FE0074DAC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7371F9CC270490FE0074DAC6 /* GoogleService-Info.plist */; };
@@ -311,11 +311,11 @@
 				5B1D6C9426FE4335004549C9 /* InfoPlist.strings in Resources */,
 				8C50B22126E5B0680064F651 /* BootSplash.storyboard in Resources */,
 				E5C66CA44D4B43EF86776106 /* raleway-modified-bold.ttf in Resources */,
-				5BC4CAAE26FC5A0B009BA2B6 /* BuildFile in Resources */,
+				5BC4CAAE26FC5A0B009BA2B6 /* (null) in Resources */,
 				9CE89AFC11DF464583D168D6 /* raleway-modified-regular.ttf in Resources */,
 				9AD2972B86644A279400DFBC /* raleway-modified-semibold.ttf in Resources */,
 				1E038722092149F1B8E7B057 /* OpenSans-Bold.ttf in Resources */,
-				5B4FFE9A26FAC1C800F7AACC /* BuildFile in Resources */,
+				5B4FFE9A26FAC1C800F7AACC /* (null) in Resources */,
 				CABF07303C23452D8FF48FAB /* OpenSans-Italic.ttf in Resources */,
 				5CA9337DB6FF410BB1DBFD62 /* OpenSans-Semibold.ttf in Resources */,
 				571662FF45DE41B9A23F5A83 /* OpenSans-Regular.ttf in Resources */,
@@ -594,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -622,7 +622,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

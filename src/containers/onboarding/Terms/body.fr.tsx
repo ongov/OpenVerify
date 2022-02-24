@@ -21,7 +21,7 @@ import {useTranslation} from 'translations/i18n';
 import {getTermsOfUse} from 'redux/selectors';
 
 const TERMS_OF_USE = [
-  'L’application est fournie «\u00a0telle quelle\u00a0» et vous êtes le seul responsable de déterminer la pertinence de son utilisation.',
+  'L’application est fournie « telle quelle » et vous êtes le seul responsable de déterminer la pertinence de son utilisation.',
   'Le gouvernement de l’Ontario ne garantit pas l’exactitude des résultats obtenus grâce à l’application et n’assume aucun coût ni aucune responsabilité liés à l’utilisation de l’application.',
   'Vous ne devez pas utiliser l’application afin de conserver, sauvegarder, copier, modifier, utiliser ou divulguer toute information fournie. Cela comprend la prise de photos, de vidéos, de captures d’écran et d’enregistrements d’écran de ces renseignements.',
   'Vous ne devez pas utiliser l’application pour usurper l’identité d’une autre personne ou entité.',

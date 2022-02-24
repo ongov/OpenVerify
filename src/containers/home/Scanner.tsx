@@ -24,7 +24,10 @@ import {
 import {useSelector} from 'react-redux';
 import {RNCamera, BarCodeReadEvent, hasTorch} from 'react-native-camera';
 import {useFocusEffect} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import {NavigatorParamList} from 'navigation/HomeNavigation';
 
 import QRCodeScanner from 'components/scanner/QRCodeScanner';
@@ -34,8 +37,10 @@ import BeepSound from 'components/results/BeepSound';
 
 import QRCodeValidator from 'services/QRCodeValidator/QRCodeValidator';
 import {
+  CompleteSHC,
   InvalidQRCode,
   InvalidThirdPartyQRCode,
+  QRCodeResponse,
 } from 'services/QRCodeValidator/types';
 import {RootState} from 'redux/store';
 import {applyRules} from 'utils/validate';
@@ -44,10 +49,11 @@ import {isExpired, isDateTampered, checkAppUpdate} from 'utils/rulesHelper';
 
 import {useTranslation} from 'translations/i18n';
 import useAccessibilityFocusRef from 'utils/useAccessibilityFocusRef';
+import {Modal} from 'components/core/modal';
 
 import {
   CameraContainer,
-  OpenVerifyQRCodeScanner,
+  OntarioQRCodeScanner,
   TorchImage,
   TorchImageSelected,
   TopCameraOverlay,
@@ -63,6 +69,10 @@ import {
 
 import {trackLogEvent} from 'utils/analytics';
 import {verifyEvent} from 'config/analytics';
+import {LocalConfig} from 'config';
+import withinUnder12GracePeriod from 'utils/withinUnder12GracePeriod';
+
+const {SCANNER_TIMEOUT, SCANNER_PROCESSING_ALERT_TIMEOUT} = LocalConfig;
 
 type Props = NativeStackScreenProps<NavigatorParamList, routes.Home.Scanner>;
 
@@ -84,6 +94,61 @@ function playSound() {
   }
 }
 
+function showYellowScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  invalidResponse?: InvalidQRCode | InvalidThirdPartyQRCode,
+) {
+  if (invalidResponse?.thirdParty) {
+    trackLogEvent(verifyEvent.VACCINE_SCAN, {
+      scan_result: 'error_third_party',
+    });
+  } else {
+    trackLogEvent(verifyEvent.VACCINE_SCAN, {
+      scan_result: 'error',
+    });
+  }
+  navigation.navigate(routes.Results.InvalidResult, {
+    response: invalidResponse ?? {
+      valid: false,
+      thirdParty: false,
+      multi: null,
+    },
+  });
+}
+
+function showRedScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  response: QRCodeResponse,
+) {
+  trackLogEvent(verifyEvent.VACCINE_SCAN, {
+    scan_result: 'fail',
+  });
+  navigation.navigate(routes.Results.UnverifiedResult, {
+    response,
+  });
+}
+
+function showGreenScreen(
+  navigation: NativeStackNavigationProp<
+    NavigatorParamList,
+    routes.Home.Scanner
+  >,
+  response: CompleteSHC,
+) {
+  trackLogEvent(verifyEvent.VACCINE_SCAN, {
+    scan_result: 'pass',
+  });
+  navigation.navigate(routes.Results.VerifiedResult, {
+    response,
+  });
+}
+
 const Scanner: FC<Props> = ({navigation}) => {
   const I18n = useTranslation();
   const [focusRef, setFocus] = useAccessibilityFocusRef();
@@ -92,6 +157,7 @@ const Scanner: FC<Props> = ({navigation}) => {
   });
   const [deviceSupportTorch, setDeviceSupportTorch] = useState(false);
   const [flash, setFlash] = useState(false);
+  const [processingAlertVisible, setProcessingAlertVisiblity] = useState(false);
   const [cameraType, setCameraType] = useState(RNCamera.Constants.Type.back);
   const lastUpdated = useSelector(getLastUpdated);
   const appUpdateSetting = useSelector(getAppUpdateSetting);
@@ -100,7 +166,12 @@ const Scanner: FC<Props> = ({navigation}) => {
   const [cameraHeight, setCameraHeight] = useState(0);
   const [cameraWidth, setCameraWidth] = useState(0);
   const [foreground, setForeground] = useState(false);
+
+  const qrRef = useRef() as React.MutableRefObject<QRCodeScanner>;
   const timerRef = useRef() as React.MutableRefObject<NodeJS.Timeout>;
+  const qrProcessingTimerRef =
+    useRef() as React.MutableRefObject<NodeJS.Timeout>;
+
   const flashMode = flash
     ? RNCamera.Constants.FlashMode.torch
     : RNCamera.Constants.FlashMode.off;
@@ -149,11 +220,15 @@ const Scanner: FC<Props> = ({navigation}) => {
   useFocusEffect(
     useCallback(() => {
       setForeground(true);
-      return () => setForeground(false);
+      return () => {
+        setForeground(false);
+        // clear QR Code processing alert timeout when screen is not in focus
+        clearTimeout(qrProcessingTimerRef?.current);
+        // hide QR Code processing alert when screen is not in focus
+        setProcessingAlertVisiblity(false);
+      };
     }, []),
   );
-
-  const qrRef = useRef() as React.MutableRefObject<QRCodeScanner>;
 
   const reactivate = () => {
     if (qrRef?.current?.reactivate) {
@@ -163,18 +238,14 @@ const Scanner: FC<Props> = ({navigation}) => {
     }
   };
 
-  const onReadQRCode = (data: BarCodeReadEvent) => {
+  const onReadQRCode = async (data: BarCodeReadEvent) => {
+    // reset Timer
+    setTimer();
+    // show processing alert after 3 Seconds
+    showQRCodeProcessingAlert();
+
     if (ruleJson?.publicKeys === undefined) {
-      trackLogEvent(verifyEvent.VACCINE_SCAN, {
-        scan_result: 'error',
-      });
-      navigation.navigate(routes.Results.InvalidResult, {
-        response: {
-          valid: false,
-          thirdParty: false,
-          multi: null,
-        },
-      });
+      showYellowScreen(navigation);
       return;
     }
     let response = qrValidator.validateQR(ruleJson?.publicKeys, data.data);
@@ -185,42 +256,38 @@ const Scanner: FC<Props> = ({navigation}) => {
       lastUpdated &&
       !isExpired(lastUpdated)
     ) {
-      let verified = applyRules(ruleJson, response.credential);
+      const verified = applyRules(ruleJson, response.credential);
       if (verified) {
         playSound();
         vibrate();
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'pass',
-        });
-        navigation.navigate(routes.Results.VerifiedResult, {
-          response,
-        });
+        showGreenScreen(navigation, response);
       } else {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'fail',
-        });
-        vibrate(3);
-        navigation.navigate(routes.Results.UnverifiedResult, {
-          response,
-        });
+        if (withinUnder12GracePeriod(response.parsedBirthDate)) {
+          vibrate(2);
+          showYellowScreen(navigation);
+        } else {
+          vibrate(3);
+          showRedScreen(navigation, response);
+        }
       }
     } else {
       vibrate(2);
-      let invalidResponse = response as InvalidQRCode | InvalidThirdPartyQRCode;
-      if (invalidResponse?.thirdParty) {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'error_third_party',
-        });
-      } else {
-        trackLogEvent(verifyEvent.VACCINE_SCAN, {
-          scan_result: 'error',
-        });
-      }
-      navigation.navigate(routes.Results.InvalidResult, {
-        response: invalidResponse,
-      });
+      const invalidResponse = response.valid ? undefined : response;
+      showYellowScreen(navigation, invalidResponse);
     }
   };
+
+  const showQRCodeProcessingAlert = useCallback(() => {
+    if (qrProcessingTimerRef.current) {
+      clearTimeout(qrProcessingTimerRef.current);
+    }
+
+    qrProcessingTimerRef.current = setTimeout(() => {
+      if (navigation.isFocused()) {
+        setProcessingAlertVisiblity(true);
+      }
+    }, SCANNER_PROCESSING_ALERT_TIMEOUT);
+  }, [navigation]);
 
   const setTimer = useCallback(() => {
     if (timerRef.current) {
@@ -233,7 +300,7 @@ const Scanner: FC<Props> = ({navigation}) => {
         });
         navigation.navigate(routes.Results.ScannerTimedOut);
       }
-    }, 30_000); //30 seconds
+    }, SCANNER_TIMEOUT);
     return () => {
       clearTimeout(timerRef.current);
     };
@@ -262,7 +329,7 @@ const Scanner: FC<Props> = ({navigation}) => {
   return (
     <CameraContainer onLayout={handleLayout}>
       {foreground && (
-        <OpenVerifyQRCodeScanner
+        <OntarioQRCodeScanner
           ref={qrRef}
           cameraProps={{
             flashMode: flashMode,
@@ -274,7 +341,7 @@ const Scanner: FC<Props> = ({navigation}) => {
       )}
 
       <TopCameraOverlay cameraHeight={cameraHeight} />
-      <Logo cameraHeight={cameraHeight} accessibilityLabel="Open Verify" />
+      <Logo cameraHeight={cameraHeight} accessibilityLabel="Ontario" />
       <CentreCameraView cameraHeight={cameraHeight}>
         <LeftRightCameraOverlay cameraWidth={cameraWidth} />
         <QRScannerFocus
@@ -328,7 +395,13 @@ const Scanner: FC<Props> = ({navigation}) => {
           </CameraScreenButton>
         ) : null}
       </BottomCameraOverlay>
+      <Modal
+        isVisible={processingAlertVisible}
+        title={I18n.t('Home.Scanner.QRProcessingAlertTitle')}
+        body={I18n.t('Home.Scanner.QRProcessingAlertMessage')}
+      />
     </CameraContainer>
   );
 };
+
 export default Scanner;

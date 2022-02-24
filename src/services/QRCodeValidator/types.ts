@@ -14,6 +14,7 @@
    limitations under the License.
 */
 import {VC} from './lib/models/VC';
+import {DateTime} from 'luxon';
 
 export type QRCodeResponse =
   | InvalidQRCode
@@ -41,6 +42,7 @@ export interface CompleteSHC {
   credential: SHCJWTPayload;
   name: string;
   birthDate: string;
+  parsedBirthDate: DateTime | undefined;
 }
 
 export interface PartialSHC {

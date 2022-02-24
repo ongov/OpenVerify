@@ -35,6 +35,7 @@ import {
 import useTelLink from 'utils/useTelLink';
 import openURL from 'utils/openURL';
 import {trackLogEvent} from 'utils/analytics';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 import {verifyEvent} from 'config/analytics';
 
 interface Props {
@@ -43,20 +44,21 @@ interface Props {
 
 const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
 
   return (
     <>
       <SubContainer>
-        <P>Cette application permet de vérifier que{'\u00a0'}:</P>
+        <P>Cette application permet de vérifier que{' '}:</P>
         <UL>
           <LI>
-            le code QR d’un visiteur répond aux exigences de l’Ontario
-            concernant les conditions d’entrée
+            le code QR d’un visiteur répond aux exigences de l’Ontario pour
+            l’entrée
           </LI>
         </UL>
         <P>
           Lorsque l’application numérise un code QR, il y a <B>trois</B>{' '}
-          résultats possibles ou le numériseur cesse de fonctionner{'\u00a0'}:
+          résultats possibles ou le numériseur cesse de fonctionner{' '}:
         </P>
         <UL>
           <LI>Vérifié</LI>
@@ -69,14 +71,17 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <SuccessResult />
       <ResultDescription>
         <P>
-          Ce certificat de vaccination <B>répond aux exigences</B> de l’Ontario.
+          Ce certificat de vaccination <B>répond aux exigences de l’Ontario</B>{' '}
+          pour l'entrée.
         </P>
       </ResultDescription>
       <WarningResult />
       <ResultDescription>
-        <P>Par exemple, le code QR peut être{'\u00a0'}:</P>
+        <P>Par exemple, le code QR a pu être{' '}:</P>
         <UL>
-          <LI>délivrée à un enfant de moins de 12 ans</LI>
+          <LI>
+            délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans
+          </LI>
           <LI>
             délivré par une province, un territoire ou un pays qui utilise un
             autre type de code QR
@@ -86,10 +91,17 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             l’Ontario
           </LI>
         </UL>
+        {isPaperProofAllowed && (
+          <P>
+            Le personnel peut examiner le certificat de vaccination papier ou
+            numérique délivré par le gouvernement ainsi qu’une pièce d'identité
+            du visiteur.
+          </P>
+        )}
         <P>
-          Le personnel peut examiner le certificat papier et une pièce
-          d'identité de la personne. Les enfants de moins de 12 ans peuvent
-          entrer, ils n’ont pas à fournir de preuve de vaccination.
+          Les enfants de moins de 12 ans ou nés en 2010 et qui sont à moins de
+          12 semaines (84 jours) de leur anniversaire peuvent entrer, ils n’ont
+          pas à fournir de preuve de vaccination.
         </P>
         <P>
           Pour plus d’aide, visitez le site{' '}
@@ -122,27 +134,22 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <ResultDescription>
         <P>
           Le certificat ou le code{' '}
-          <B>ne répond pas aux exigences actuelles de l’Ontario</B>.
+          <B>ne répond pas aux exigences actuelles de l’Ontario</B> pour
+          l’entrée.
         </P>
-        <P>Le personnel peut{'\u00a0'}:</P>
+        <P>Le personnel doit avertir le visiteur{' '}:</P>
         <UL>
           <LI>
-            informez le visiteur que ce certificat <B>ne peut pas</B> être
-            accepté pour entrer
+            que ce certificat <B>ne peut pas être</B> accepté pour entrer
           </LI>
           <LI>
-            le code QR peut indiquer que{' '}
-            <B>le visiteur n’a reçu qu’une seule dose du vaccin</B>
-          </LI>
-          <LI>
-            il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
-            visiteur a reçu sa seconde dose
-          </LI>
-          <LI>
-            informez le visiteur que s’il a reçu sa seconde dose et qu’il s’est
-            écoulé 14 jours,{' '}
-            <B>il doit télécharger sa preuve la plus récente</B> sous forme de
-            code QR
+            qu’il doit{' '}
+            <B>
+              télécharger son certificat de vaccination amélioré le plus récent
+              muni d’un code QR officiel
+            </B>{' '}
+            s’il est entièrement vacciné et qu’il s’est écoulé 14 jours ou s’ils
+            ont une exemption médicale valide
           </LI>
           <LI>
             réacheminer la personne vers{' '}
@@ -201,13 +208,26 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             Composer le 1-833-943-3900
           </Button>
         )}
+        <P>Le code QR peut indiquer que{' '}:</P>
+        <UL>
+          <LI>
+            le visiteur <B>n’a reçu qu’une seule dose du vaccin</B>
+          </LI>
+          <LI>
+            il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
+            visiteur a été entièrement vacciné
+          </LI>
+          <LI>
+            <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>
+          </LI>
+        </UL>
       </ResultDescription>
       <TimeoutResult />
       <ResultDescriptionLast>
         <P>
           <B>La caméra n’a pas pu trouver le code QR.</B>
         </P>
-        <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+        <P>Ce qu’il faut faire ensuite{' '}:</P>
         <UL>
           <LI>essuyez l’objectif de la caméra</LI>
           <LI>allumez ou éteignez la lampe de poche</LI>
@@ -221,11 +241,13 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           <LI>assurez-vous que la lumière ne se reflète pas sur le code QR</LI>
           <LI>essayez de le numériser à nouveau</LI>
         </UL>
-        <P>
-          Si le numériseur s’arrête encore, vérifiez le certificat de
-          vaccination papier ou numérique délivré par le gouvernement ainsi
-          qu’une pièce d’identité du visiteur.
-        </P>
+        {isPaperProofAllowed && (
+          <P>
+            Si le numériseur s’arrête encore, vérifiez le certificat de
+            vaccination papier ou numérique délivré par le gouvernement ainsi
+            qu’une pièce d’identité du visiteur.
+          </P>
+        )}
       </ResultDescriptionLast>
     </>
   );

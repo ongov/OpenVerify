@@ -22,6 +22,7 @@ import {
 } from './types';
 import {readFile} from 'fs/promises';
 import {resolve} from 'path';
+import {DateTime} from 'luxon';
 
 const trustedKeys = require('../../__mocks__/ruleset.json').publicKeys;
 
@@ -119,6 +120,7 @@ describe('QRCodeValidator', () => {
         multi: null,
         name: 'John B. Anyperson',
         birthDate: '1951-01-20',
+        parsedBirthDate: DateTime.fromISO('1951-01-20'),
       };
       expect(validator.validateQR(trustedKeys, qrCode)).toEqual(expected);
     });
@@ -157,6 +159,7 @@ describe('QRCodeValidator', () => {
         multi: null,
         name: 'John B. Anyperson',
         birthDate: '1951-01-20',
+        parsedBirthDate: DateTime.fromISO('1951-01-20'),
       };
       expect(validator.validateQR(trustedKeys, qrCode)).toStrictEqual(expected);
     });
@@ -177,6 +180,7 @@ describe('QRCodeValidator', () => {
         multi: null,
         name: 'Jane C. Anyperson',
         birthDate: '1961-01-20',
+        parsedBirthDate: DateTime.fromISO('1961-01-20'),
       };
       expect(validator.validateQR(trustedKeys, qrCode)).toStrictEqual(expected);
     });

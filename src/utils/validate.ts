@@ -15,19 +15,54 @@
 */
 import {flatten} from 'flat';
 import jsonLogic from 'json-logic-js';
-import {DateTime, Duration} from 'luxon';
+import {DateTime} from 'luxon';
 
 import {Ruleset, Rule} from './types';
 import {SHCJWTPayload} from '../services/QRCodeValidator/types';
-import {Entry} from '../services/QRCodeValidator/lib/models/VC';
+import {Entry, Resource} from '../services/QRCodeValidator/lib/models/VC';
+
+function getConditions(qrCode: SHCJWTPayload) {
+  const entry = qrCode?.vc?.credentialSubject?.fhirBundle?.entry;
+  const conditions = entry
+    ?.filter((record: Entry) => {
+      return record?.resource?.resourceType === 'Condition';
+    })
+    .map(record => {
+      let expiryDate = record?.resource?.abatementDateTime
+        ? DateTime.fromFormat(record?.resource?.abatementDateTime, 'yyyy-MM-dd')
+        : undefined;
+      if (!expiryDate || !expiryDate.isValid) {
+        const recordedDate = record?.resource?.recordedDate
+          ? DateTime.fromFormat(record?.resource?.recordedDate, 'yyyy-MM-dd')
+          : undefined;
+        if (recordedDate && recordedDate.isValid) {
+          expiryDate = recordedDate.plus({months: 6});
+        }
+      }
+      const duration = expiryDate?.diff(DateTime.now(), ['days']);
+      return {
+        ...record,
+        daysUntil: duration?.days,
+      };
+    });
+  return conditions;
+}
+
+interface RecordsToFlatten {
+  daysAgo?: number;
+  fullUrl?: string;
+  resource?: Resource;
+}
 
 function flattenQRCode(qrCode: SHCJWTPayload) {
   const entry = qrCode?.vc?.credentialSubject?.fhirBundle?.entry;
 
   // Filter by resourceType since we only want "immunization" records
-  const filteredImmunizations = entry?.filter((record: Entry) => {
-    return record?.resource?.resourceType?.toLowerCase() === 'immunization';
-  });
+  const filteredImmunizations: Entry[] | undefined = entry?.filter(
+    (record: Entry) => {
+      return record?.resource?.resourceType?.toLowerCase() === 'immunization';
+    },
+  );
 
   // Sort coding array so that CVX is always index 0
   filteredImmunizations &&
@@ -40,15 +75,15 @@ function flattenQRCode(qrCode: SHCJWTPayload) {
     });
 
   // Compute days ago
-  const immunizations = !filteredImmunizations
+  const immunizations: RecordsToFlatten[] = !filteredImmunizations
     ? []
     : filteredImmunizations.map((record: Entry) => {
-        const duration: Duration | null = record?.resource?.occurrenceDateTime
+        const duration = record?.resource?.occurrenceDateTime
           ? DateTime.now().diff(
               DateTime.fromISO(record?.resource?.occurrenceDateTime),
               ['days'],
             )
-          : null;
+          : undefined;
 
         const daysAgo = duration?.days;
 
@@ -62,7 +97,7 @@ function flattenQRCode(qrCode: SHCJWTPayload) {
 
         return {
           ...record,
-          daysAgo: daysAgo,
+          daysAgo,
         };
       });
 
@@ -76,6 +111,7 @@ function flattenQRCode(qrCode: SHCJWTPayload) {
 }
 
 export function applyRules(ruleJson: Ruleset, qrCode: SHCJWTPayload) {
+  const conditions = getConditions(qrCode);
   const qrCodeFlatten: any = flattenQRCode(qrCode);
   const rules: Rule[] = ruleJson?.ruleset ?? [];
   let verified = false;
@@ -93,7 +129,10 @@ export function applyRules(ruleJson: Ruleset, qrCode: SHCJWTPayload) {
     const expired = validFor && validFor?.values?.days <= 0;
 
     // Applying rules if rules not expired
-    verified = !expired && jsonLogic.apply(currentRule.rule, qrCodeFlatten);
+    verified =
+      !expired &&
+      (jsonLogic.apply(currentRule.rule, conditions) ||
+        jsonLogic.apply(currentRule.rule, qrCodeFlatten));
 
     if (verified) {
       break;

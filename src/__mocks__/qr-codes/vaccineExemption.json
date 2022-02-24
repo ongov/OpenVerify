@@ -1,0 +1,118 @@
+{
+  "iss": "https://covax.dev.ontariohealth.ca:1443/vc/issuer/shc",
+  "nbf": 1638986045.168,
+  "vc": {
+    "type": [
+      "https://smarthealth.cards#health-card",
+      "https://smarthealth.cards#immunization",
+      "https://smarthealth.cards#vaccine-exemtpion",
+      "https://smarthealth.cards#covid19"
+    ],
+    "credentialSubject": {
+      "fhirVersion": "4.0.1",
+      "fhirBundle": {
+        "resourceType": "Bundle",
+        "type": "collection",
+        "entry": [
+          {
+            "fullUrl": "resource:0",
+            "resource": {
+              "resourceType": "Patient",
+              "name": [
+                {
+                  "family": "Moderna",
+                  "given": [
+                    "OneDose"
+                  ]
+                }
+              ],
+              "birthDate": "1980-12-01"
+            }
+          },
+          {
+            "fullUrl": "resource:1",
+            "resource": {
+              "resourceType": "Immunization",
+              "meta": {
+                "security": [
+                  {
+                    "system": "https://smarthealth.cards/ial",
+                    "code": "IAL1.4"
+                  }
+                ]
+              },
+              "status": "completed",
+              "manufacturer": {
+                "identifier": {
+                  "system": "http://hl7.org/fhir/sid/mvx",
+                  "value": "MOD"
+                }
+              },
+              "vaccineCode": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/sid/cvx",
+                    "code": "207"
+                  },
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "28571000087109"
+                  }
+                ]
+              },
+              "occurrenceDateTime": "2021-11-01",
+              "lotNumber": "3001652",
+              "patient": {
+                "reference": "resource:0"
+              },
+              "performer": [
+                {
+                  "actor": {
+                    "display": "ON, Canada"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "fullUrl": "resource:2",
+            "resource": {
+              "resourceType": "Condition",
+              "category": [
+                {
+                  "coding": [
+                    {
+                      "system": "https://travel.gc.ca/travel-covid/travel-restrictions/exemptions",
+                      "code": "vaccine-exemption"
+                    }
+                  ]
+                }
+              ],
+              "identifier": [
+                {
+                  "value": "EX-247"
+                }
+              ],
+              "recordedDate": "2021-12-07",
+              "abatementDateTime": "2022-06-07",
+              "recorder": {
+                "display": "Canada, Ontario"
+              },
+              "clinicalStatus": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "resolved"
+                  }
+                ]
+              },
+              "subject": {
+                "reference": "resource:0"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

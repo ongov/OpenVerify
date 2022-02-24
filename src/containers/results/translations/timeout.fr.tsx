@@ -15,12 +15,15 @@
 */
 import React, {FC} from 'react';
 import {P, UL, LI, TitleText} from 'containers/results/styles';
+import {shouldAllowPaperVaccineProof} from 'utils/rulesHelper';
 
 const TimeoutFr: FC = () => {
+  const isPaperProofAllowed = shouldAllowPaperVaccineProof();
+
   return (
     <>
       <TitleText>La caméra n’a pas pu trouver le code QR.</TitleText>
-      <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+      <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>essuyez l’objectif de la caméra</LI>
         <LI>allumez ou éteignez la lampe de poche</LI>
@@ -34,11 +37,13 @@ const TimeoutFr: FC = () => {
         <LI>assurez-vous que la lumière ne se reflète pas sur le code QR</LI>
         <LI>essayez de le numériser à nouveau</LI>
       </UL>
-      <P>
-        Si le numériseur s’arrête encore, vérifiez le certificat de vaccination
-        papier ou numérique délivré par le gouvernement ainsi qu’une pièce
-        d’identité du visiteur.
-      </P>
+      {isPaperProofAllowed && (
+        <P>
+          Si le numériseur s’arrête encore, vérifiez le certificat de
+          vaccination papier ou numérique délivré par le gouvernement ainsi
+          qu’une pièce d’identité du visiteur.
+        </P>
+      )}
     </>
   );
 };

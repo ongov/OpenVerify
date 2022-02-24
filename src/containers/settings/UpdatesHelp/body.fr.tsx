@@ -23,7 +23,7 @@ const BodyFr: FC = () => (
       vérifier si les conditions d’entrée dans les établissements en Ontario ont
       été mises à jour.
     </P>
-    <P>Une fois connectée, elle{'\u00a0'}:</P>
+    <P>Une fois connectée, elle{' '}:</P>
     <UL>
       <LI>
         met à jour les exigences concernant les vaccins ou les conditions

@@ -29,7 +29,7 @@ export const Bullet = ({children, style}: Props) => {
   return (
     <BulletContainer accessible>
       <BulletTextBullet accessibilityLabel={I18n.t('ListItem')}>
-        {'\u25CF'}
+        {'●'}
       </BulletTextBullet>
       <BulletText style={style}>{children}</BulletText>
     </BulletContainer>

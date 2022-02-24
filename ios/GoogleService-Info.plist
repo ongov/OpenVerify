@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string></string>
+	<string>correct_api_key</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string></string>
+	<string>correct_reversed_client_id</string>
 	<key>API_KEY</key>
-	<string></string>
+	<string>AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
 	<key>GCM_SENDER_ID</key>
-	<string></string>
+	<string>correct_gcm_sender_id</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>openverify.replace.me</string>
 	<key>PROJECT_ID</key>
-	<string></string>
+	<string>abc-xyz-123</string>
 	<key>STORAGE_BUCKET</key>
 	<string></string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>GOOGLE_APP_ID</key>
-	<string></string>
+	<string>1:123:ios:123ab</string>
 </dict>
 </plist>

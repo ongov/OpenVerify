@@ -107,3 +107,11 @@ export function checkAppUpdate(appUpdateSetting: AppUpdateSetting) {
 
   return false;
 }
+
+export const shouldAllowPaperVaccineProof = (): boolean => {
+  const POLICY_EFFECTIVE_DATE = '2022-01-04';
+  const newPolicyDate = DateTime.fromISO(POLICY_EFFECTIVE_DATE);
+  const now = DateTime.now();
+
+  return now < newPolicyDate;
+};

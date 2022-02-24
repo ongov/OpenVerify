@@ -24,38 +24,41 @@ import {VC, FhirBundle} from './models/VC';
 import {DateTime} from 'luxon';
 
 const ec = new EC('p256');
-const evenLengthDigitsRegex = /\d{2}/g;
+const evenLengthDigitsRegex = /^(\d{2})+$/;
+const splitIntoTwoDigitSegmentsRegex = /\d{2}/g;
 
 interface decodeQRResult {
   credential: SHCJWTPayload;
   name: string;
   birthDate: string;
+  parsedBirthDate: DateTime | undefined;
 }
 
 export default function decodeQR(
-  trustedIssuersJWKS: TrustedIssuersJWKS,
+  trustedIssuers: TrustedIssuersJWKS,
   numbers: string,
 ): decodeQRResult {
-  const arrayOfBase64Numbers = numbers.match(evenLengthDigitsRegex);
-  if (!arrayOfBase64Numbers) {
-    throw 'validateSHC given an odd length of digits';
+  const match = numbers.match(evenLengthDigitsRegex);
+  const arrayOfBase64Numbers = numbers.match(splitIntoTwoDigitSegmentsRegex);
+  if (!match || !arrayOfBase64Numbers) {
+    throw 'decodeQR received non-digits or an odd length of digits';
   }
   const charCodes = arrayOfBase64Numbers.map(n => parseInt(n, 10) + 45);
-  return validateJWT(String.fromCharCode(...charCodes), trustedIssuersJWKS);
+  return validateJWT(trustedIssuers, String.fromCharCode(...charCodes));
 }
 
 export function validateJWT(
-  jwt: string,
   trustedIssuers: TrustedIssuersJWKS,
+  jwt: string,
 ): decodeQRResult {
   const [h, p, s] = jwt.split('.', 3);
   if (h === undefined || p === undefined || s === undefined) {
     throw 'invalid JWT';
   }
   const header = validateJWTHeader(h);
-  const issuers = validateJWTSignature(s, trustedIssuers, header, h, p);
+  const issuers = validateJWTSignature(trustedIssuers, s, header, h, p);
   const credential = unzipDecodeJWTPayload(p);
-  return {credential, ...validateJWSPayload(credential, issuers)};
+  return {credential, ...validateJWSPayload(issuers, credential)};
 }
 
 type Issuer = string;
@@ -65,8 +68,8 @@ interface KeyAndIssuer {
 }
 
 function validateJWTSignature(
-  s: string,
   trustedIssuers: TrustedIssuersJWKS,
+  s: string,
   header: any,
   h: string,
   p: string,
@@ -155,11 +158,12 @@ function validateJWTHeader(h: string) {
 interface FieldsToDisplay {
   name: string;
   birthDate: string;
+  parsedBirthDate: DateTime | undefined;
 }
 
 export function validateJWSPayload(
-  credential: SHCJWTPayload,
   issuers: Issuer[],
+  credential: SHCJWTPayload,
 ): FieldsToDisplay {
   if (typeof credential !== 'object') {
     throw 'invalid JWT payload';
@@ -180,10 +184,10 @@ export function validateJWSPayload(
   if (typeof credential.vc !== 'object') {
     throw 'invalid JWT vc (not object)';
   }
-  return validateVC(credential.vc, credential.iss);
+  return validateVC(credential.iss, credential.vc);
 }
 
-export function validateVC(vc: VC, issuer: string): FieldsToDisplay {
+export function validateVC(issuer: string, vc: VC): FieldsToDisplay {
   if (
     !Array.isArray(vc.type) ||
     !vc.type.includes('https://smarthealth.cards#health-card') ||
@@ -195,12 +199,12 @@ export function validateVC(vc: VC, issuer: string): FieldsToDisplay {
   if (bundle === undefined) {
     throw 'missing credentialSubject or bundle';
   }
-  return validateFHIRBundle(bundle, issuer);
+  return validateFHIRBundle(issuer, bundle);
 }
 
 export function validateFHIRBundle(
-  bundle: FhirBundle,
   issuer: string,
+  bundle: FhirBundle,
 ): FieldsToDisplay {
   if (!Array.isArray(bundle.entry)) {
     throw 'expected bundle entry to be an array';
@@ -215,11 +219,22 @@ export function validateFHIRBundle(
   if (typeof patient.resource?.birthDate !== 'string') {
     throw 'expected birthDate to be a string';
   }
-  const birthDate = DateTime.fromISO(patient.resource?.birthDate);
-  const today = DateTime.now().startOf('day');
-  const age = today.diff(birthDate, 'years').years;
-  if (age <= 12) {
-    throw 'under 12 - not yet supported, show yellow to hide PII';
+  let birthDate = DateTime.fromFormat(
+    patient.resource?.birthDate,
+    'yyyy-MM-dd',
+  );
+  if (!birthDate.isValid) {
+    birthDate = DateTime.fromFormat(patient.resource?.birthDate, 'yyyy-MM');
+  }
+  if (!birthDate.isValid) {
+    birthDate = DateTime.fromFormat(patient.resource?.birthDate, 'yyyy');
+  }
+  if (birthDate.isValid) {
+    const today = DateTime.now().startOf('day');
+    const age = today.diff(birthDate, 'years').years;
+    if ((birthDate.year < 2010 && age <= 12) || age < 12) {
+      throw 'under 12 - show yellow to hide PII';
+    }
   }
   if (
     !Array.isArray(patient.resource.name) ||
@@ -256,12 +271,26 @@ export function validateFHIRBundle(
   ) {
     throw 'expected all immunizations to have vaccineCode codings';
   }
+  const conditions = bundle.entry.filter(
+    r => r.resource?.resourceType === 'Condition',
+  );
+  if (
+    !conditions.every(
+      i =>
+        i.resource?.subject?.reference !== undefined &&
+        (i.resource?.subject?.reference === patient.fullUrl ||
+          i.resource?.subject?.reference === `Patient/${patient.fullUrl}`),
+    )
+  ) {
+    throw 'expected all conditions to be for the patient provided';
+  }
   return {
     name: patient.resource.name
       .map(n =>
         n.text ? n.text : [...(n.given ?? []), n.family].join(' ').trim(),
       )
       .join(', '),
-    birthDate: patient.resource.birthDate,
+    birthDate: patient.resource?.birthDate,
+    parsedBirthDate: birthDate.isValid ? birthDate : undefined,
   };
 }
