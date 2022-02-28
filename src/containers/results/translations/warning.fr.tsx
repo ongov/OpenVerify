@@ -36,7 +36,7 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
       <TitleText>
         Il peut y avoir un problème technique avec ce certificat.
       </TitleText>
-      <P>Par exemple, le code QR a pu être{'\u00a0'}:</P>
+      <P>Par exemple, le code QR a pu être{' '}:</P>
       <UL>
         <LI>
           délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans au
@@ -50,7 +50,7 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
           délivré par un service tierce non associé au gouvernement de l’Ontario
         </LI>
       </UL>
-      <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+      <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>
           laissez entrer les enfants de moins de 12 ans ou qui viennent d’avoir

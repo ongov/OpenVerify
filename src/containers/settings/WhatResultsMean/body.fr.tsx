@@ -49,7 +49,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <SubContainer>
-        <P>Cette application permet de vérifier que{'\u00a0'}:</P>
+        <P>Cette application permet de vérifier que{' '}:</P>
         <UL>
           <LI>
             le code QR d’un visiteur répond aux exigences de l’Ontario pour
@@ -58,7 +58,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
         </UL>
         <P>
           Lorsque l’application numérise un code QR, il y a <B>trois</B>{' '}
-          résultats possibles ou le numériseur cesse de fonctionner{'\u00a0'}:
+          résultats possibles ou le numériseur cesse de fonctionner{' '}:
         </P>
         <UL>
           <LI>Vérifié</LI>
@@ -77,7 +77,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       </ResultDescription>
       <WarningResult />
       <ResultDescription>
-        <P>Par exemple, le code QR a pu être{'\u00a0'}:</P>
+        <P>Par exemple, le code QR a pu être{' '}:</P>
         <UL>
           <LI>
             délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans
@@ -137,7 +137,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           <B>ne répond pas aux exigences actuelles de l’Ontario</B> pour
           l’entrée.
         </P>
-        <P>Le personnel doit avertir le visiteur{'\u00a0'}:</P>
+        <P>Le personnel doit avertir le visiteur{' '}:</P>
         <UL>
           <LI>
             que ce certificat <B>ne peut pas être</B> accepté pour entrer
@@ -208,7 +208,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             Composer le 1-833-943-3900
           </Button>
         )}
-        <P>Le code QR peut indiquer que{'\u00a0'}:</P>
+        <P>Le code QR peut indiquer que{' '}:</P>
         <UL>
           <LI>
             le visiteur <B>n’a reçu qu’une seule dose du vaccin</B>
@@ -227,7 +227,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
         <P>
           <B>La caméra n’a pas pu trouver le code QR.</B>
         </P>
-        <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+        <P>Ce qu’il faut faire ensuite{' '}:</P>
         <UL>
           <LI>essuyez l’objectif de la caméra</LI>
           <LI>allumez ou éteignez la lampe de poche</LI>

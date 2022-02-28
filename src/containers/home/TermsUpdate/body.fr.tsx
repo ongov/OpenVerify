@@ -25,7 +25,7 @@ const BodyFr: FC = () => {
     <>
       <P>
         Les conditions d’utilisation et la déclaration de confidentialité ont
-        été mises à jour afin de clarifier{'\u00a0'}:
+        été mises à jour afin de clarifier{' '}:
       </P>
       <UL>
         <LI>le bon usage de l’application</LI>

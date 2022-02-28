@@ -41,7 +41,9 @@
       "AccessibleTitleBack": "Scan QR code now using back camera",
       "SwitchCamera": "Switch Camera",
       "SwitchToBackCamera": "Switch to back camera",
-      "SwitchToFrontCamera": "Switch to front camera"
+      "SwitchToFrontCamera": "Switch to front camera",
+      "QRProcessingAlertTitle": "Reading QR code",
+      "QRProcessingAlertMessage": "This will take a few moments..."
     },
     "TermsUpdate": {
       "Title": "Changes to Terms of Use and Privacy Statement"

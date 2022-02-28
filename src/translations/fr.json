@@ -40,7 +40,9 @@
       "AccessibleTitleBack": "Numériser le code QR maintenant en utilisant la caméra arrière",
       "SwitchCamera": "Changer de caméra",
       "SwitchToBackCamera": "Basculer vers la caméra arrière",
-      "SwitchToFrontCamera": "Basculer vers la caméra avant"
+      "SwitchToFrontCamera": "Basculer vers la caméra avant",
+      "QRProcessingAlertTitle": "Lecture du code QR",
+      "QRProcessingAlertMessage": "Cette opération ne prendra que quelques instants..."
     },
     "TermsUpdate": {
       "Title": "Modifications aux conditions d’utilisation et à la déclaration de confidentialité"

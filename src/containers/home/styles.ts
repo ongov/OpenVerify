@@ -101,18 +101,14 @@ export const ButtonText = styled.Text`
   margin-left: ${({theme}) => theme.variables.spacing.xsm}px;
 `;
 
-const DefaultQRCodeScanner = styled(QRCodeScanner)``;
-
-export const OpenVerifyQRCodeScanner = styled(DefaultQRCodeScanner).attrs(
-  props => ({
-    cameraStyle: {
-      height: '100%',
-      width: '100%',
-      position: 'absolute',
-    },
-    backgroundColor: props.theme.colors.white,
-  }),
-)``;
+export const OntarioQRCodeScanner = styled(QRCodeScanner).attrs(props => ({
+  cameraStyle: {
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+  },
+  backgroundColor: props.theme.colors.white,
+}))``;
 
 export const TorchImage = styled.Image.attrs(() => ({
   source: require('assets/images/torch.svg'),

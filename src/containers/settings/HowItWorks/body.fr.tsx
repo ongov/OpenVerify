@@ -20,7 +20,7 @@ const BodyFr: FC = () => (
   <>
     <P>
       Lorsque vous numérisez le code QR numérique ou papier d’un visiteur, cette
-      application pourra{'\u00a0'}:
+      application pourra{' '}:
     </P>
     <UL>
       <LI>
@@ -41,7 +41,7 @@ const BodyFr: FC = () => (
     </UL>
     <P>
       Cette application ne permet <B>pas de</B>
-      {'\u00a0'}:
+      {' '}:
     </P>
     <UL>
       <LI>

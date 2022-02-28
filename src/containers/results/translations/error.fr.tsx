@@ -33,7 +33,7 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
       <TitleText>
         Ce certificat ne peut pas être utilisé pour entrer au site.
       </TitleText>
-      <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+      <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>
           informez le visiteur que ce certificat <B>ne peut pas</B> être accepté
@@ -106,7 +106,7 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
           Composer le 1-833-943-3900
         </Button>
       )}
-      <P>Le code QR peut indiquer que{'\u00a0'}:</P>
+      <P>Le code QR peut indiquer que{' '}:</P>
       <UL>
         <LI>
           le visiteur n’a reçu <B>qu’une seule dose du vaccin</B>

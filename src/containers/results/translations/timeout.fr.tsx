@@ -23,7 +23,7 @@ const TimeoutFr: FC = () => {
   return (
     <>
       <TitleText>La caméra n’a pas pu trouver le code QR.</TitleText>
-      <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+      <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>essuyez l’objectif de la caméra</LI>
         <LI>allumez ou éteignez la lampe de poche</LI>
