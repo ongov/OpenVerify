@@ -13,16 +13,4 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-export const LocalConfig = {
-  API_URL: 'https://stage.files.ontariogovernment.ca/apps/verify/',
-  RULES_FILE_PATH: 'verifyRulesetON.jws',
-  APP_STORE_LINK_ID: '1584425317',
-  WARNING_INTERVAL_MIN: '4',
-  WARNING_INTERVAL_MAX: '5',
-  ALERT_INTERVAL_MIN: '6',
-  ALERT_INTERVAL_MAX: '6',
-  EXPIRED_INTERVAL: '7',
-  UPDATE_INTERVAL_CHECK: '24',
-  SCANNER_TIMEOUT: 45_000, // 45 Seconds
-  SCANNER_PROCESSING_ALERT_TIMEOUT: 3_000, // 3 Seconds
-};
+export * from './Modal';

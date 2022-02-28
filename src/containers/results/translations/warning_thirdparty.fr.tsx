@@ -29,7 +29,7 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
         Ce certificat a été créé à l’aide d’un outil tiers et ne peut pas être
         utilisé pour la numérisation.
       </TitleText>
-      <P>Ce qu’il faut faire ensuite{'\u00a0'}:</P>
+      <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>
           demander au visiteur de produire un certificat délivré par le
@@ -38,7 +38,7 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
         <LI>
           informez le visiteur que les certificats de vaccination optimisés avec
           un code QR délivrés par le gouvernement peuvent être téléchargés à
-          l’adresse suivant{'\u00a0'}:{' '}
+          l’adresse suivant{' '}:{' '}
           <LinkText
             onPress={() => {
               openURL(

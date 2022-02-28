@@ -20,11 +20,12 @@ export type ButtonType = 'primary' | 'secondary' | 'tertiary' | 'flashlight';
 export const ButtonContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   border-radius: ${({theme}) => theme.variables.roundness.xxsm}px;
   padding: ${({theme}) => theme.variables.spacing.md}px;
   padding-top: ${({theme}) => theme.variables.spacing.md - 1}px;
   margin-vertical: ${({theme}) => theme.variables.spacing.xsm}px;
-  align-items: center;
+  min-height: ${({theme}) => theme.variables.sizes.xxlg}px;
 `;
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
@@ -62,6 +63,7 @@ export const FlashlightButtonContainer = styled.TouchableOpacity<SelectedProps>`
   padding-right: ${({theme}) => theme.variables.spacing.xmd}px;
   border-radius: ${({theme}) => theme.variables.roundness.xxsm}px;
   padding-horizontal: ${({theme}) => theme.variables.spacing.xsm + 2}px;
+  min-height: ${({theme}) => theme.variables.sizes.xxlg}px;
 `;
 
 export const ButtonText = styled.Text`

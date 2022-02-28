@@ -27,7 +27,7 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
         Afin d’assurer la sécurité de votre établissement et des visiteurs,
         cette application devra se connecter à l’Internet chaque semaine.
       </SubtitleText>
-      <SubtitleText>Une fois connectée, elle{'\u00a0'}:</SubtitleText>
+      <SubtitleText>Une fois connectée, elle{' '}:</SubtitleText>
       <Bullet>
         vous indique si une version à jour de l’application est disponible
       </Bullet>

@@ -26,7 +26,7 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
         ref={focusRef}
         accessible
         accessibilityLabel="Cette application ne pas:">
-        Cette application ne{'\u00a0'}:
+        Cette application ne{' '}:
       </TitleText>
       <Bullet>
         permet pas au gouvernement de l’Ontario ou aux entreprises de suivre ou

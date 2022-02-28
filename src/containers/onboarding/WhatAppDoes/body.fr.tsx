@@ -25,8 +25,7 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>Que fait cette application</TitleText>
       <SubtitleText>
         Lorsqu’une <B>entreprise ou une organisation</B> numérise le code QR
-        numérique ou papier d’un visiteur, cette application permettra{'\u00a0'}
-        :
+        numérique ou papier d’un visiteur, cette application permettra{' '}:
       </SubtitleText>
       <Bullet>
         d’améliorer la <B>sécurité</B> dans des lieux tels que les restaurants,
