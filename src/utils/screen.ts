@@ -13,11 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-export {default as AppForBusinesses} from './AppForBusinesses';
-export {default as WhatAppDoes} from './WhatAppDoes';
-export {default as WhatAppDoesNot} from './WhatAppDoesNot';
-export {default as Terms} from './Terms';
-export {default as CameraPermissions} from './CameraPermissions';
-export {default as AutomaticUpdates} from './AutomaticUpdates';
-export {default as ReadyToScan} from './ReadyToScan';
-export {default as AppNotMandatory} from './AppNotMandatory';
+import {Home, Settings} from 'containers/routes';
+
+export const shouldDisplayBanner = (
+  currentRouteName: string | undefined,
+): boolean => {
+  const bannerRoutes: string[] = [Home.HomeScreen, Settings.SettingsScreen];
+
+  const showBanner = bannerRoutes?.includes(currentRouteName ?? '');
+  return showBanner;
+};

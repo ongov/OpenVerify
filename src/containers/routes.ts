@@ -56,4 +56,8 @@ export enum Settings {
   HelpUsImprove = 'Settings/HelpUsImprove',
 }
 
+export enum AppNotMandatory {
+  WarningScreen = 'AppNotMandatory/WarningScreen',
+}
+
 export type Route = Home | Common | Results | Onboarding | Settings;

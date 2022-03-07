@@ -20,7 +20,7 @@ import 'intl/locale-data/jsonp/fr';
 import 'intl/locale-data/jsonp/en-CA';
 import 'intl/locale-data/jsonp/fr-CA';
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {ColorSchemeName, StatusBar, useColorScheme} from 'react-native';
 import {Provider, useSelector} from 'react-redux';
 import {
@@ -43,6 +43,8 @@ import {getVisualAppearance} from 'redux/selectors';
 import NightMode from 'modules/NightMode';
 
 import OrientationController from 'controllers/OrientationControler';
+import {WarningBanner} from 'components/banner';
+import {shouldDisplayBanner} from 'utils/screen';
 
 const AppWithReduxState = () => {
   const schemePreference: 'light' | 'dark' | 'system' =
@@ -64,12 +66,31 @@ const AppWithReduxState = () => {
   const theme = getTheme(scheme);
   const barStyle = scheme === 'light' ? 'dark-content' : 'light-content';
 
-  const routeNameRef = React.useRef<any>();
+  const routeNameRef = useRef<any>();
   const navigationRef = useNavigationContainerRef();
+  const [isBannerVisible, setBannerVisiblity] = useState(false);
 
   const onReadyNavigation = () => {
     routeNameRef.current = navigationRef?.current?.getCurrentRoute()?.name;
   };
+
+  const onNavigationStateChanged = async () => {
+    const previousRouteName = routeNameRef.current;
+    const currentRouteName = navigationRef?.current?.getCurrentRoute()?.name;
+
+    if (previousRouteName !== currentRouteName) {
+      await firebase.analytics().logScreenView({
+        screen_name: currentRouteName,
+        screen_class: currentRouteName,
+      });
+    }
+
+    routeNameRef.current = currentRouteName;
+
+    const showBanner = shouldDisplayBanner(currentRouteName);
+    setBannerVisiblity(showBanner);
+  };
+
   return (
     <TranslationProvider>
       <StatusBar
@@ -77,23 +98,12 @@ const AppWithReduxState = () => {
         backgroundColor={theme.colors.background}
       />
       <ThemeProvider theme={theme}>
+        <WarningBanner visible={isBannerVisible} />
         <NavigationContainer
           ref={navigationRef}
           onReady={onReadyNavigation}
           theme={theme}
-          onStateChange={async () => {
-            const previousRouteName = routeNameRef.current;
-            const currentRouteName =
-              navigationRef?.current?.getCurrentRoute()?.name;
-
-            if (previousRouteName !== currentRouteName) {
-              await firebase.analytics().logScreenView({
-                screen_name: currentRouteName,
-                screen_class: currentRouteName,
-              });
-            }
-            routeNameRef.current = currentRouteName;
-          }}>
+          onStateChange={onNavigationStateChanged}>
           <AppNavigation />
           <OrientationController />
         </NavigationContainer>

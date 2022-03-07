@@ -159,5 +159,16 @@
   },
   "Next": "Next",
   "OpenVerifyLogoAlt": "Ontario",
-  "ListItem": "list item:"
+  "ListItem": "list item:",
+  "AppNotMandatory": {
+    "Understand": "I understand",
+    "LearnMore": {
+      "Label": "Learn more",
+      "URL": "https://news.ontario.ca/en/release/1001600/ontario-moving-to-next-phase-of-reopening-on-february-17"
+    },
+    "Banner": {
+      "Title": "Proof of vaccination is not required for entry.",
+      "Body": "Businesses and organizations may choose to check for proof of vaccination and use the app."
+    }
+  }
 }

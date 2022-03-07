@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import i18n from 'i18n-js';
 import RNBootSplash from 'react-native-bootsplash';
@@ -23,6 +23,7 @@ import {ParamListBase} from '@react-navigation/native';
 import OnboardingNavigation from './OnboardingNavigation';
 import HomeNavigation from './HomeNavigation';
 import SettingsNavigation from './SettingsNavigation';
+import AppNotMandatoryNavigation from './AppNotMandatoryNavigation';
 import OverlayModal from 'containers/home/OverlayModal';
 
 import {setManualUpdate} from 'redux/actions/creators';
@@ -38,6 +39,8 @@ const Stack = createStackNavigator<NavigatorParamList>();
 const AppNavigation = () => {
   const dispatch = useDispatch();
 
+  const [showWarning, setWarning] = useState(true);
+
   const onboard = useSelector((state: RootState) => state.app.onboard);
   const language = useSelector((state: RootState) => state.app.language);
 
@@ -52,9 +55,23 @@ const AppNavigation = () => {
     RNBootSplash.hide({fade: true});
   }, [dispatch, language]);
 
-  return onboard ? (
-    <OnboardingNavigation />
-  ) : (
+  const hideAppMandatoryScreen = useCallback(() => {
+    setWarning(false);
+  }, []);
+
+  if (showWarning) {
+    return (
+      <AppNotMandatoryNavigation
+        hideAppMandatoryScreen={hideAppMandatoryScreen}
+      />
+    );
+  }
+
+  if (onboard) {
+    return <OnboardingNavigation />;
+  }
+
+  return (
     <>
       <OverlayModal />
       <Stack.Navigator
