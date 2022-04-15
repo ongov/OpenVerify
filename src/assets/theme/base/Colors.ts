@@ -46,4 +46,5 @@ export const Colors = {
   timeoutText: '#1A1A1A',
   timeoutBackground: '#CCCCCC',
   tertiaryButtonTextColor: '#0066CC',
+  bannerText: '#1A1A1A',
 };

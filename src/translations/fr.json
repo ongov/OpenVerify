@@ -159,5 +159,16 @@
   "Next": "Suivant",
   "BackToApp": "Retour à l’app",
   "OpenVerifyLogoAlt": "Ontario",
-  "ListItem": "élément de liste:"
+  "ListItem": "élément de liste:",
+  "AppNotMandatory": {
+    "Understand": "Je comprends",
+    "LearnMore": {
+      "Label": "En savoir plus",
+      "URL": "https://news.ontario.ca/fr/release/1001600/lontario-passera-a-letape-suivante-de-son-deconfinement-le-17-fevrier"
+    },
+    "Banner": {
+      "Title": "La preuve de vaccination n'est plus requise pour l'entrée.",
+      "Body": "Les entreprises et les organismes ont le choix de vérifier la preuve de vaccination et d’utiliser l’application."
+    }
+  }
 }
