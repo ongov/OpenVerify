@@ -26,7 +26,7 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>Update device date/time settings</TitleText>
       <P>
         This app uses the device’s date and time settings to work offline and
-        keep entry requirements up-to-date.
+        keep technical requirements up-to-date.
       </P>
       <P>
         Changing the date and time settings on this device may stop the app from

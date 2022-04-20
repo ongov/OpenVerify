@@ -42,10 +42,7 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
           issued to a child under age 12 or turned 12 within the last 12 weeks
           (84 days)
         </LI>
-        <LI>
-          issued by a province, territory or country that uses a different type
-          of QR code
-        </LI>
+        <LI>issued by a country that uses a different type of QR code</LI>
         <LI>
           made by a third-party service not associated with the Government of
           Ontario
@@ -53,10 +50,6 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
       </UL>
       <P>What to do next:</P>
       <UL>
-        <LI>
-          allow entry for children under age 12 or who turned 12 within the last
-          12 weeks (84 days). They do not have to show proof of vaccination
-        </LI>
         {isPaperProofAllowed && (
           <LI>
             review the visitor’s government-issued paper or digital vaccine

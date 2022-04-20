@@ -17,4 +17,4 @@
   InfoPlist.strings
 */
 "CFBundleDisplayName" = "VérifOuverte";
-"NSCameraUsageDescription" = "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination et vérifier l’admissibilité d’un visiteur à entrer un site.";
+"NSCameraUsageDescription" = "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination.";

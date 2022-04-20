@@ -52,13 +52,13 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
         <P>Cette application permet de vérifier que{' '}:</P>
         <UL>
           <LI>
-            le code QR d’un visiteur répond aux exigences de l’Ontario pour
-            l’entrée
+            le code QR d’un visiteur répond à la définition du terme «
+            entièrement vacciné » de l’Ontario .
           </LI>
         </UL>
         <P>
           Lorsque l’application numérise un code QR, il y a <B>trois</B>{' '}
-          résultats possibles ou le numériseur cesse de fonctionner{' '}:
+          résultats possibles{' '}:
         </P>
         <UL>
           <LI>Vérifié</LI>
@@ -71,8 +71,11 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <SuccessResult />
       <ResultDescription>
         <P>
-          Ce certificat de vaccination <B>répond aux exigences de l’Ontario</B>{' '}
-          pour l'entrée.
+          Ce certificat de vaccination{' '}
+          <B>
+            répond à la définition du terme « entièrement vacciné » de l’Ontario
+          </B>{' '}
+          .
         </P>
       </ResultDescription>
       <WarningResult />
@@ -82,10 +85,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           <LI>
             délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans
           </LI>
-          <LI>
-            délivré par une province, un territoire ou un pays qui utilise un
-            autre type de code QR
-          </LI>
+          <LI>délivré par un pays qui utilise un autre type de code QR</LI>
           <LI>
             délivré par un service tierce non associé au gouvernement de
             l’Ontario
@@ -98,11 +98,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             du visiteur.
           </P>
         )}
-        <P>
-          Les enfants de moins de 12 ans ou nés en 2010 et qui sont à moins de
-          12 semaines (84 jours) de leur anniversaire peuvent entrer, ils n’ont
-          pas à fournir de preuve de vaccination.
-        </P>
+
         <P>
           Pour plus d’aide, visitez le site{' '}
           <LinkText
@@ -113,7 +109,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
                 'ontario.ca/aide-preuve-vaccination',
               );
             }}>
-            ontario.ca/aide-preuve-vaccination
+            ontario.ca/aide-preuve-vaccination.
           </LinkText>
         </P>
         {screenReaderEnabled && (
@@ -133,15 +129,15 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <ErrorResult />
       <ResultDescription>
         <P>
-          Le certificat ou le code{' '}
-          <B>ne répond pas aux exigences actuelles de l’Ontario</B> pour
-          l’entrée.
+          Le certificat ou le code QR{' '}
+          <B>
+            ne répond pas à la définition du terme « entièrement vacciné » de
+            l’Ontario
+          </B>
+          .
         </P>
         <P>Le personnel doit avertir le visiteur{' '}:</P>
         <UL>
-          <LI>
-            que ce certificat <B>ne peut pas être</B> accepté pour entrer
-          </LI>
           <LI>
             qu’il doit{' '}
             <B>
@@ -218,7 +214,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             visiteur a été entièrement vacciné
           </LI>
           <LI>
-            <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>
+            <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>.
           </LI>
         </UL>
       </ResultDescription>
@@ -239,7 +235,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             de l'écran de l'appareil
           </LI>
           <LI>assurez-vous que la lumière ne se reflète pas sur le code QR</LI>
-          <LI>essayez de le numériser à nouveau</LI>
+          <LI>essayez de le numériser à nouveau.</LI>
         </UL>
         {isPaperProofAllowed && (
           <P>

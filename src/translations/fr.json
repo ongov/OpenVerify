@@ -1,5 +1,6 @@
 {
   "Continue": "Continuer",
+  "ContinueViewDateTimeSettings": "Afficher les paramètres de date et d’heure",
   "Back": "Retour",
   "TryAgain": "Réessayer",
   "Home": {
@@ -12,25 +13,25 @@
       "ViewUpdate": "Voir la mise à jour dans la boutique d’applications"
     },
     "ConnectToInternet": {
-      "Title": "Connexion à l’Internet",
+      "Title": "Impossible de se connecter",
       "Subtitle": {
-        "Part1": "Votre appareil doit ",
-        "Part2": "être connecté à l’Internet",
-        "Part3": " pour mettre à jour les exigences concernant les conditions d’entrée."
+        "Part1": "Une connexion réseau ",
+        "Part2": "est requise pour mettre à jour ",
+        "Part3": "l’application en fonction des conditions techniques valides en Ontario."
       },
       "CheckingForUpdate": "Vérification des mises à jour…",
       "UpdateSuccessTitle": "Réglages du vérificateur mis à jour",
       "UpdateSuccessSubtitle": "Les réglages du vérificateur ont été mis à jour avec succès.",
       "UpdateFailedTitle": "Erreur\u00a0: la connexion n’a pas pu être établie",
-      "UpdateFailedSubtitle": "Veuillez vérifier votre connexion Internet.",
+      "UpdateFailedSubtitle": "Veuillez vérifier votre connexion Internet",
       "UpdateFailedSignatureTitle": "Erreur\u00a0: échec de la mise à jour",
-      "UpdateFailedSignatureSubtitle": "Veuillez vérifier votre connexion Internet.",
+      "UpdateFailedSignatureSubtitle": "Veuillez vérifier votre connexion Internet",
       "ConnectForUpdates": "Connexion pour les mises à jour",
       "ContinueWithoutConnecting": "Continuer sans se connecter"
     },
     "CameraPermission": {
       "AllowCameraAccessTitle": "Vous devez autoriser l’accès à la caméra de votre appareil pour utiliser cette application",
-      "AllowCameraAccessMessage": "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination et vérifier l’admissibilité d’un visiteur à entrer un site.",
+      "AllowCameraAccessMessage": "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination.",
       "GoToSetting": "Aller aux paramètres",
       "GoBackToHome": "Retour à la page d’accueil"
     },
@@ -93,7 +94,7 @@
     "SettingsScreen": {
       "Title": "Paramètres et informations supplémentaires",
       "Updating": {
-        "Title": "Dernière vérification pour la mise à jour des exigences d’entrée :",
+        "Title": "Dernière vérification des mises à jour :",
         "ConnectForUpdates": "Connectez-vous pour les mises à jour",
         "Never": "Jamais"
       },
@@ -123,7 +124,7 @@
         "VulnDisclosurePolicy": "Politique de divulgation des vulnérabilités",
         "VulnDisclosurePolicyURL": "https://www.ontario.ca/verif-divulgation-vulnerabilite"
       },
-      "ReviewAppSetup": "Retour à la page de présentation de l’application"
+      "ReviewAppSetup": "Examiner la configuration de l’application"
     },
     "Language": {
       "Title": "Langue",
@@ -140,7 +141,7 @@
       "Dark": "Foncé"
     },
     "HowItWorks": {
-      "Title": "Comment fonctionne VérifOuverte?",
+      "Title": "Comment fonctionne VérifOuverte",
       "LearnMoreButton": "Visitez le site ontario.ca/verif",
       "LearnMoreURL": "https://www.ontario.ca/verif"
     },

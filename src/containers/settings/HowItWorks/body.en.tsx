@@ -21,8 +21,8 @@ const BodyEn: FC = () => (
     <P>When you scan a visitor’s digital or paper QR code, this app will:</P>
     <UL>
       <LI>
-        verify that a <B>valid</B> vaccine certificate meets Ontario
-        requirements
+        verify that a <B>valid</B> vaccine certificate meets Ontario’s
+        definition of fully vaccinated
       </LI>
       <LI>
         show a visitor’s <B>name</B> and <B>date of birth</B> so their identity
@@ -47,7 +47,7 @@ const BodyEn: FC = () => (
         allow the Ontario government or businesses to track or save personally
         identifiable information
       </LI>
-      <LI>share more information than what is needed for entry</LI>
+      <LI>share more information than needed</LI>
     </UL>
   </>
 );

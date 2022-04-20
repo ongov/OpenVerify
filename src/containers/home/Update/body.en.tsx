@@ -47,8 +47,8 @@ const BodyEn = React.forwardRef<any, Props>(
         <TitleText ref={focusRef}>Connect to internet</TitleText>
         {(redWarning || yellowWarning) && (
           <P>
-            Your device needs to <B>connect to the internet</B> to update entry
-            requirements.
+            Your device needs to <B>connect to the internet</B> to update
+            technical requirements.
           </P>
         )}
 

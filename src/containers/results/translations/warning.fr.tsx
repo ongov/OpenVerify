@@ -34,7 +34,8 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <TitleText>
-        Il peut y avoir un problème technique avec ce certificat.
+        Informez le visiteur qu’il peut y avoir un problème technique avec son
+        certificat.
       </TitleText>
       <P>Par exemple, le code QR a pu être{' '}:</P>
       <UL>
@@ -42,21 +43,14 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
           délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans au
           cours des 12 dernières semaines (84 jours)
         </LI>
+        <LI>délivré par un pays qui utilise un autre type de code QR</LI>
         <LI>
-          délivré par une province, un territoire ou un pays qui utilise un
-          autre type de code QR
-        </LI>
-        <LI>
-          délivré par un service tierce non associé au gouvernement de l’Ontario
+          délivré par un service tierce non associé au gouvernement de
+          l’Ontario.
         </LI>
       </UL>
       <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
-        <LI>
-          laissez entrer les enfants de moins de 12 ans ou qui viennent d’avoir
-          12 ans au cours des 12 dernières semaines (84 jours). Ils n’ont pas à
-          fournir de preuve de vaccination
-        </LI>
         {isPaperProofAllowed && (
           <LI>
             examinez le certificat de vaccination papier ou numérique délivrés
@@ -87,7 +81,7 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
                 });
                 Linking.openURL(telLink);
               }}>
-              1-833-943-3900
+              1-833-943-3900.
             </LinkText>
           ) : (
             '1-833-943-3900'

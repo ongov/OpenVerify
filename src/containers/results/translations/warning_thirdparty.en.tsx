@@ -26,8 +26,7 @@ const WarningThirdPartyEn: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <TitleText>
-        This certificate was created using a third-party tool and can not be
-        used for entry.
+        This certificate was created using a third-party tool.
       </TitleText>
       <P>What to do next:</P>
       <UL>

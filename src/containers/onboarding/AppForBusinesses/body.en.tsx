@@ -35,12 +35,11 @@ const BodyEn = React.forwardRef<any, React.PropsWithChildren<Props>>(
     return (
       <>
         <TitleText ref={focusRef}>
-          Open Verify is an app for businesses and organizations
+          Open Verify is a free app for businesses and organizations
         </TitleText>
         <SubtitleText>
-          Open Verify provides a quick, easy and secure way to scan and confirm
-          that a visitor’s enhanced vaccine certificate with official QR code
-          meets the Ontario requirements for entry.
+          Open Verify provides a quick, easy and secure way to scan COVID-19
+          vaccine certificates at entry.
         </SubtitleText>
         <SubtitleText>
           <B>

@@ -33,10 +33,10 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
       <UL>
         <LI>
           demander au visiteur de produire un certificat délivré par le
-          gouvernement
+          gouvernement;
         </LI>
         <LI>
-          informez le visiteur que les certificats de vaccination optimisés avec
+          informez le visiteur que les certificats de vaccination améliorés avec
           un code QR délivrés par le gouvernement peuvent être téléchargés à
           l’adresse suivant{' '}:{' '}
           <LinkText

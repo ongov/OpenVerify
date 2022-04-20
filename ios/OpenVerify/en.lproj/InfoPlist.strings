@@ -17,4 +17,4 @@
   InfoPlist.strings
 */
 "CFBundleDisplayName" = "Open Verify";
-"NSCameraUsageDescription" = "This app must access the camera to scan vaccine certificate QR codes and verify a visitor’s eligibility to enter.";
+"NSCameraUsageDescription" = "This app must access the camera to scan vaccine certificate QR codes.";

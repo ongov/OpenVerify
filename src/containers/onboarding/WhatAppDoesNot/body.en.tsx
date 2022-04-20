@@ -31,7 +31,10 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
         store any information that links specific locations, visitors or
         businesses to each other
       </Bullet>
-      <Bullet>share more information than what is needed for entry</Bullet>
+      <Bullet>
+        share more information than what is needed to verify the vaccine
+        certificate
+      </Bullet>
     </>
   );
 });

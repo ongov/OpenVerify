@@ -37,8 +37,8 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
         visiteurs ou des entreprises déterminés les uns aux autres
       </Bullet>
       <Bullet>
-        partage plus d’informations que ce qui est nécessaire pour entrer au
-        site
+        partage plus d’informations que ce qui est nécessaire pour vérifier le
+        certificat de vaccination.
       </Bullet>
     </>
   );

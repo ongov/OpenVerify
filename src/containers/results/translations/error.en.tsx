@@ -30,18 +30,15 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
   const telLink = useTelLink('1-833-943-3900');
   return (
     <>
-      <TitleText>This certificate cannot be used to enter.</TitleText>
+      <TitleText>
+        The QR code does not meet Ontario’s definition of fully vaccinated.
+      </TitleText>
       <P>What to do next:</P>
       <UL>
         <LI>
-          let the visitor know this certificate <B>cannot</B> be accepted for
-          entry
-        </LI>
-        <LI>
           let the visitor know they should{' '}
           <B>
-            download their most recent enhanced vaccine certificate with
-            official QR code
+            download their most recent vaccine certificate with official QR code
           </B>{' '}
           if they are fully vaccinated and 14 days have passed or if they have
           an active medical exemption
