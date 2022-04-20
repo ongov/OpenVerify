@@ -20,12 +20,12 @@ const BodyEn: FC = () => (
   <>
     <P>
       The app needs to connect to the internet every week to check for updates
-      about Ontario requirements for entry.
+      about Ontario’s definition of fully vaccinated.
     </P>
     <P>When connected, it will:</P>
     <UL>
-      <LI>update vaccine or entry requirements</LI>
       <LI>notify you if there is an updated version of the app available</LI>
+      <LI>update technical requirements</LI>
     </UL>
     <P>
       You will get requests to connect to the internet daily if the app has not
@@ -36,8 +36,8 @@ const BodyEn: FC = () => (
       you connect to update.
     </P>
     <P>
-      When you update regularly, you get the most accurate information to help
-      keep your venue and visitors safe.
+      When you update regularly, you get the most accurate technical
+      requirements.
     </P>
     <P>
       Updates happen automatically when the device is connected to the internet.

@@ -28,8 +28,8 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       </TitleText>
       <P>
         Cette application utilise les paramètres de date et d’heure de
-        l’appareil pour fonctionner hors ligne et maintenir à jour les
-        conditions d’entrée.
+        l’appareil pour fonctionner hors ligne et maintenir à jour les exigences
+        techniques.
       </P>
       <P>
         La modification des paramètres de date et d’heure de cet appareil peut

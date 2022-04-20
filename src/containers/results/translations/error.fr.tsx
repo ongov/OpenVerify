@@ -31,19 +31,16 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <TitleText>
-        Ce certificat ne peut pas être utilisé pour entrer au site.
+        Le code QR ne répond pas à la définition du terme « entièrement
+        vacciné » de l’Ontario.
       </TitleText>
       <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>
-          informez le visiteur que ce certificat <B>ne peut pas</B> être accepté
-          pour entrer
-        </LI>
-        <LI>
           informez le visiteur qu’il doit{' '}
           <B>
-            télécharger son certificat de vaccination amélioré le plus récent
-            avec le code QR officiel
+            télécharger son certificat de vaccination le plus récent avec le
+            code QR officiel
           </B>{' '}
           s’il a été entièrement vacciné et qu’il s’est écoulé 14 jours ou s’ils
           ont une exemption médicale valide
@@ -72,7 +69,7 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
                 });
                 Linking.openURL(telLink);
               }}>
-              1-833-943-3900
+              1-833-943-3900.
             </LinkText>
           ) : (
             '1-833-943-3900'
@@ -109,14 +106,14 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
       <P>Le code QR peut indiquer que{' '}:</P>
       <UL>
         <LI>
-          le visiteur n’a reçu <B>qu’une seule dose du vaccin</B>
+          le visiteur n’a reçu <B>qu’une seule dose du vaccin</B>;
         </LI>
         <LI>
           il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
           visiteur a été entièrement vacciné
         </LI>
         <LI>
-          <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>
+          <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>.
         </LI>
       </UL>
     </>

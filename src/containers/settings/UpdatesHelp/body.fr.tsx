@@ -20,18 +20,14 @@ const BodyFr: FC = () => (
   <>
     <P>
       L’application doit se connecter à l’Internet chaque semaine afin de
-      vérifier si les conditions d’entrée dans les établissements en Ontario ont
-      été mises à jour.
+      vérifier la définition du terme « entièrement vacciné » de l’Ontario.
     </P>
     <P>Une fois connectée, elle{' '}:</P>
     <UL>
       <LI>
-        met à jour les exigences concernant les vaccins ou les conditions
-        d’entrée
+        vous indique si une version mise à jour de l’application est disponible;
       </LI>
-      <LI>
-        vous indique si une version mise à jour de l’application est disponible
-      </LI>
+      <LI>met à jour les exigences techniques.</LI>
     </UL>
     <P>
       Vous recevrez des demandes de connexion à Internet si l’application n’a
@@ -44,8 +40,7 @@ const BodyFr: FC = () => (
     </P>
     <P>
       Lorsque vous effectuez des mises à jour régulièrement, vous obtenez les
-      informations les plus précises pour assurer la sécurité de votre
-      établissement et des visiteurs.
+      informations concernant les exigences techniques les plus précises.
     </P>
     <P>
       Les mises à jour se font automatiquement lorsque l’appareil est connecté à

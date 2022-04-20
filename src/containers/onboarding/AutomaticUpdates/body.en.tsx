@@ -24,14 +24,13 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
     <>
       <TitleText ref={focusRef}>Automatic updates</TitleText>
       <SubtitleText>
-        To keep your venue and visitors safe, the app will need to connect to
-        the internet weekly.
+        The app will need to connect to the internet weekly
       </SubtitleText>
       <SubtitleText>When connected, it will:</SubtitleText>
       <Bullet>
         let you know if there is an updated version of the app available
       </Bullet>
-      <Bullet>update vaccine or entry requirements</Bullet>
+      <Bullet>update technical requirements</Bullet>
     </>
   );
 });

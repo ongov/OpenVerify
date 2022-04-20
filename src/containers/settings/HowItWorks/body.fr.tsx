@@ -25,7 +25,8 @@ const BodyFr: FC = () => (
     <UL>
       <LI>
         vérifier qu’un certificat de vaccination <B>valide</B> délivré par
-        l'Ontario répond aux exigences de cette province
+        l'Ontario répond à la définition du terme « entièrement vacciné » de
+        l’Ontario;
       </LI>
       <LI>
         afficher le <B>nom</B> et la <B>date de naissance</B> d’un visiteur afin
@@ -33,7 +34,7 @@ const BodyFr: FC = () => (
       </LI>
       <LI>
         recueillir des données pour des mesures qui{' '}
-        <B>ne sont pas associées aux utilisateurs</B>
+        <B>ne sont pas associées aux utilisateurs</B> ;
       </LI>
       <LI>
         fonctionner <B>hors ligne</B> (sans connexion internet)
@@ -52,10 +53,7 @@ const BodyFr: FC = () => (
         faire le suivi ou d’enregistrer des informations permettant d’identifier
         les personnes par le gouvernement ou les entreprises de l’Ontario
       </LI>
-      <LI>
-        partager plus d’informations que ce qui est nécessaire pour entrer au
-        site
-      </LI>
+      <LI>partager plus d’informations que ce qui est nécessaire .</LI>
     </UL>
   </>
 );

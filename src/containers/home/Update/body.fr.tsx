@@ -56,16 +56,16 @@ const BodyFr = React.forwardRef<any, Props>(
         <TitleText ref={focusRef}>Connexion à l’Internet</TitleText>
         {(redWarning || yellowWarning) && (
           <P>
-            Votre appareil doit être <B>connecté à l’Internet</B> pour mettre à
-            jour les exigences concernant les conditions d’entrée.
+            Votre appareil doit <B>être connecté à l’Internet</B> pour mettre à
+            jour les exigences techniques.
           </P>
         )}
 
         {expired ? (
           <P>
-            Cette application ne numérisera pas les certificats de vaccination
-            tant qu’elle ne se sera pas connectée pour télécharger des mises à
-            jour.
+            Cette application <B>ne numérisera pas</B> les certificats de
+            vaccination tant qu’elle ne sera pas connectée à l'Internet pour
+            télécharger des mises à jour.
           </P>
         ) : (
           <>
@@ -74,7 +74,9 @@ const BodyFr = React.forwardRef<any, Props>(
               {daysLeft === 1 ? (
                 <B>le lendemain</B>
               ) : (
-                <B>{NUMBERS_TO_WORDS[daysLeft]} prochains jours</B>
+                <>
+                  dans les <B>{NUMBERS_TO_WORDS[daysLeft]} prochains jours</B>
+                </>
               )}
               , elle <B>cessera de fonctionner</B>.
             </P>

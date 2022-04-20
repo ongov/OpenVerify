@@ -24,20 +24,20 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
     <>
       <TitleText ref={focusRef}>Que fait cette application</TitleText>
       <SubtitleText>
+        Lorsqu’une <B>entreprise ou un organisme</B> numérise le code QR
+        numérique ou papier d’un visiteur, cette application permettra{' '} :
         Lorsqu’une <B>entreprise ou une organisation</B> numérise le code QR
         numérique ou papier d’un visiteur, cette application permettra{' '}:
       </SubtitleText>
       <Bullet>
-        d’améliorer la <B>sécurité</B> dans des lieux tels que les restaurants,
-        les centres d’entraînement physique et salles de cinéma
+        d’améliorer la <B>sécurité</B> dans des lieux intérieurs;
       </Bullet>
       <Bullet>
         de protéger les renseignements personnels de l’utilisateur en lisant
-        seulement les certificats qui sont <B>fiables</B> et <B>sécurisés</B>
+        seulement les certificats qui sont <B>fiables</B> et <B>sécurisés</B>;
       </Bullet>
       <Bullet>
-        de vérifier si un certificat est <B>valide</B> et si le visiteur{' '}
-        <B>est autorisé à y entrer</B>
+        de vérifier si un certificat de vaccination est <B>valide</B>;
       </Bullet>
       <Bullet>
         d’afficher le <B>nom</B> et la <B>date de naissance</B> d’un visiteur
@@ -48,7 +48,7 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       </Bullet>
       <Bullet>
         de recueillir des données pour des mesures qui{' '}
-        <B>ne sont pas associées aux utilisateurs</B>
+        <B>ne sont pas associées aux utilisateurs</B>.
       </Bullet>
     </>
   );

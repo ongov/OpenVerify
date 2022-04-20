@@ -35,18 +35,16 @@ const BodyFr = React.forwardRef<any, React.PropsWithChildren<Props>>(
     return (
       <>
         <TitleText ref={focusRef}>
-          VérifOuverte est une application destinée aux entreprises et aux
-          organismes
+          VérifOuverte est une application gratuite destinée aux entreprises et
+          aux organismes
         </TitleText>
         <SubtitleText>
-          VérifOuverte offre un moyen rapide, facile et sécurisé de numériser et
-          de confirmer que le certificat de vaccination amélioré muni d’un code
-          QR officiel d’un visiteur répond aux exigences de l’Ontario concernant
-          les conditions d’entrée.
+          VérifOuverte offre un moyen rapide, facile et sécurisé de numériser
+          les certificats de vaccination munis d’un code QR à l’entrée.
         </SubtitleText>
         <SubtitleText>
           <B>
-            L'application ne permet pas de sauvegarder ou de télécharger votre
+            L’application ne permet pas de sauvegarder ou de télécharger votre
             preuve de vaccination.
           </B>
         </SubtitleText>

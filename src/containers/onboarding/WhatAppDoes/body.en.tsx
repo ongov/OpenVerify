@@ -28,15 +28,14 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
         paper QR code, this app will:
       </SubtitleText>
       <Bullet>
-        improve the <B>safety</B> of places like restaurants, gyms and movie
-        theatres
+        improve the <B>safety</B> of indoor spaces
       </Bullet>
       <Bullet>
         protect user privacy by only reading certificates that are{' '}
         <B>trusted</B> and <B>secure</B>
       </Bullet>
       <Bullet>
-        check if a certificate is <B>valid</B> and the visitor <B>can enter</B>
+        check if a vaccine certificate with QR code is <B>valid</B>
       </Bullet>
       <Bullet>
         show a visitor’s <B>name</B> and <B>date of birth</B> so their identity

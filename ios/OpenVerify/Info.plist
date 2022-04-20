@@ -42,7 +42,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This app must access the camera to scan vaccine certificate QR codes and verify a visitor’s eligibility to enter.</string>
+	<string>This app must access the camera to scan vaccine certificate QR codes.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>raleway-modified-bold.ttf</string>

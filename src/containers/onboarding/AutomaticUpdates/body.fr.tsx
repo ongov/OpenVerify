@@ -24,17 +24,13 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
     <>
       <TitleText ref={focusRef}>Mises à jour automatiques</TitleText>
       <SubtitleText>
-        Afin d’assurer la sécurité de votre établissement et des visiteurs,
-        cette application devra se connecter à l’Internet chaque semaine.
+        Cette application devra se connecter à l’Internet chaque semaine.
       </SubtitleText>
       <SubtitleText>Une fois connectée, elle{' '}:</SubtitleText>
       <Bullet>
         vous indique si une version à jour de l’application est disponible
       </Bullet>
-      <Bullet>
-        met à jour les exigences concernant les vaccins ou les conditions
-        d’entrée
-      </Bullet>
+      <Bullet>met à jour les exigences techniques.</Bullet>
     </>
   );
 });

@@ -1,5 +1,6 @@
 {
   "Continue": "Continue",
+  "ContinueViewDateTimeSettings": "View date and time settings",
   "BackToApp": "Back to app",
   "Back": "Back",
   "TryAgain": "Try again",
@@ -17,7 +18,7 @@
       "Subtitle": {
         "Part1": "Your device needs to ",
         "Part2": "connect to the internet",
-        "Part3": " to update entry requirements."
+        "Part3": " to update the app with the current Ontario technical requirements."
       },
       "CheckingForUpdate": "Checking for updates...",
       "UpdateSuccessTitle": "Verifier rules updated",
@@ -31,7 +32,7 @@
     },
     "CameraPermission": {
       "AllowCameraAccessTitle": "You must allow access to the camera to use this app",
-      "AllowCameraAccessMessage": "This app must access the camera to scan vaccine certificate QR codes and verify a visitor’s eligibility to enter.",
+      "AllowCameraAccessMessage": "This app must access the camera to scan vaccine certificate QR codes.",
       "GoToSetting": "Go to Settings",
       "GoBackToHome": "Back to home page"
     },
@@ -94,7 +95,7 @@
     "SettingsScreen": {
       "Title": "Settings and information",
       "Updating": {
-        "Title": "Last checked for update to entry requirements:",
+        "Title": "Last checked for updates:",
         "ConnectForUpdates": "Connect for updates",
         "Never": "Never"
       },

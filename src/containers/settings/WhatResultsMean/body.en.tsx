@@ -51,7 +51,9 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
       <SubContainer>
         <P>This app verifies that:</P>
         <UL>
-          <LI>a visitor’s QR code meets the Ontario requirements for entry</LI>
+          <LI>
+            a visitor’s QR code meets Ontario’s definition of fully vaccinated
+          </LI>
         </UL>
         <P>
           When the app scans a QR code, there are <B>3</B> possible results or
@@ -66,8 +68,8 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
       <SuccessResult />
       <ResultDescription>
         <P>
-          This vaccine certificate <B>meets the Ontario requirements</B> for
-          entry.
+          This vaccine certificate{' '}
+          <B>meets the Ontario definition of fully vaccinated.</B>
         </P>
       </ResultDescription>
       <WarningResult />
@@ -75,10 +77,7 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
         <P>For example, the QR code may be:</P>
         <UL>
           <LI>issued to a child under age 12 or recently turned 12</LI>
-          <LI>
-            issued by a province, territory or country that uses a different
-            type of QR code
-          </LI>
+          <LI>issued by a country that uses a different type of QR code</LI>
           <LI>
             made by a third-party service not associated with the Government of
             Ontario
@@ -90,11 +89,6 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
             vaccine certificate and a piece of identification.
           </P>
         )}
-        <P>
-          Children under age 12 or who were born in 2010 and are within 12 weeks
-          (84 days) of their birthday can be allowed entry, they do not have to
-          show proof of vaccination.
-        </P>
         <P>
           For more help, visit{' '}
           <LinkText
@@ -125,23 +119,22 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
       <ErrorResult />
       <ResultDescription>
         <P>
-          This vaccine certificate <B>does not meet the Ontario requirements</B>{' '}
-          for entry.
+          <B>
+            The QR code does not meet Ontario’s definition of fully vaccinated.{' '}
+          </B>
         </P>
         <P>Staff should let the visitor know:</P>
         <UL>
           <LI>
-            this certificate <B>cannot</B> be accepted for entry
-          </LI>
-          <LI>
             they should{' '}
             <B>
-              download their most recent enhanced vaccine certificate with
-              official QR code
+              download their most recent vaccine certificate with official QR
+              code
             </B>{' '}
             if they are fully vaccinated and 14 days have passed or if they have
-            an active medical exemption{' '}
+            an active medical exemption
           </LI>
+
           <LI>
             redirect the visitor to{' '}
             <LinkText
