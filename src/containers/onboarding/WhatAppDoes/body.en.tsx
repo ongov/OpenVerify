@@ -25,27 +25,27 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>What this app does</TitleText>
       <SubtitleText>
         When a <B>business or organization</B> scans a visitor’s digital or
-        paper QR code, this app will:
+        paper QR code, this app:
       </SubtitleText>
       <Bullet>
-        improve the <B>safety</B> of indoor spaces
+        improves the <B>safety</B> of indoor spaces
       </Bullet>
       <Bullet>
-        protect user privacy by only reading certificates that are{' '}
+        protects user privacy by only reading certificates that are{' '}
         <B>trusted</B> and <B>secure</B>
       </Bullet>
       <Bullet>
-        check if a vaccine certificate with QR code is <B>valid</B>
+        checks if a vaccine certificate with QR code is <B>valid</B>
       </Bullet>
       <Bullet>
-        show a visitor’s <B>name</B> and <B>date of birth</B> so their identity
+        shows a visitor’s <B>name</B> and <B>date of birth</B> so their identity
         can be verified
       </Bullet>
       <Bullet>
-        work <B>offline</B> (without an internet connection)
+        works <B>offline</B> (without an internet connection)
       </Bullet>
       <Bullet>
-        collect data for metrics that are <B>not connected to users</B>
+        collects data for metrics that are <B>not connected to users</B>
       </Bullet>
     </>
   );

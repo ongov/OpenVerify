@@ -2,11 +2,11 @@
   "Continue": "Continuer",
   "ContinueViewDateTimeSettings": "Afficher les paramètres de date et d’heure",
   "Back": "Retour",
-  "TryAgain": "Réessayer",
+  "TryAgain": "RÉESAYER",
   "Home": {
     "HomeScreen": {
       "VerifyVaccinationStatus": "VérifOuverte",
-      "CheckVaccinationStatus": "Numérisez un certificat de vaccination",
+      "CheckVaccinationStatus": "Numérisez un code QR",
       "SettingsScreen": "Paramètres et informations supplémentaires"
     },
     "AppUpdate": {
@@ -17,21 +17,21 @@
       "Subtitle": {
         "Part1": "Une connexion réseau ",
         "Part2": "est requise pour mettre à jour ",
-        "Part3": "l’application en fonction des conditions techniques valides en Ontario."
+        "Part3": "les exigences techniques."
       },
       "CheckingForUpdate": "Vérification des mises à jour…",
       "UpdateSuccessTitle": "Réglages du vérificateur mis à jour",
       "UpdateSuccessSubtitle": "Les réglages du vérificateur ont été mis à jour avec succès.",
-      "UpdateFailedTitle": "Erreur\u00a0: la connexion n’a pas pu être établie",
+      "UpdateFailedTitle": "Échec de la mise à jour : impossible de se connecter à Internet",
       "UpdateFailedSubtitle": "Veuillez vérifier votre connexion Internet",
-      "UpdateFailedSignatureTitle": "Erreur\u00a0: échec de la mise à jour",
+      "UpdateFailedSignatureTitle": "Échec de la mise à jour : impossible de se connecter à Internet",
       "UpdateFailedSignatureSubtitle": "Veuillez vérifier votre connexion Internet",
       "ConnectForUpdates": "Connexion pour les mises à jour",
       "ContinueWithoutConnecting": "Continuer sans se connecter"
     },
     "CameraPermission": {
       "AllowCameraAccessTitle": "Vous devez autoriser l’accès à la caméra de votre appareil pour utiliser cette application",
-      "AllowCameraAccessMessage": "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination.",
+      "AllowCameraAccessMessage": "Cette application doit accéder à la caméra de votre appareil pour numériser les codes QR des certificats de vaccination. Vous devrez effectuer cette modification dans vos paramètres, puis revenir à l’application.",
       "GoToSetting": "Aller aux paramètres",
       "GoBackToHome": "Retour à la page d’accueil"
     },
@@ -56,7 +56,7 @@
     },
     "ReadyToScan": {
       "ReadyToScan": "Prête à numériser",
-      "ReadyToScanDetails": "VérifOuverte est prêt à commencer à numériser les codes QR."
+      "ReadyToScanDetails": "VérifOuverte est maintenant prête à commencer à numériser les codes QR."
     },
     "Terms": {
       "TermsAccept": "J’ai lu et j’accepte les conditions d’utilisation.",
@@ -147,7 +147,7 @@
     },
     "WhatResultsMean": {
       "Title": "Ce que les résultats signifient",
-      "LearnMoreButton": "Visitez le site ontario.ca/verif-resultats",
+      "LearnMoreButton": "Consultez le site ontario.ca/verif-resultats",
       "LearnMoreURL": "https://www.ontario.ca/verif-resultats"
     },
     "HelpUsImprove": {
@@ -158,13 +158,13 @@
     }
   },
   "Next": "Suivant",
-  "BackToApp": "Retour à l’app",
+  "BackToApp": "RETOUR À L’APP",
   "OpenVerifyLogoAlt": "Ontario",
-  "ListItem": "élément de liste:",
+  "ListItem": "Élément de liste",
   "AppNotMandatory": {
     "Understand": "Je comprends",
     "LearnMore": {
-      "Label": "En savoir plus",
+      "Label": "Plus d’informations pour les entreprises",
       "URL": "https://news.ontario.ca/fr/release/1001600/lontario-passera-a-letape-suivante-de-son-deconfinement-le-17-fevrier"
     },
     "Banner": {

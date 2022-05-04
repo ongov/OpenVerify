@@ -56,7 +56,7 @@ const CameraMissingPermission: FC<Props> = ({navigation, route}) => {
 
   return (
     <MainContainer>
-      <Scroll scrollEnabled={false}>
+      <Scroll scrollEnabled={true}>
         <SubContainer>
           <TitleText ref={focusRef}>
             {I18n.t('Home.CameraPermission.AllowCameraAccessTitle')}

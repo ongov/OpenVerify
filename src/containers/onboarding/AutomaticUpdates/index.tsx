@@ -61,7 +61,7 @@ const OnboardingAutomaticUpdates: FC<Props> = ({navigation}) => {
           onPress={() => {
             navigation.navigate(routes.Onboarding.ReadyToScan);
           }}>
-          {I18n.t('Onboarding.Understand')}
+          {I18n.t('Next')}
         </Button>
       </BottomContainer>
     </MainContainer>

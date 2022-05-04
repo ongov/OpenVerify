@@ -74,7 +74,7 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
           Ce certificat de vaccination{' '}
           <B>
             répond à la définition du terme « entièrement vacciné » de l’Ontario
-          </B>{' '}
+          </B>
           .
         </P>
       </ResultDescription>
@@ -142,13 +142,18 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
             qu’il doit{' '}
             <B>
               télécharger son certificat de vaccination amélioré le plus récent
-              muni d’un code QR officiel
+              muni d’un code QR
             </B>{' '}
             s’il est entièrement vacciné et qu’il s’est écoulé 14 jours ou s’ils
-            ont une exemption médicale valide
+            ont une exemption médicale valide;
           </LI>
           <LI>
-            réacheminer la personne vers{' '}
+            s'il bénéficie d'une exemption médicale valide, il devra
+            probablement télécharger son certificat de vaccination le plus
+            récent.
+          </LI>
+          <LI>
+            Réacheminer la personne vers{' '}
             <LinkText
               onPress={() => {
                 openURL(
@@ -170,10 +175,10 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
                   });
                   Linking.openURL(telLink);
                 }}>
-                1-833-943-3900
+                1-833-943-3900.
               </LinkText>
             ) : (
-              '1-833-943-3900'
+              '1-833-943-3900.'
             )}{' '}
           </LI>
         </UL>
@@ -206,12 +211,10 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
         )}
         <P>Le code QR peut indiquer que{' '}:</P>
         <UL>
-          <LI>
-            le visiteur <B>n’a reçu qu’une seule dose du vaccin</B>
-          </LI>
+          <LI>le visiteur n’est pas entièrement vacciné;</LI>
           <LI>
             il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
-            visiteur a été entièrement vacciné
+            visiteur a été entièrement vacciné;
           </LI>
           <LI>
             <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>.
@@ -221,20 +224,20 @@ const BodyFr: FC<Props> = ({screenReaderEnabled}) => {
       <TimeoutResult />
       <ResultDescriptionLast>
         <P>
-          <B>La caméra n’a pas pu trouver le code QR.</B>
+          <B>La caméra n’a pas pu trouver le code QR</B>
         </P>
         <P>Ce qu’il faut faire ensuite{' '}:</P>
         <UL>
-          <LI>essuyez l’objectif de la caméra</LI>
-          <LI>allumez ou éteignez la lampe de poche</LI>
+          <LI>essuyez l’objectif de la caméra;</LI>
+          <LI>allumez ou éteignez la lampe de poche;</LI>
           <LI>
             si le code QR est imprimé sur papier, essayez d’aplatir le papier
           </LI>
           <LI>
             si le code QR est affiché sur un appareil, augmentez la luminosité
-            de l'écran de l'appareil
+            de l'écran de l'appareil;
           </LI>
-          <LI>assurez-vous que la lumière ne se reflète pas sur le code QR</LI>
+          <LI>assurez-vous que la lumière ne se reflète pas sur le code QR;</LI>
           <LI>essayez de le numériser à nouveau.</LI>
         </UL>
         {isPaperProofAllowed && (

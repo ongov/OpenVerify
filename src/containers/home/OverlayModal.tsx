@@ -59,7 +59,7 @@ const OverlayModal: FC = ({}) => {
           I18n.t('Home.ConnectToInternet.UpdateSuccessSubtitle'),
           [
             {
-              text: I18n.t('Continue'),
+              text: I18n.t('Next'),
               onPress: () => {
                 dispatch(setManualUpdate(false));
 

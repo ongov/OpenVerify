@@ -31,20 +31,20 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <TitleText>
-        The QR code does not meet Ontario’s definition of fully vaccinated.
+        The QR code does not meet Ontario's definition of fully vaccinated.
       </TitleText>
-      <P>What to do next:</P>
+      <P>Let the visitor know:</P>
       <UL>
         <LI>
-          let the visitor know they should{' '}
-          <B>
-            download their most recent vaccine certificate with official QR code
-          </B>{' '}
-          if they are fully vaccinated and 14 days have passed or if they have
-          an active medical exemption
+          they should download their most recent vaccine certificate with QR
+          code if they are fully vaccinated and 14 days have passed
         </LI>
         <LI>
-          redirect the visitor to{' '}
+          if they have an active medical exemption, they may need to download
+          their most recent vaccine certificate
+        </LI>
+        <LI>
+          to visit{' '}
           <LinkText
             onPress={() => {
               openURL(
@@ -102,11 +102,9 @@ const ErrorEn: FC<Props> = ({screenReaderEnabled}) => {
       )}
       <P>The QR code may indicate:</P>
       <UL>
+        <LI>the visitor may not be fully vaccinated</LI>
         <LI>
-          the visitor <B>only</B> has <B>one vaccination</B>
-        </LI>
-        <LI>
-          <B>14 days</B> may have <B>not passed</B> since the visitor was fully
+          <B>14 days may not have passed</B> since the visitor was fully
           vaccinated
         </LI>
         <LI>

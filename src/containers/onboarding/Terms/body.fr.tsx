@@ -21,6 +21,7 @@ import {useTranslation} from 'translations/i18n';
 import {getTermsOfUse} from 'redux/selectors';
 
 const TERMS_OF_USE = [
+  'En utilisant cette application, vous acceptez les conditions ci-dessous et celles incluses dans les liens intégrés.',
   'L’application est fournie « telle quelle » et vous êtes le seul responsable de déterminer la pertinence de son utilisation.',
   'Le gouvernement de l’Ontario ne garantit pas l’exactitude des résultats obtenus grâce à l’application et n’assume aucune responsabilité ni aucun coût liés à l’utilisation de l’application.',
   'Vous ne devez pas utiliser l’application afin de conserver, sauvegarder, copier, modifier, utiliser ou divulguer toute information fournie. Cela comprend la prise de photos, de vidéos, de captures d’écran et d’enregistrements d’écran de ces renseignements.',
@@ -37,10 +38,6 @@ const BodyFr: FC = () => {
 
   return (
     <>
-      <P>
-        En utilisant cette application, vous acceptez les conditions ci-dessous
-        et celles incluses dans les liens intégrés.
-      </P>
       <UL>
         {termsOfUseValue.map((text: string, idx: number) => {
           return <LI key={idx}>{text}</LI>;

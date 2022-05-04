@@ -73,7 +73,7 @@ const DateTamper: FC<Props> = ({navigation}) => {
       <BorderSpacing />
       <BottomContainer>
         <Button onPress={() => navigation.navigate(routes.Home.HomeScreen)}>
-          {I18n.t('Continue')}
+          {I18n.t('Next')}
         </Button>
       </BottomContainer>
     </MainContainer>

@@ -7,7 +7,7 @@
   "Home": {
     "HomeScreen": {
       "VerifyVaccinationStatus": "Open Verify",
-      "CheckVaccinationStatus": "Scan a vaccine certificate",
+      "CheckVaccinationStatus": "Scan a QR code",
       "SettingsScreen": "Settings and information"
     },
     "AppUpdate": {
@@ -18,29 +18,29 @@
       "Subtitle": {
         "Part1": "Your device needs to ",
         "Part2": "connect to the internet",
-        "Part3": " to update the app with the current Ontario technical requirements."
+        "Part3": " to update technical requirements."
       },
       "CheckingForUpdate": "Checking for updates...",
       "UpdateSuccessTitle": "Verifier rules updated",
       "UpdateSuccessSubtitle": "The verifier rules have been successfully updated.",
-      "UpdateFailedTitle": "Error: Connection required",
+      "UpdateFailedTitle": "Update failed: No internet connection",
       "UpdateFailedSubtitle": "Please check your internet connection.",
-      "UpdateFailedSignatureTitle": "Error: Update Failed",
+      "UpdateFailedSignatureTitle": "Update failed: No internet connection",
       "UpdateFailedSignatureSubtitle": "Please check your internet connection.",
       "ConnectForUpdates": "Connect for updates",
       "ContinueWithoutConnecting": "Continue without connecting"
     },
     "CameraPermission": {
       "AllowCameraAccessTitle": "You must allow access to the camera to use this app",
-      "AllowCameraAccessMessage": "This app must access the camera to scan vaccine certificate QR codes.",
-      "GoToSetting": "Go to Settings",
+      "AllowCameraAccessMessage": "This app must access the camera to scan vaccine certificate QR codes. You will have to make this change in your settings and then return to the app.",
+      "GoToSetting": "Go to your device settings",
       "GoBackToHome": "Back to home page"
     },
     "Scanner": {
       "Flashlight": "Flashlight",
       "AccessibleTitleFront": "Scan QR code now using front camera",
       "AccessibleTitleBack": "Scan QR code now using back camera",
-      "SwitchCamera": "Switch Camera",
+      "SwitchCamera": "Switch camera",
       "SwitchToBackCamera": "Switch to back camera",
       "SwitchToFrontCamera": "Switch to front camera",
       "QRProcessingAlertTitle": "Reading QR code",
@@ -57,7 +57,7 @@
     },
     "ReadyToScan": {
       "ReadyToScan": "Ready to scan",
-      "ReadyToScanDetails": "Open Verify is now ready to start scanning QR codes."
+      "ReadyToScanDetails": "Open Verify is ready to start scanning QR codes now."
     },
     "Terms": {
       "TermsAccept": "I have read and accept the Terms of Use.",
@@ -136,7 +136,7 @@
       "Title": "Updates"
     },
     "VisualAppearance": {
-      "Title": "Visual appearance",
+      "Title": "Visual Appearance",
       "UseSystemSetting": "Use system setting",
       "Light": "Light",
       "Dark": "Dark"
@@ -160,11 +160,10 @@
   },
   "Next": "Next",
   "OpenVerifyLogoAlt": "Ontario",
-  "ListItem": "list item:",
+  "ListItem": "list item",
   "AppNotMandatory": {
-    "Understand": "I understand",
     "LearnMore": {
-      "Label": "Learn more",
+      "Label": "More information for businesses",
       "URL": "https://news.ontario.ca/en/release/1001600/ontario-moving-to-next-phase-of-reopening-on-february-17"
     },
     "Banner": {

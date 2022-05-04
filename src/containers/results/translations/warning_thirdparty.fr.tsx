@@ -25,20 +25,17 @@ interface Props {
 const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
-      <TitleText>
-        Ce certificat a été créé à l’aide d’un outil tiers et ne peut pas être
-        utilisé pour la numérisation.
-      </TitleText>
+      <TitleText>Ce certificat a été créé à l’aide d’un outil tiers.</TitleText>
       <P>Ce qu’il faut faire ensuite{' '}:</P>
       <UL>
         <LI>
-          demander au visiteur de produire un certificat délivré par le
+          demandez au visiteur de produire un certificat délivré par le
           gouvernement;
         </LI>
         <LI>
-          informez le visiteur que les certificats de vaccination améliorés avec
-          un code QR délivrés par le gouvernement peuvent être téléchargés à
-          l’adresse suivant{' '}:{' '}
+          informez le visiteur que les certificats de vaccination avec un code
+          QR délivrés par le gouvernement peuvent être téléchargés à l’adresse
+          suivant{' '}:{' '}
           <LinkText
             onPress={() => {
               openURL(
@@ -49,6 +46,7 @@ const WarningThirdPartyFr: FC<Props> = ({screenReaderEnabled}) => {
             }}>
             ontario.ca/obtenirpreuve
           </LinkText>
+          .
         </LI>
       </UL>
       {screenReaderEnabled && (

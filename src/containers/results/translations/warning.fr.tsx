@@ -34,16 +34,15 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
   return (
     <>
       <TitleText>
-        Informez le visiteur qu’il peut y avoir un problème technique avec son
-        certificat.
+        Informez le visiteur qu’il peut y avoir un problème avec son certificat.
       </TitleText>
       <P>Par exemple, le code QR a pu être{' '}:</P>
       <UL>
         <LI>
           délivré à un enfant de moins de 12 ans ou qui vient d’avoir 12 ans au
-          cours des 12 dernières semaines (84 jours)
+          cours des 12 dernières semaines (84 jours);
         </LI>
-        <LI>délivré par un pays qui utilise un autre type de code QR</LI>
+        <LI>délivré par un pays qui utilise un autre type de code QR;</LI>
         <LI>
           délivré par un service tierce non associé au gouvernement de
           l’Ontario.
@@ -69,8 +68,10 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
             }}>
             ontario.ca/aide-preuve-vaccination
           </LinkText>{' '}
-          pour obtenir des détails sur les résultats et lui dire qu’il peut
-          appeler pour obtenir une aide supplémentaire au{' '}
+          pour obtenir des détails sur les résultats et
+        </LI>
+        <LI>
+          mentionnez-lui qu’il peut appeler au{' '}
           {telLink ? (
             <LinkText
               onPress={() => {
@@ -81,11 +82,12 @@ const WarningFr: FC<Props> = ({screenReaderEnabled}) => {
                 });
                 Linking.openURL(telLink);
               }}>
-              1-833-943-3900.
+              1-833-943-3900
             </LinkText>
           ) : (
             '1-833-943-3900'
-          )}
+          )}{' '}
+          pour obtenir une aide supplémentaire.
         </LI>
       </UL>
       {screenReaderEnabled && (

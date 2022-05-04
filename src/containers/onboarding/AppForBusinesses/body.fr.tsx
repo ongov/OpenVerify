@@ -40,7 +40,7 @@ const BodyFr = React.forwardRef<any, React.PropsWithChildren<Props>>(
         </TitleText>
         <SubtitleText>
           VérifOuverte offre un moyen rapide, facile et sécurisé de numériser
-          les certificats de vaccination munis d’un code QR à l’entrée.
+          les certificats de vaccination munis d’un code QR.
         </SubtitleText>
         <SubtitleText>
           <B>
@@ -49,8 +49,8 @@ const BodyFr = React.forwardRef<any, React.PropsWithChildren<Props>>(
           </B>
         </SubtitleText>
         <SubtitleText>
-          Pour télécharger votre certificat de vaccination amélioré muni d’un
-          code QR, veuillez visiter le site{' '}
+          Pour télécharger votre certificat de vaccination muni d’un code QR,
+          veuillez visiter le site{' '}
           <LinkText
             onPress={() => {
               openURL(

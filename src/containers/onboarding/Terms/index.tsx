@@ -113,7 +113,7 @@ const OnboardingTerms: FC<Props> = ({navigation}) => {
             dispatch(acceptTerms(TERMS_VERSION));
             navigation.navigate(routes.Onboarding.CameraPermissions);
           }}>
-          {I18n.t('Continue')}
+          {I18n.t('Next')}
         </Button>
       </BottomContainer>
     </MainContainer>

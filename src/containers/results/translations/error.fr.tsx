@@ -34,19 +34,22 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
         Le code QR ne répond pas à la définition du terme « entièrement
         vacciné » de l’Ontario.
       </TitleText>
-      <P>Ce qu’il faut faire ensuite{' '}:</P>
+      <P>Informez le visiteur :</P>
       <UL>
         <LI>
-          informez le visiteur qu’il doit{' '}
+          qu’il doit{' '}
           <B>
             télécharger son certificat de vaccination le plus récent avec le
-            code QR officiel
+            code QR
           </B>{' '}
-          s’il a été entièrement vacciné et qu’il s’est écoulé 14 jours ou s’ils
-          ont une exemption médicale valide
+          s’il a été entièrement vacciné et qu’il s’est écoulé 14 jours;
         </LI>
         <LI>
-          réacheminez le visiteur vers{' '}
+          s'il bénéficie d'une exemption médicale valide, il devra probablement
+          télécharger son certificat de vaccination le plus récent.
+        </LI>
+        <LI>
+          R éacheminez le visiteur vers{' '}
           <LinkText
             onPress={() => {
               openURL(
@@ -106,11 +109,11 @@ const ErrorFr: FC<Props> = ({screenReaderEnabled}) => {
       <P>Le code QR peut indiquer que{' '}:</P>
       <UL>
         <LI>
-          le visiteur n’a reçu <B>qu’une seule dose du vaccin</B>;
+          le visiteur <B>n’est pas entièrement vacciné</B>;
         </LI>
         <LI>
           il pourrait <B>ne pas s’être écoulé 14 jours</B> depuis que le
-          visiteur a été entièrement vacciné
+          visiteur a été entièrement vacciné;
         </LI>
         <LI>
           <B>l’exemption médicale</B> du visiteur <B>n’est plus valide</B>.

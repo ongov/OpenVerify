@@ -20,24 +20,24 @@ const BodyFr: FC = () => (
   <>
     <P>
       Lorsque vous numérisez le code QR numérique ou papier d’un visiteur, cette
-      application pourra{' '}:
+      application{' '}:
     </P>
     <UL>
       <LI>
-        vérifier qu’un certificat de vaccination <B>valide</B> délivré par
+        vérifie qu’un certificat de vaccination <B>valide</B> délivré par
         l'Ontario répond à la définition du terme « entièrement vacciné » de
         l’Ontario;
       </LI>
       <LI>
-        afficher le <B>nom</B> et la <B>date de naissance</B> d’un visiteur afin
-        que son identité puisse être vérifiée
+        affiche le <B>nom</B> et la <B>date de naissance</B> d’un visiteur afin
+        que son identité puisse être vérifiée;
       </LI>
       <LI>
-        recueillir des données pour des mesures qui{' '}
-        <B>ne sont pas associées aux utilisateurs</B> ;
+        recueille des données pour des mesures qui{' '}
+        <B>ne sont pas associées aux utilisateurs</B>;
       </LI>
       <LI>
-        fonctionner <B>hors ligne</B> (sans connexion internet)
+        fonctionne <B>hors ligne</B> (sans connexion internet).
       </LI>
     </UL>
     <P>
@@ -47,11 +47,11 @@ const BodyFr: FC = () => (
     <UL>
       <LI>
         recueillir des renseignements quelconques reliant des lieux, des
-        visiteurs ou des entreprises déterminées les uns aux autres
+        visiteurs ou des entreprises déterminées les uns aux autres;
       </LI>
       <LI>
         faire le suivi ou d’enregistrer des informations permettant d’identifier
-        les personnes par le gouvernement ou les entreprises de l’Ontario
+        les personnes par le gouvernement ou les entreprises de l’Ontario;
       </LI>
       <LI>partager plus d’informations que ce qui est nécessaire .</LI>
     </UL>

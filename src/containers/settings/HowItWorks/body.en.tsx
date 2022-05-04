@@ -18,21 +18,21 @@ import {P, UL, LI, B} from 'containers/settings/styles';
 
 const BodyEn: FC = () => (
   <>
-    <P>When you scan a visitor’s digital or paper QR code, this app will:</P>
+    <P>When you scan a visitor’s digital or paper QR code, this app:</P>
     <UL>
       <LI>
-        verify that a <B>valid</B> vaccine certificate meets Ontario’s
+        verifies that a <B>valid</B> vaccine certificate meets Ontario’s
         definition of fully vaccinated
       </LI>
       <LI>
-        show a visitor’s <B>name</B> and <B>date of birth</B> so their identity
+        shows a visitor’s <B>name</B> and <B>date of birth</B> so their identity
         can be verified
       </LI>
       <LI>
-        collect data for metrics that are <B>not connected to users</B>
+        collects data for metrics that are <B>not connected to users</B>
       </LI>
       <LI>
-        work <B>offline</B> (without an internet connection)
+        works <B>offline</B> (without an internet connection)
       </LI>
     </UL>
     <P>

@@ -30,11 +30,11 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       </TitleText>
       <Bullet>
         permet pas au gouvernement de l’Ontario ou aux entreprises de suivre ou
-        d’enregistrer des informations permettant d’identifier les personnes
+        d’enregistrer des informations permettant d’identifier les personnes;
       </Bullet>
       <Bullet>
         sauvegarde pas de renseignements quelconques reliant des lieux, des
-        visiteurs ou des entreprises déterminés les uns aux autres
+        visiteurs ou des entreprises déterminés les uns aux autres;
       </Bullet>
       <Bullet>
         partage plus d’informations que ce qui est nécessaire pour vérifier le

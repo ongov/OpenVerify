@@ -79,8 +79,8 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
           <LI>issued to a child under age 12 or recently turned 12</LI>
           <LI>issued by a country that uses a different type of QR code</LI>
           <LI>
-            made by a third-party service not associated with the Government of
-            Ontario
+            made by a third-party service not associated with the Ontario
+            government
           </LI>
         </UL>
         {isPaperProofAllowed && (
@@ -128,11 +128,14 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
           <LI>
             they should{' '}
             <B>
-              download their most recent vaccine certificate with official QR
+              download their most recent enhanced vaccine certificate with QR
               code
             </B>{' '}
-            if they are fully vaccinated and 14 days have passed or if they have
-            an active medical exemption
+            if they are fully vaccinated and 14 days have passed
+          </LI>
+          <LI>
+            if they have an active medical exemption, they may need to download
+            their most recent vaccine certificate
           </LI>
 
           <LI>
@@ -195,21 +198,21 @@ const BodyEn: FC<Props> = ({screenReaderEnabled}) => {
         <P>The QR code may indicate:</P>
         <UL>
           <LI>
-            the visitor <B>only</B> has <B>one vaccination</B>
+            the visitor <B>may not be fully vaccinated</B>
           </LI>
           <LI>
-            <B>14 days</B> may have <B>not passed</B> since the visitor was
-            fully vaccinated
+            <B>14 days may not have passed</B> since the visitor was fully
+            vaccinated
           </LI>
           <LI>
-            the visitor’s <B>medical exemption</B> may have <B>expired</B>
+            the visitor's <B>medical exemption may have expired</B>
           </LI>
         </UL>
       </ResultDescription>
       <TimeoutResult />
       <ResultDescriptionLast>
         <P>
-          <B>The device’s camera could not find a QR code.</B>
+          <B>The device's camera could not find a QR code.</B>
         </P>
         <P>What to do next:</P>
         <UL>

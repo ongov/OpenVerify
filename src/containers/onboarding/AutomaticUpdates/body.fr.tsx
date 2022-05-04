@@ -28,7 +28,7 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       </SubtitleText>
       <SubtitleText>Une fois connectée, elle{' '}:</SubtitleText>
       <Bullet>
-        vous indique si une version à jour de l’application est disponible
+        vous indique si une version à jour de l’application est disponible;
       </Bullet>
       <Bullet>met à jour les exigences techniques.</Bullet>
     </>

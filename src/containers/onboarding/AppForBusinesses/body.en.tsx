@@ -39,16 +39,16 @@ const BodyEn = React.forwardRef<any, React.PropsWithChildren<Props>>(
         </TitleText>
         <SubtitleText>
           Open Verify provides a quick, easy and secure way to scan COVID-19
-          vaccine certificates at entry.
+          vaccine certificates.
         </SubtitleText>
         <SubtitleText>
           <B>
-            The app is not for storing or downloading your proof of vaccination.
+            This app is not for storing or downloading your proof of
+            vaccination.
           </B>
         </SubtitleText>
         <SubtitleText>
-          To download your enhanced vaccine certificate with official QR code,
-          please visit{' '}
+          To download your vaccine certificate with QR code, visit{' '}
           <LinkText
             onPress={() => {
               openURL(

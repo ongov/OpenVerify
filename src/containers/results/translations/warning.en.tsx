@@ -33,9 +33,7 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
 
   return (
     <>
-      <TitleText>
-        There may be a technical issue with this certificate.
-      </TitleText>
+      <TitleText>There may be an issue with this certificate.</TitleText>
       <P>For example, the QR code may be:</P>
       <UL>
         <LI>
@@ -44,8 +42,8 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
         </LI>
         <LI>issued by a country that uses a different type of QR code</LI>
         <LI>
-          made by a third-party service not associated with the Government of
-          Ontario
+          made by a third-party service not associated with the Ontario
+          government
         </LI>
       </UL>
       <P>What to do next:</P>
@@ -68,7 +66,10 @@ const WarningEn: FC<Props> = ({screenReaderEnabled}) => {
             }}>
             ontario.ca/vaccine-proof-help
           </LinkText>{' '}
-          for result details and tell them they can call for extra help{' '}
+          for result details
+        </LI>
+        <LI>
+          tell visitors they can call for extra help{' '}
           {telLink ? (
             <LinkText
               onPress={() => {
