@@ -14,10 +14,8 @@
    limitations under the License.
 */
 import React from 'react';
-import {SubtitleText, TitleText} from 'containers/onboarding/styles';
-import {Bullet} from 'components/core/bullet';
+import {TitleText} from 'containers/onboarding/styles';
 import useForwardedRef from 'utils/useForwardedRef';
-import {B} from './styles';
 
 const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
   const focusRef = useForwardedRef(forwardedRef);
@@ -25,16 +23,8 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
   return (
     <>
       <TitleText ref={focusRef}>
-        Proof of vaccination is no longer required for entry
+        Proof of vaccination is not mandatory
       </TitleText>
-      <B>Effective March 1, 2022</B>
-      <SubtitleText>Businesses and organizations:</SubtitleText>
-      <Bullet>
-        are not required to check proof of vaccination or use this app
-      </Bullet>
-      <Bullet>
-        may choose to check for proof of vaccination and use the app
-      </Bullet>
     </>
   );
 });

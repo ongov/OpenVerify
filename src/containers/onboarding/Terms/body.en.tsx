@@ -21,6 +21,7 @@ import {useTranslation} from 'translations/i18n';
 import {getTermsOfUse} from 'redux/selectors';
 
 const TERMS_OF_USE = [
+  'By using this App, you agree to the terms below and included in the embedded links.',
   'The App is provided on an “as is” basis and you are solely responsible for determining the appropriateness of using this App.',
   'The Ontario government does not warrant or guarantee the accuracy of results from the App and assumes no cost or liability associated with the use of this App.',
   'You must not use the App to retain, record, copy, modify, use or disclose any information provided. This would include taking photos, videos, screen captures and screen recordings of any such information.',
@@ -37,11 +38,6 @@ const BodyEn: FC = () => {
 
   return (
     <>
-      <P>
-        By using this App, you agree to the terms below and included in the
-        embedded links.
-      </P>
-
       <UL>
         {termsOfUseValue.map((text: string, idx: number) => {
           return <LI key={idx}>{text}</LI>;

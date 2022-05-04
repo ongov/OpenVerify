@@ -30,8 +30,7 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
         application.
       </P>
       <P>
-        This app will <B>no longer scan</B> vaccine certificates until it has
-        been updated.
+        This app will <B>no longer scan</B> QR codes until it has been updated.
       </P>
     </>
   );

@@ -54,8 +54,8 @@ const BodyEn = React.forwardRef<any, Props>(
 
         {expired ? (
           <P>
-            This app <B>will not scan</B> vaccine certificates until it has
-            connected for updates.
+            This app <B>will not scan</B> QR codes until it has connected for
+            updates.
           </P>
         ) : (
           <>

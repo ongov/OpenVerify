@@ -59,7 +59,7 @@ const OnboardingWhatAppDoesNot: FC<Props> = ({navigation}) => {
           onPress={() => {
             navigation.navigate(routes.Onboarding.Terms);
           }}>
-          {I18n.t('Onboarding.Understand')}
+          {I18n.t('Next')}
         </Button>
       </BottomContainer>
     </MainContainer>

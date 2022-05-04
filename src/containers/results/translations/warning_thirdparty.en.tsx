@@ -32,7 +32,7 @@ const WarningThirdPartyEn: FC<Props> = ({screenReaderEnabled}) => {
       <UL>
         <LI>ask the visitor to show a government-issued vaccine certificate</LI>
         <LI>
-          let the visitor know that enhanced vaccine certificates with a
+          let the visitor know that vaccine certificates with a
           government-issued QR code are available to download at{' '}
           <LinkText
             onPress={() => {

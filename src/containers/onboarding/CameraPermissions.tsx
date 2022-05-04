@@ -13,9 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Platform} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useAppState} from '@react-native-community/hooks';
 import {NavigatorParamList} from '../../navigation/OnboardingNavigation';
 import * as routes from '../routes';
 import {
@@ -42,6 +43,8 @@ type Props = NativeStackScreenProps<
 const OnboardingCameraPermissions: FC<Props> = ({navigation}) => {
   const I18n = useTranslation();
   const [focusRef, setFocus] = useAccessibilityFocusRef();
+  const currentAppState = useAppState();
+
   useFocusEffect(() => {
     setTimeout(setFocus, 100);
   });
@@ -67,20 +70,21 @@ const OnboardingCameraPermissions: FC<Props> = ({navigation}) => {
       );
   };
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const checkCameraPermission = async () => {
-        const userEnabledCamera: Boolean = await userHasEnabledCameraPermission(
-          Platform.OS,
-        );
-        if (userEnabledCamera) {
-          navigation.navigate(routes.Onboarding.AutomaticUpdates);
-        }
-      };
+  useEffect(() => {
+    const checkCameraPermission = async () => {
+      const userEnabledCamera: Boolean = await userHasEnabledCameraPermission(
+        Platform.OS,
+      );
+
+      if (userEnabledCamera) {
+        navigation.navigate(routes.Onboarding.AutomaticUpdates);
+      }
+    };
+
+    if (currentAppState === 'active') {
       checkCameraPermission();
-      return () => {};
-    }, [navigation]),
-  );
+    }
+  }, [navigation, currentAppState]);
 
   return (
     <MainContainer>

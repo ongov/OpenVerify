@@ -72,9 +72,7 @@ const AppNotMandatory: FC<Props> = ({route}) => {
       </Scroll>
       <Spacing />
       <BottomContainer>
-        <Button onPress={onUnderstandPress}>
-          {I18n.t('AppNotMandatory.Understand')}
-        </Button>
+        <Button onPress={onUnderstandPress}>{I18n.t('Next')}</Button>
         <LearMoreButton buttonType="secondary" onPress={onLearnMorePress}>
           {I18n.t('AppNotMandatory.LearnMore.Label')}
         </LearMoreButton>

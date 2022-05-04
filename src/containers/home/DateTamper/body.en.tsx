@@ -23,10 +23,10 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
     <>
       <CloseImage />
 
-      <TitleText ref={focusRef}>Update device date/time settings</TitleText>
+      <TitleText ref={focusRef}>Update device date and time settings</TitleText>
       <P>
-        This app uses the device’s date and time settings to work offline and
-        keep technical requirements up-to-date.
+        This app uses the device's date and time settings to work offline and
+        keep technical requirements up-to date.
       </P>
       <P>
         Changing the date and time settings on this device may stop the app from
