@@ -1,3 +1,5 @@
+Le service de maintenance de VérifOuverte est terminé. Le dépôt ne sera pas mis à jour jusqu'à nouvel ordre.
+
 # L’application VérifOuverte
 
 Dépôt du code source libre pour l’application officielle de l’Ontario (VérifOntario) qui est utilisée pour vérifier les certificats de vaccination contre la COVID-19.

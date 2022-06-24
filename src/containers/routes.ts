@@ -60,4 +60,8 @@ export enum AppNotMandatory {
   WarningScreen = 'AppNotMandatory/WarningScreen',
 }
 
+export enum AppNotSupported {
+  WarningScreen = 'AppNotSupported/WarningScreen',
+}
+
 export type Route = Home | Common | Results | Onboarding | Settings;

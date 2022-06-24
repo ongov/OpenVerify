@@ -26,8 +26,7 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>Connect to app store for update</TitleText>
       <P>There is a new version of Open Verify available in the app store.</P>
       <P>
-        Your device needs to <B>connect to the app store</B> to update the
-        application.
+        Your device needs to connect to the app store to update the application.
       </P>
       <P>
         This app will <B>no longer scan</B> QR codes until it has been updated.

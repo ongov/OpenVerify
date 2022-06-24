@@ -14,7 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {TitleText} from 'containers/onboarding/styles';
+import {TitleText, SubtitleText} from 'containers/onboarding/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
@@ -25,6 +25,11 @@ const BodyEn = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>
         Proof of vaccination is not mandatory
       </TitleText>
+      <SubtitleText>
+        The Open Verify app will no longer be available as of June 24, 2022. The
+        app will not scan QR codes and will not receive updates or support after
+        this date.
+      </SubtitleText>
     </>
   );
 });

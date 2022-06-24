@@ -3,6 +3,7 @@
   "ContinueViewDateTimeSettings": "Afficher les paramètres de date et d’heure",
   "Back": "Retour",
   "TryAgain": "RÉESAYER",
+  "Ok": "OK",
   "Home": {
     "HomeScreen": {
       "VerifyVaccinationStatus": "VérifOuverte",
@@ -168,8 +169,8 @@
       "URL": "https://news.ontario.ca/fr/release/1001600/lontario-passera-a-letape-suivante-de-son-deconfinement-le-17-fevrier"
     },
     "Banner": {
-      "Title": "La preuve de vaccination n'est plus requise pour l'entrée.",
-      "Body": "Les entreprises et les organismes ont le choix de vérifier la preuve de vaccination et d’utiliser l’application."
+      "Title": "La preuve de vaccination n’est pas obligatoire.",
+      "Body": "L’application VérifOuverte ne sera plus offerte à partir du 24 juin 2022. L'application ne scannera pas les codes QR après cette date."
     }
   }
 }

@@ -4,6 +4,7 @@
   "BackToApp": "Back to app",
   "Back": "Back",
   "TryAgain": "Try again",
+  "Ok": "OK",
   "Home": {
     "HomeScreen": {
       "VerifyVaccinationStatus": "Open Verify",
@@ -167,8 +168,8 @@
       "URL": "https://news.ontario.ca/en/release/1001600/ontario-moving-to-next-phase-of-reopening-on-february-17"
     },
     "Banner": {
-      "Title": "Proof of vaccination is not required for entry.",
-      "Body": "Businesses and organizations may choose to check for proof of vaccination and use the app."
+      "Title": "Proof of vaccination is not mandatory.",
+      "Body": "The Open Verify app will no longer be available as of June 24, 2022. The app will not scan QR codes after this date."
     }
   }
 }

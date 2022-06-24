@@ -1,3 +1,5 @@
+Maintenance of OpenVerify has ended. The repository will not be updated until further notice.
+
 # Open Verify App
 
 Open source repository for Ontario's official app **(Verify Ontario)** that is used for verifying COVID-19 vaccine certificates.

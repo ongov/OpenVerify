@@ -13,12 +13,22 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-export {default as AppForBusinesses} from './AppForBusinesses';
-export {default as WhatAppDoes} from './WhatAppDoes';
-export {default as WhatAppDoesNot} from './WhatAppDoesNot';
-export {default as Terms} from './Terms';
-export {default as CameraPermissions} from './CameraPermissions';
-export {default as AutomaticUpdates} from './AutomaticUpdates';
-export {default as ReadyToScan} from './ReadyToScan';
-export {default as AppNotMandatory} from './AppNotMandatory';
-export {default as AppNotSupported} from './AppNotSupported';
+import React from 'react';
+import {TitleText, SubtitleText} from 'containers/onboarding/styles';
+import useForwardedRef from 'utils/useForwardedRef';
+
+const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
+  const focusRef = useForwardedRef(forwardedRef);
+
+  return (
+    <>
+      <TitleText ref={focusRef}>VérifOuverte n'est plus offert</TitleText>
+      <SubtitleText>
+        L'application ne scannera pas les codes QR et ne sera plus mise à jour
+        ni prise en charge.
+      </SubtitleText>
+    </>
+  );
+});
+
+export default BodyFr;

@@ -84,3 +84,9 @@ jest.mock('react-native-inappbrowser-reborn', () => ({
   isAvailable: jest.fn(),
   open: jest.fn(),
 }));
+
+jest.mock('react-native-version-info', () => ({
+  appVersion: '1.0.0',
+  buildVersion: 1,
+  bundleIdentifier: 'openverify.replace.me',
+}));
