@@ -19,11 +19,13 @@ import i18n from 'i18n-js';
 import RNBootSplash from 'react-native-bootsplash';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {ParamListBase} from '@react-navigation/native';
+import {DateTime} from 'luxon';
 
 import OnboardingNavigation from './OnboardingNavigation';
 import HomeNavigation from './HomeNavigation';
 import SettingsNavigation from './SettingsNavigation';
 import AppNotMandatoryNavigation from './AppNotMandatoryNavigation';
+import AppNotSupportedNavigation from './AppNotSupportedNavigation';
 import OverlayModal from 'containers/home/OverlayModal';
 
 import {setManualUpdate} from 'redux/actions/creators';
@@ -58,6 +60,10 @@ const AppNavigation = () => {
   const hideAppMandatoryScreen = useCallback(() => {
     setWarning(false);
   }, []);
+
+  if (DateTime.now() >= DateTime.fromISO('2022-06-24')) {
+    return <AppNotSupportedNavigation />;
+  }
 
   if (showWarning) {
     return (

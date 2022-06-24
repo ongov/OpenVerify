@@ -15,6 +15,8 @@
 */
 import VersionInfo from 'react-native-version-info';
 import {DateTime} from 'luxon';
+import compareVersions from 'compare-versions';
+
 import {LocalConfig} from '../config/index';
 import {AppUpdateSetting} from './types';
 
@@ -76,33 +78,26 @@ export function allowRulesUpdate(lastCheckedForUpdate: string) {
 }
 
 export function checkAppUpdate(appUpdateSetting: AppUpdateSetting) {
-  if (appUpdateSetting?.effectiveDate === undefined) {
+  const minimumMandatoryVersion = appUpdateSetting?.minimumMandatoryVersion;
+  const effectiveDate = appUpdateSetting?.effectiveDate;
+  const currentVersion = VersionInfo.appVersion;
+
+  if (
+    effectiveDate === undefined ||
+    !minimumMandatoryVersion ||
+    !currentVersion
+  ) {
     return false;
   }
-  const {days} = DateTime.fromISO(appUpdateSetting?.effectiveDate)
-    .diffNow(['days'])
-    .toObject();
+  const {days} = DateTime.fromISO(effectiveDate).diffNow(['days']).toObject();
 
   // If effective date
   if ((days !== undefined || days === 0) && Math.ceil(days) <= 0) {
-    const minimumMandatoryVersion = appUpdateSetting?.minimumMandatoryVersion
-      ? appUpdateSetting?.minimumMandatoryVersion.split('.')
-      : [];
-
-    const currentVersion = VersionInfo.appVersion
-      ? VersionInfo.appVersion.split('.')
-      : [];
-
-    // Compare version
-    for (let idx = 0; idx < minimumMandatoryVersion.length; idx++) {
-      const currVersion =
-        currentVersion.length > idx ? currentVersion[idx] : '0';
-      if (
-        parseInt(minimumMandatoryVersion[idx], 10) > parseInt(currVersion, 10)
-      ) {
-        return true;
-      }
-    }
+    /**
+     * Will return 1 if first version is greater, 0 if versions are equal,
+     * and -1 if the second version is greater:
+     */
+    return compareVersions(minimumMandatoryVersion, currentVersion) === 1;
   }
 
   return false;

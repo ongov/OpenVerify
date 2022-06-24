@@ -13,12 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-export {default as AppForBusinesses} from './AppForBusinesses';
-export {default as WhatAppDoes} from './WhatAppDoes';
-export {default as WhatAppDoesNot} from './WhatAppDoesNot';
-export {default as Terms} from './Terms';
-export {default as CameraPermissions} from './CameraPermissions';
-export {default as AutomaticUpdates} from './AutomaticUpdates';
-export {default as ReadyToScan} from './ReadyToScan';
-export {default as AppNotMandatory} from './AppNotMandatory';
-export {default as AppNotSupported} from './AppNotSupported';
+import styled from 'styled-components/native';
+
+export const ErrorImage = styled.Image.attrs(() => ({
+  source: require('assets/images/openverify-icon-close.svg'),
+}))`
+  margin-top: ${({theme}) => theme.variables.spacing.lg}px;
+`;

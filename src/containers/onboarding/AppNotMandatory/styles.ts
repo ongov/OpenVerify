@@ -14,11 +14,6 @@
    limitations under the License.
 */
 import styled from 'styled-components/native';
-import {Button} from 'components/core/button';
-
-export const LearMoreButton = styled(Button)`
-  margin-top: ${({theme}) => theme.variables.spacing.sm}px;
-`;
 
 export const WarningImage = styled.Image.attrs(() => ({
   source: require('assets/images/openverify-icon-alert-warning.svg'),

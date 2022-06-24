@@ -14,7 +14,7 @@
    limitations under the License.
 */
 import React from 'react';
-import {TitleText} from 'containers/onboarding/styles';
+import {TitleText, SubtitleText} from 'containers/onboarding/styles';
 import useForwardedRef from 'utils/useForwardedRef';
 
 const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
@@ -25,6 +25,11 @@ const BodyFr = React.forwardRef<any>((_, forwardedRef) => {
       <TitleText ref={focusRef}>
         La preuve de vaccination n’est pas obligatoire.
       </TitleText>
+      <SubtitleText>
+        L’application VérifOuverte ne sera plus offerte à partir du 24 juin
+        2022. L'application ne scannera pas les codes QR et ne sera plus mise à
+        jour ni prise en charge après cette date.
+      </SubtitleText>
     </>
   );
 });

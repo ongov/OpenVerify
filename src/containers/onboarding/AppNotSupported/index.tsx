@@ -13,35 +13,20 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React, {FC} from 'react';
+import React from 'react';
 
 import {useFocusEffect} from '@react-navigation/core';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {NavigatorParamList} from 'navigation/AppNotMandatoryNavigation';
 import {useTranslation} from 'translations/i18n';
-import {Button} from 'components/core/button';
 import useAccessibilityFocusRef from 'utils/useAccessibilityFocusRef';
-import * as routes from 'containers/routes';
 
-import {
-  MainContainer,
-  SubContainer,
-  Scroll,
-  Spacing,
-  BottomContainer,
-} from '../styles';
-import {WarningImage} from './styles';
+import {MainContainer, SubContainer, Scroll} from '../styles';
+import {ErrorImage} from './styles';
 
 import BodyEn from './body.en';
 import BodyFr from './body.fr';
 
-type Props = NativeStackScreenProps<
-  NavigatorParamList,
-  routes.AppNotMandatory.WarningScreen
->;
-
-const AppNotMandatory: FC<Props> = ({route}) => {
+const AppNotMandatory = () => {
   const I18n = useTranslation();
   const [focusRef, setFocus] = useAccessibilityFocusRef();
 
@@ -49,15 +34,11 @@ const AppNotMandatory: FC<Props> = ({route}) => {
     setTimeout(setFocus, 100);
   });
 
-  const onUnderstandPress = () => {
-    route.params.hideAppMandatoryScreen();
-  };
-
   return (
     <MainContainer>
       <Scroll>
         <SubContainer>
-          <WarningImage />
+          <ErrorImage />
           {I18n.locale === 'fr' ? (
             <BodyFr ref={focusRef} />
           ) : (
@@ -65,10 +46,6 @@ const AppNotMandatory: FC<Props> = ({route}) => {
           )}
         </SubContainer>
       </Scroll>
-      <Spacing />
-      <BottomContainer>
-        <Button onPress={onUnderstandPress}>{I18n.t('Next')}</Button>
-      </BottomContainer>
     </MainContainer>
   );
 };
