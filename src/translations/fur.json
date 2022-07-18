@@ -1,0 +1,151 @@
+{
+  "Continue": "Rawr!",
+  "BackToApp": "Back to app :3",
+  "Back": "Back pwease!",
+  "TryAgain": "no u",
+  "Home": {
+    "HomeScreen": {
+      "VerifyVaccinationStatus": "OwOpen Vewify",
+      "CheckVaccinationStatus": "Scan youw cewtificat",
+      "SettingsScreen": "Settings and infomashun"
+    },
+    "AppUpdate": {
+      "ViewUpdate": "View update in teh app stowe"
+    },
+    "ConnectToInternet": {
+      "Title": "Couwd nyot connyect OnO",
+      "Subtitle": {
+        "Part1": "Youw dewice needs to ",
+        "Part2": "connect to de intewnet",
+        "Part3": " to update entwy wequirements!"
+      },
+      "CheckingForUpdate": "Checking fur updates...",
+      "UpdateSuccessTitle": "Vewifiew wules updated!! Yayy!",
+      "UpdateSuccessSubtitle": "The vewifiew wules hav been successfuwwy updated X3",
+      "UpdateFailedTitle": "Oopsies! Connection wequired",
+      "UpdateFailedSubtitle": "Pwease check ur intewnyet connyection.",
+      "ConnectForUpdates": "Connect fow updates",
+      "ContinueWithoutConnecting": "Continue wifout connecting o.o"
+    },
+    "CameraPermission": {
+      "AllowCameraAccessTitle": "Gimme camwa!",
+      "AllowCameraAccessMessage": "I need camwa~!!",
+      "GoToSetting": "ok dad uwu",
+      "GoBackToHome": "Nuh!!"
+    },
+    "Scanner": {
+      "Flashlight": "OwO",
+      "Title": "Scan fwends",
+      "AccessibleTitle": "Scan fwends"
+    }
+  },
+  "Onboarding": {
+    "CameraPermissions": {
+      "Camera": "Allow access to camwa? OwO",
+      "CameraDetail": "i need pics daddy"
+    },
+    "ReadyToScan": {
+      "ReadyToScan": "Weady to scan!!!",
+      "ReadyToScanDetails": "Gib QR code!!"
+    },
+    "Terms": {
+      "TermsAccept": "I wead it i wead it!",
+      "Title": "Tewms of Use",
+      "TermsOfUse": "Tewms of Use",
+      "Privacy": "Pwivacy Statement",
+      "ReadPrivacy": "Wead the Pwivacy Statement",
+      "ReadTerms": "Wead the entire Terms of Use"
+    },
+    "Understand": "okay uwu",
+    "Step": "Step {{current}} of {{total}}"
+  },
+  "Results": {
+    "ScanAnotherQRCode": "More fwiends >w<!",
+    "Warning": {
+      "Title": "have u twied kissing it untiw the pwobwem is wesowved??"
+    },
+    "Error": {
+      "Title": "ZOMGWTFBBQ invalid certificate!!! >n<"
+    },
+    "Success": {
+      "Title": "purrrfect <3",
+      "Subtitle": "Daddy? >w<",
+      "Name": "Cutie patootie~:",
+      "DateOfBirth": "Birfday:"
+    },
+    "WarningThirdParty": {
+      "Title": "a third pawty cewtificate??"
+    }
+  },
+  "Settings": {
+    "SettingsScreen": {
+      "Title": "Settings and infowmashun",
+      "Updating": {
+        "Title": "wast checked fur update to entwy wequiwements:",
+        "ConnectForUpdates": "Connyect fur updates",
+        "Never": "Never"
+      },
+      "AppVersion": {
+        "Title": "App vewsion:",
+        "Build": "{{version}} (Build {{build}})"
+      },
+      "AppSettings": {
+        "Title": "Nyaapp settings",
+        "SameAsSystem": "Same as system"
+      },
+      "Help": {
+        "Title": "Halp"
+      },
+      "MoreInformation": {
+        "Title": "More infowmashun",
+        "TermsOfUse": "Terms of Use",
+        "TermsOfUseURL": "https://www.ontario.ca/verify-terms-of-use",
+        "Accessibility": "Accessibiwidy",
+        "AccessibilityURL": "https://www.ontario.ca/verify-accessibility",
+        "Privacy": "Pwivacy Statement",
+        "PrivacyURL": "https://www.ontario.ca/verify-privacy",
+        "ContactUs": "Contact us",
+        "ContactUsURL": "https://www.ontario.ca/verify-contact",
+        "Copyright": "© Queen’s Printer for Ontario, {{year}}",
+        "CopyrightURL": "https://www.ontario.ca/verify-copyright",
+        "VulnDisclosurePolicy": "vuwnyewabiwity discwosuwe powicy",
+        "VulnDisclosurePolicyURL": "https://www.ontario.ca/verify-vulnerability-disclosure"
+      },
+      "ReviewAppSetup": "weview appwicashun setup"
+    },
+    "Language": {
+      "Title": "Language",
+      "English": "Engwish",
+      "Furry": "Fuwwy",
+      "French": "Francase"
+    },
+    "UpdatesHelp": {
+      "Title": "Updates"
+    },
+    "VisualAppearance": {
+      "Title": "Visuwal appeawance",
+      "UseSystemSetting": "Matchy matchy!",
+      "Light": "light",
+      "Dark": "spooky!!"
+    },
+    "HowItWorks": {
+      "Title": "How OwOpen Vewify wowks",
+      "LearnMoreButton": "Visit Ontawio.ca/verify",
+      "LearnMoreURL": "https://www.ontario.ca/verify"
+    },
+    "WhatResultsMean": {
+      "Title": "What teh wesults mean",
+      "LearnMoreButton": "Visit Ontawio.ca/verify-results",
+      "LearnMoreURL": "https://www.ontario.ca/verify-results"
+    },
+    "HelpUsImprove": {
+      "Title": "Hewp me!!!",
+      "Body": "am i a good kitty~~?",
+      "GiveFeedback": "YASS~~!",
+      "GiveFeedbackURL": "https://www.ontario.ca/verify-feedback"
+    }
+  },
+  "Next": "Nyext",
+  "OpenVerifyLogoAlt": "Ontawio",
+  "ListItem": "wist item:"
+}
